@@ -1,9 +1,10 @@
-'''Tables for Database'''
-
-from app import db
+from app import db, login
 from datetime import datetime
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import UserMixin
 
-class User(db.Model):
+
+class User(UserMixin, db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	username = db.Column(db.String(64), index=True, unique=True)
 	email = db.Column(db.String(120), index=True, unique=True)
@@ -11,6 +12,12 @@ class User(db.Model):
 	user_role = db.Column(db.Integer,db.ForeignKey('roles.id'))
 	admin = db.Column(db.Boolean, unique=False, default=False)
 	
+	def set_password(self, password):
+		self.password_hash = generate_password_hash(password)
+    
+	def check_password(self, password):
+		return check_password_hash(self.password_hash, password)
+
 	def __repr__(self):
 		return '<User {}>'.format(self.username)
 
@@ -20,9 +27,9 @@ class Project(db.Model):
     body = db.Column(db.String(500))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer,db.ForeignKey('user.id'))
-
+    
     def __repr__(self):
-        return '<Project {}>'.format(self.body)
+        return '<Project {}>'.format(self.projectname)
 
 class Goals(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -37,3 +44,7 @@ class Roles(db.Model):
     
     def __repr__(self):
         return '<Roles {}>'.format(self.role)
+
+@login.user_loader
+def laod_user(id):
+    return User.query.get(int(id))

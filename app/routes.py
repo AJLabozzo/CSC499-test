@@ -27,7 +27,19 @@ def events():
 @app.route('/about')
 def about():
 	return render_template('about.html')
-	
+
+@app.route('/goal1')
+def goals1():
+	return render_template('goal1.html')
+
+@app.route('/myprofile')
+def myprofile():
+	return render_template('myprofile.html')
+
+@app.route('/submission_form')
+def submission_form():
+	return render_template('submission_form.html')
+
 @app.route('/login')
 def login():
 	form = LoginForm()
