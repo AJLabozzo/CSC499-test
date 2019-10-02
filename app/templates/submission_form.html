@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block head %}	{{ super() }}	{% endblock %}
+
+{% block Nav %}	{{ super() }}	{% endblock %}
+{% block content %}
+<section class="section">
+    <div class="container">
+        <h1 class="title">Project Form Submission</h1>
+        <main>
+            <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label">From</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <p class="control is-expanded has-icons-left">
+                      <input class="input" type="text" placeholder="Name">
+                      <span class="icon is-small is-left">
+                        <i class="fas fa-user"></i>
+                      </span>
+                    </p>
+                  </div>
+                </div>
+              </div> 
+              
+              <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                      <label class="label">Description</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <div class="control">
+                          <textarea class="textarea" placeholder="Project Description"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+              
+              <div class="field is-horizontal">
+                    <div class="field-label">
+                      <label class="label">Already a member?</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field is-narrow">
+                        <div class="control">
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                1. No Poverty
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Goal 2
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Goal 3
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Goal 4
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Goal 5
+                            </label>
+                            <br></br>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Goal 1
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Goal 2
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Goal 3
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Goal 4
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Goal 5
+                            </label>
+                            <br></br>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Goal 1
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Goal 2
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Goal 3
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Goal 4
+                            </label>
+                            <label class="checkbox">
+                                <input type="checkbox">
+                                Goal 5
+                            </label>
+                            <br></br>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="field is-horizontal">
+                    <div class="field-label is-normal">
+                      <label class="label">Subject</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <div class="control">
+                          <input class="input is-danger" type="text" placeholder="e.g. Partnership opportunity">
+                        </div>
+                        <p class="help is-danger">
+                          This field is required
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="field is-horizontal">
+                    <div class="field-label">
+                      <!-- Left empty for spacing -->
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <div class="control">
+                          <button class="button is-primary">
+                            Send message
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+        </main>
+    </div>
+</section>
+{% endblock %}

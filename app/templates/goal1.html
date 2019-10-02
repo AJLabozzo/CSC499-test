@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block head %}	{{ super() }}	{% endblock %}
+
+{% block Nav %}	{{ super() }}	{% endblock %}
+{% block content %}
+<div class="tile is-ancestor">
+    <div class="tile is-10">
+      <div class="tile">
+        <div class="tile is-parent is-vertical">
+          <article class="tile is-child notification is-info">
+            <figure class="image is-4by4">
+              <img src="https://sustainabledevelopment.un.org/content/images/E_SDG_Icons-01.jpg" alt="Goal 1 - No Poverty">
+            </figure>
+          </article>
+        </div>
+        <div class="tile is-parent">
+            <article class="tile is-child notification is-primary">
+                <p class="title">Goal #1 - No Poverty</p>
+                <p>Top tile</p>
+            </article>  
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
