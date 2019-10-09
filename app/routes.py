@@ -65,6 +65,7 @@ def submission_form():
 def new_account():
 	return render_template('new_account.html')
 
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
