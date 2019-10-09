@@ -3,13 +3,12 @@ from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 
-
 class User(UserMixin, db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	username = db.Column(db.String(64), index=True, unique=True)
 	email = db.Column(db.String(120), index=True, unique=True)
 	password_hash = db.Column(db.String(128))
-	user_role = db.Column(db.Integer,db.ForeignKey('roles.id'))
+	user_role = db.Column(db.String(64))
 	admin = db.Column(db.Boolean, unique=False, default=False)
 	
 	def set_password(self, password):
@@ -27,24 +26,28 @@ class Project(db.Model):
     body = db.Column(db.String(500))
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer,db.ForeignKey('user.id'))
+    department = db.Column(db.String(64))
     
     def __repr__(self):
         return '<Project {}>'.format(self.projectname)
 
+class Members(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    member_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
+    
+    def __repr__(self):
+        return '<Members {}>'.format(self.member_id)
+
 class Goals(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    goal = db.Column(db.String(64),index=True, unique=True)
+    goal = db.Column(db.String(64), index=True)
+    project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
     
     def __repr__(self):
         return '<Goals {}>'.format(self.goal)
 
-class Roles(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    role = db.Column(db.String(64),index=True, unique=True)
-    
-    def __repr__(self):
-        return '<Roles {}>'.format(self.role)
 
 @login.user_loader
-def laod_user(id):
+def load_user(id):
     return User.query.get(int(id))

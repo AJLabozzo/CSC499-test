@@ -9,12 +9,33 @@
 	<center>
 	<div class="column is-2 ">
 	<div class="container-fluid col-8" style="margin-top: 30px">
-	<h1>Login</h1>
+        
+	<h1>Sign In</h1>
+        
 	<div class="card text-left">
 	  <div class="card-header" >
-		{{ wtf.quick_form(form) }}
+		<form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.username.label }}<br>
+            {{ form.username(size=31) }}
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password(size=31) }}
+            {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+            {% endfor %}
+        </p>
+        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p>{{ form.submit() }}</p>
+		</form>
 	  </div>
 	</div>
+        
 	</div>
 	</div>
 	</center>

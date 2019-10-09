@@ -5,5 +5,6 @@ Pip install this shizz in your Venv:
 flask-sqlalchemy
 flask-migrate
 flask-login
+flask-table
 
 python dot-env

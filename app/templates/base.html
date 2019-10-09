@@ -28,9 +28,11 @@
 				</div>
 				<div class="navbar-end">
 					<div class="navbar-item">
-						<a class="has-text-white is-size-5" href="../login">
-						Login
-						</a> 
+                        {% if current_user.is_anonymous%}
+				        <a class="has-text-white is-size-4" href="../login">Login</a>
+                        {% else %}
+                        <a class="has-text-white is-size-4" href="../logout">Logout</a>
+                        {% endif %}
 					</div>
 					<p class="navbar-item has-text-white is-size-6">|</p>
 					<div class="navbar-item">
