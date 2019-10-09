@@ -61,7 +61,10 @@ def myprofile():
 def submission_form():
 	return render_template('submission_form.html')
 
-@app.route('/login', methods=['Get','Post'])
+@app.route('/new_account')
+def new_account():
+	return render_template('new_account.html')
+
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
