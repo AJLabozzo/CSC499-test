@@ -40,6 +40,10 @@ def myprofile():
 def submission_form():
 	return render_template('submission_form.html')
 
+@app.route('/new_account')
+def new_account():
+	return render_template('new_account.html')
+
 @app.route('/login')
 def login():
 	form = LoginForm()

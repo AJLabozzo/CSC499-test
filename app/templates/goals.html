@@ -5,7 +5,7 @@
 {% block Nav %}	{{ super() }}	{% endblock %}
 
 {% block content %}
-<div class="container ">
+<div class="container">
    <section class="hero is-info is-small">
       <div class="hero-body">
         <div class="container has-text-centered">
@@ -25,7 +25,77 @@
     </div>
 	<center>
 	<section class="container">
+		<div class="tile is-ancestor">
+			<div class="tile is-parent">
+				<article class="tile is-child box">
+					<figure>
+						<img src="https://sustainabledevelopment.un.org/content/images/E_SDG_Icons-01.jpg" alt="Placeholder image">
+				  	</figure>
+					<p class="subtitle"></p>
+					<a class="has-text-white is-size-4" href="../goal1">
+						<span class="button is-link modal-button" data-target="modal-image">Goal 1</span>
+					</a>
+			  	</article>
+			</div>
+			<div class="tile is-parent">
+			  	<article class="tile is-child box">
+					<figure>
+						<img src="/static/E_PRINT_02.jpg" alt="Placeholder image">
+					</figure>
+					<p class="subtitle"></p>
+					<a class="has-text-white is-size-4" href="../goal2">
+						<span class="button is-link modal-button" data-target="modal-image">Goal 1</span>
+					</a>
+			  	</article>
+			</div>
+			<div class="tile is-parent">
+			  	<article class="tile is-child box">
+				  <figure>
+						<img src="{{url_for('static', filename='E_PRINT_03.jpg')}}" alt="Placeholder image">
+					</figure>
+					<p class="subtitle">Subtitle</p>
+					<a class="has-text-white is-size-4" href="../goal1">
+						<span class="button is-link modal-button" data-target="modal-image">Goal 1</span>
+					</a>
+			  	</article>
+			</div>
+			<div class="tile is-parent">
+			  	<article class="tile is-child box">
+					<figure>
+						<img src="{{url_for('static', filename='E_PRINT_03.jpg')}}" alt="Placeholder image">
+					</figure>
+					<p class="subtitle">Subtitle</p>
+					<a class="has-text-white is-size-4" href="../goal1">
+						<span class="button is-link modal-button" data-target="modal-image">Goal 1</span>
+					</a>
+			  	</article>
+			</div>
+		</div>
+	</section>
+	</center>
+</div>
+{% endblock %}
+
+<!--
+<div class="column is-3 modal-button" data-target="modal-image">
+	<section class="container">
 		<div class="column is-3 modal-button" data-target="modal-image">
+			<div class="card is-shady">
+				<div class="card-image">
+				  <figure>
+					<img src="https://sustainabledevelopment.un.org/content/images/E_SDG_Icons-01.jpg" alt="Placeholder image">
+				  </figure>
+				</div>
+				<div class="card-content">
+				  <div class="content">
+					<h4>Click anywhere on card</h4>
+					<p></p>
+					<a class="has-text-white is-size-4" href="../goal1">
+					<span class="button is-link modal-button" data-target="modal-image">Goal 1</span>
+					</a>
+				  </div>
+				</div>
+			</div>
 			<div class="card is-shady">
 				<div class="card-image">
 				  <figure>
@@ -44,6 +114,4 @@
 			</div>
 		</div>
 	</section>
-	</center>
-</div>
-{% endblock %}
+-->

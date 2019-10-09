@@ -1,12 +1,29 @@
+<link rel="stylesheet" href="../templates/degug.css">
+
 {% extends "base.html" %}
 
 {% block head %}	{{ super() }}	{% endblock %}
 
 {% block Nav %}	{{ super() }}	{% endblock %}
 {% block content %}
-<div class="tile is-ancestor">
-    <div class="tile is-10">
+<section class="container">
+  <br></br>
+  <div class="tile is-vertical is-3">
       <div class="tile">
+        <div class="tile is-parent is-vertical">
+          <article class="tile is-child notification box">
+            <p class="subtitle">Goal 1</p>
+            <figure class="image is-640x480">
+                <img src="https://sustainabledevelopment.un.org/content/images/E_SDG_Icons-01.jpg" alt="Goal 1 - No Poverty">
+            </figure>
+            <br></br>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+          </article>
+        </div>
+      </div>
+  </div>
+</section>
+           <!--
         <div class="tile is-parent is-vertical">
           <article class="tile is-child notification is-info">
             <figure class="image is-4by4">
@@ -20,8 +37,7 @@
                 <p>Top tile</p>
             </article>  
         </div>
-      </div>
-    </div>
-  </div>
+      -->
+     
 {% endblock %}
 
