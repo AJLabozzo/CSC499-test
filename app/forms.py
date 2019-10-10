@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, TextAreaField
 from wtforms.validators import DataRequired, Length
 
 class LoginForm(FlaskForm):
@@ -15,3 +15,10 @@ class ProjectSearchForm(FlaskForm):
         
     select = SelectField('', choices=choices)
     search = StringField('')
+    
+class ProjectSubmissionForm(FlaskForm):
+    projectname = StringField('',validators=[DataRequired(),Length(max=64)])
+    body = TextAreaField('',validators=[DataRequired(),Length(max=500)])
+    department = StringField('',validators=[DataRequired(),Length(max=64)])
+    submit = SubmitField('Submit')
+    

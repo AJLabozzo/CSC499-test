@@ -33,8 +33,8 @@ class Project(db.Model):
 
 class Members(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    member_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
+    member_id = db.Column(db.Integer, index = True)
+    project_id = db.Column(db.Integer, index = True)
     
     def __repr__(self):
         return '<Members {}>'.format(self.member_id)
@@ -42,7 +42,7 @@ class Members(db.Model):
 class Goals(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     goal = db.Column(db.String(64), index=True)
-    project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
+    project_id = db.Column(db.Integer, index=True)
     
     def __repr__(self):
         return '<Goals {}>'.format(self.goal)

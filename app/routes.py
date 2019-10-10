@@ -1,9 +1,9 @@
 #all page routes for application
 from flask import flash, render_template, request, redirect, url_for
 from flask_login import current_user, login_user, logout_user
-from app import app
-from app.forms import LoginForm, ProjectSearchForm
-from app.models import User
+from app import app, db
+from app.forms import LoginForm, ProjectSearchForm, ProjectSubmissionForm
+from app.models import User, Project, Goals
 from werkzeug.security import generate_password_hash, check_password_hash
 
 @app.route('/')
@@ -57,10 +57,48 @@ def goals1():
 def myprofile():
 	return render_template('myprofile.html')
 
-@app.route('/submission_form')
+@app.route('/submission_form', methods=['GET', 'POST'])
 def submission_form():
-	return render_template('submission_form.html')
-
+    form = ProjectSubmissionForm()
+    if form.validate_on_submit():
+        project = Project(projectname = form.projectname.data, body = form.body.data, user_id = current_user.id, department=form.department.data)
+        db.session.add(project)
+        db.session.commit() 
+        
+        newproject = db.session.query(Project).filter(Project.name==form.projectname.data).first()
+        goals = request.form.getlist('goals')
+        for x in goals:
+            goal = Goals(goal=x, project_id=newproject.id)
+            db.session.add(goal)
+        db.session.commit()
+        return redirect(url_for('projects'))
+    
+    
+    return render_template('submission_form.html', form=form)
+    
+    
+    
+    '''
+    form = ProjectSubmissionForm()
+    if form.validate_on_submit():
+            project = Project(projectname = form.projectname.data, body = form.body.data, user_id = current_user.id, department=form.department.data)
+            db.session.add(project)
+            db.session.commit()
+            
+            name = Project.query.filter_by(projectname=form.projectname.data).first()
+            for x in Goalschecked:
+                goal = Goals(goal=x, project_id=Project.query.get(name.id))
+                db.session.add(goal)
+                db.session.commit()
+                
+                projectname = request.form['projectname']
+        body = request.form['body']
+        user_id = current_user.id,
+        department= request.form['department']
+            
+            return redirect(url_for('projects'))
+    return render_template('submission_form.html',title='Project Form Submission',form=form)
+    '''
 @app.route('/new_account')
 def new_account():
 	return render_template('new_account.html')
