@@ -41,8 +41,8 @@ class Members(db.Model):
 
 class Goals(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    goal = db.Column(db.String(64), index=True)
-    project_id = db.Column(db.Integer, index=True)
+    goal = db.Column(db.String(64))
+    project_id = db.Column(db.String(64))
     
     def __repr__(self):
         return '<Goals {}>'.format(self.goal)

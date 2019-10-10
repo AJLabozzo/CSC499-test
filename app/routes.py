@@ -62,43 +62,19 @@ def submission_form():
     form = ProjectSubmissionForm()
     if form.validate_on_submit():
         project = Project(projectname = form.projectname.data, body = form.body.data, user_id = current_user.id, department=form.department.data)
-        db.session.add(project)
-        db.session.commit() 
+        db.session.add(project) 
+        db.session.commit()
         
-        newproject = db.session.query(Project).filter(Project.name==form.projectname.data).first()
         goals = request.form.getlist('goals')
         for x in goals:
-            goal = Goals(goal=x, project_id=newproject.id)
+            goal = Goals(goal=x, project_id=form.projectname.data)
             db.session.add(goal)
-        db.session.commit()
+            db.session.commit()
         return redirect(url_for('projects'))
     
     
     return render_template('submission_form.html', form=form)
     
-    
-    
-    '''
-    form = ProjectSubmissionForm()
-    if form.validate_on_submit():
-            project = Project(projectname = form.projectname.data, body = form.body.data, user_id = current_user.id, department=form.department.data)
-            db.session.add(project)
-            db.session.commit()
-            
-            name = Project.query.filter_by(projectname=form.projectname.data).first()
-            for x in Goalschecked:
-                goal = Goals(goal=x, project_id=Project.query.get(name.id))
-                db.session.add(goal)
-                db.session.commit()
-                
-                projectname = request.form['projectname']
-        body = request.form['body']
-        user_id = current_user.id,
-        department= request.form['department']
-            
-            return redirect(url_for('projects'))
-    return render_template('submission_form.html',title='Project Form Submission',form=form)
-    '''
 @app.route('/new_account')
 def new_account():
 	return render_template('new_account.html')
