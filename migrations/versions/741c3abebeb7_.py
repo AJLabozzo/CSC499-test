@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 4760e1f94308
+Revision ID: 741c3abebeb7
 Revises: 
-Create Date: 2019-10-09 23:29:41.468268
+Create Date: 2019-10-10 15:20:19.838972
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '4760e1f94308'
+revision = '741c3abebeb7'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -21,11 +21,9 @@ def upgrade():
     op.create_table('goals',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('goal', sa.String(length=64), nullable=True),
-    sa.Column('project_id', sa.Integer(), nullable=True),
+    sa.Column('project_id', sa.String(length=64), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
-    op.create_index(op.f('ix_goals_goal'), 'goals', ['goal'], unique=False)
-    op.create_index(op.f('ix_goals_project_id'), 'goals', ['project_id'], unique=False)
     op.create_table('members',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('member_id', sa.Integer(), nullable=True),
@@ -52,6 +50,7 @@ def upgrade():
     sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.Column('user_id', sa.Integer(), nullable=True),
     sa.Column('department', sa.String(length=64), nullable=True),
+    sa.Column('progress', sa.Boolean(), nullable=True),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
@@ -71,7 +70,5 @@ def downgrade():
     op.drop_index(op.f('ix_members_project_id'), table_name='members')
     op.drop_index(op.f('ix_members_member_id'), table_name='members')
     op.drop_table('members')
-    op.drop_index(op.f('ix_goals_project_id'), table_name='goals')
-    op.drop_index(op.f('ix_goals_goal'), table_name='goals')
     op.drop_table('goals')
     # ### end Alembic commands ###

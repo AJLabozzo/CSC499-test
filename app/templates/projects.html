@@ -35,21 +35,56 @@
                 </button>
               </div>
             </div>
-              
+             {% if current_user.is_authenticated%} 
             <div class="container">     
                 <a href="../submission_form">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp -Project Submission Form</a>    
             </div>
-              
+              {% endif %}
           </div>
         </div>
         </form>
         
         
-    </div>
-</section>
+</div>
+    <div><table class="table">
+  <thead>
+    <tr>
+      <th><abbr title="Position">#</abbr></th>
+      <th><abbr title="Project">Project</abbr></th>
+      <th><abbr title="Department">Department</abbr></th>
+      <th><abbr title="Faculty">Faculty</abbr></th>
+      <th><abbr title="Goals">SustainabilityGoals</abbr></th>
+      <th><abbr title="Status">Status</abbr></th>
+      <th><abbr title="Description">Description</abbr></th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+    </tr>
+  </tfoot>
         
-        
+  <tbody>
+      {% for data in projects %}
+    <tr>
+      <th>{{loop.index}}</th>
+      <td>{{data.projectname}}</td>
+      <td>{{data.department}}</td>
+      <td>{{data.username}}</td>
+      <td>{{data.goals}}</td>
+      <td>{{data.status}}</td>
+      <td>{{data.body}}</td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table></div>
+</section>      
+    <!--    
     <section class="section">
-        {{ table }}
+        <table class="table">
+            <thead></thead>
+            <tfoot></tfoot>
+            <tbody></tbody>
+        </table>
     </section>
+    -->
 {% endblock %}

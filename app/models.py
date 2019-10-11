@@ -23,10 +23,11 @@ class User(UserMixin, db.Model):
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     projectname = db.Column(db.String(64), index=True, unique=True)
-    body = db.Column(db.String(500))
+    body = db.Column(db.String(500),unique=False)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer,db.ForeignKey('user.id'))
     department = db.Column(db.String(64))
+    progress = db.Column(db.Boolean, unique=False, default=False)
     
     def __repr__(self):
         return '<Project {}>'.format(self.projectname)
