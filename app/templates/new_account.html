@@ -5,202 +5,117 @@
 {% block Nav %}	{{ super() }}	{% endblock %}
 {% block content %}
 <section class="section">
-        <div class="container">
             <h1 class="title">Sign-Up</h1>
             <main>
-                <div class="field is-horizontal">
-                    <div class="field-label">
+                <div class="container">
+                <div class="field">
+                    <div class="label">
                         <label class="label">I'm a...</label>
                     </div>
                     <div class="field-body">
                         <div class="field is-narrow">
                         <div class="control">
                             <button class="button is-primary is-outlined">student</button>
-                            <button class="button is-link is-outlined">faculty member</button>
+                            <button class="button is-link is-outlined">faculty</button>
+                            <button class="button is-danger is-outlined">staff</button>
                         </div>
                         </div>
                     </div>
                 </div>
-
-                        
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                      <label class="label">First name</label>
-                    </div>
-                    <div class="field-body">
-                      <div class="field">
-                        <p class="control">
-                          <input class="input" type="text" placeholder="">
-                        </p>
-                      </div>
-                    </div>
-                </div> 
-                  
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label">Last name</label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field">
-                        <p class="control">
-                            <input class="input" type="text" placeholder="">
-                        </p>
-                        </div>
-                    </div>
-                </div> 
-
-                <div class="field is-horizontal">
-                    <div class="field-label is-normal">
-                        <label class="label">Email</label>
-                    </div>
-                    <div class="field-body">
-                        <div class="field">
-                        <p class="control is-expanded">
-                            <input class="input" type="text" placeholder="@southernct.edu">
-                        </p>
-                        </div>
-                    </div>
-                </div> 
-
-                <div class="field is-horizontal">
-                        <div class="field-label is-normal">
-                            <label class="label">Department</label>
+                
+                <div class="field">
+                        <div class="label">
+                            <label class="label">Username</label>
                         </div>
                         <div class="field-body">
                             <div class="field">
-                                <div class="dropdown is-hoverable">
-                                    <div class="dropdown-trigger">
-                                        <button class="button" aria-haspopup="true" aria-controls="dropdown-menu4">
-                                        <span>Select</span>
-                                        <span class="icon is-small">
-                                            <i class="fas fa-angle-down" aria-hidden="true"></i>
-                                        </span>
-                                        </button>
-                                    </div>
-                                    <div class="dropdown-menu" id="dropdown-menu4" role="menu">
-                                        <div class="dropdown-content">
-                                        <div class="dropdown-item">
-                                            <a href="#" class="dropdown-item">
-                                            CSC
-                                            </a>
-                                            <a href="#" class="dropdown-item">
-                                            MAT
-                                            </a>
-                                            <a href="#" class="dropdown-item">
-                                            ART
-                                            </a>
-                                        </div>
-                                        </div>
-                                    </div>
-                                </div>
+                            <p class="control">
+                                <input class="input" type="text" placeholder="">
+                            </p>
+                            </div>
                         </div>
-                    </div>
-                </div> 
+                    </div> 
 
-                 
-                <div class="field is-horizontal">
-                        <div class="field-label">
-                          <label class="label">Top 4 interests</label>
+                <div class="field">
+                        <div class="label is-normal">
+                            <label class="label">Email</label>
                         </div>
                         <div class="field-body">
-                          <div class="field is-narrow">
+                            <div class="field">
+                                <p class="control is-expanded has-icons-left">
+                                    <input class="input" type="text" placeholder="@southernct.edu">
+                                    <span class="icon is-small is-left">
+                                        <i class="fas fa-envelope"></i>
+                                    </span>
+                                </p>
+                            </div>
+                        </div>
+                </div> 
+
+                <div class="field">
+                        <div class="label is-normal">
+                            <label class="label">Password</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                            <p class="control is-expanded has-icons-left">
+                                <input class="input" type="text" placeholder="">
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-lock"></i>
+                                </span>
+                            </p>
+                            </div>
+                        </div>
+                    </div> 
+
+                <div class="field">
+                        <div class="label is-normal">
+                            <label class="label">Password Verification</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                            <p class="control">
+                                <input class="input" type="text" placeholder="">
+                            </p>
+                            </div>
+                        </div>
+                    </div> 
+
+                <div class="field">
+                    <div class="label is-normal">
+                        <label class="label">Department</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                        <div class="field">
                             <div class="control">
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    No Poverty
-                                </label>
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Zero Hunger
-                                </label>
-                                <br></br>
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Good Health and Well-Being
-                                </label>
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Quality Education 
-                                </label>
-                                <br></br>
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Gender Equality 
-                                </label>
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Clean Water & Sanitation 
-                                </label>
-                                <br></br>
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Affordable & Clean Energy 
-                                </label>
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Decent Work & Economic Growth 
-                                </label>
-                                <br></br>
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Industry, Innovation, and Infrastructure
-                                </label>
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Reduced Inequalities 
-                                </label>
-                                <br></br>
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Sustainable Cities and Communities
-                                </label>
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Responsible Consumption and Production 
-                                </label>
-                                <br></br>
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Climate Action 
-                                </label>
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Life Below Water 
-                                </label>
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Life on Land 
-                                </label>
-                                <br></br>
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Peace & Justice Strong Institutions 
-                                </label>
-                                <label class="checkbox">
-                                    <input type="checkbox">
-                                    Partnerships for the Goals 
-                                </label>
+                                <div class="select">
+                                    <select>
+                                    <option>CSC</option>
+                                    <option>PSY</option>
+                                    <option>LIB</option>
+                                    <option>ENG</option>
+                                    </select>
+                                </div>
                             </div>
-                          </div>
+                            </div>
                         </div>
-                      </div>
-                      
-                      <div class="field is-horizontal">
-                          <div class="field-label">
-                            <!-- Left empty for spacing -->
-                          </div>
-                          <div class="field-body">
-                            <div class="field">
-                              <div class="control">
-                                <button class="button is-primary">
-                                  Submit
-                                </button>
-                              </div>
-                            </div>
-                          </div>
-                      </div>
-                        
-        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="field">
+                    <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                        <button class="button is-primary">
+                            Submit
+                        </button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </main>      
     </section>
 
 {% endblock %}
