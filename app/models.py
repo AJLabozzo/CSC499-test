@@ -23,26 +23,27 @@ class User(UserMixin, db.Model):
 class Project(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     projectname = db.Column(db.String(64), index=True, unique=True)
-    body = db.Column(db.String(500))
+    body = db.Column(db.String(500),unique=False)
     timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
     user_id = db.Column(db.Integer,db.ForeignKey('user.id'))
     department = db.Column(db.String(64))
+    progress = db.Column(db.Boolean, unique=False, default=False)
     
     def __repr__(self):
         return '<Project {}>'.format(self.projectname)
 
 class Members(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    member_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
+    member_id = db.Column(db.Integer, index = True)
+    project_id = db.Column(db.Integer, index = True)
     
     def __repr__(self):
         return '<Members {}>'.format(self.member_id)
 
 class Goals(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    goal = db.Column(db.String(64), index=True)
-    project_id = db.Column(db.Integer, db.ForeignKey('project.id'))
+    goal = db.Column(db.String(64))
+    project_id = db.Column(db.String(64))
     
     def __repr__(self):
         return '<Goals {}>'.format(self.goal)

@@ -7,15 +7,21 @@
 <section class="section">
     <div class="container">
         <h1 class="title">Project Form Submission</h1>
+            
+        <form action="", method="post" role = "form">
+            {{ form.hidden_tag() }}
         <main>
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                  <label class="label">Title</label>
+                  <label class="label" for="projectname">Title</label>
                 </div>
                 <div class="field-body">
                   <div class="field">
                     <p class="control is-expanded">
-                      <input class="input" type="text" placeholder="Project name">
+                      <input  class="input" type="text" id="projectname" name="projectname" placeholder="Project name">
+                        {% for error in form.projectname.errors %}
+            `           <span style="color: red;">[{{ error }}]</span>
+                        {% endfor %}
                     </p>
                   </div>
                 </div>
@@ -36,26 +42,57 @@
 
                 <div class="field is-horizontal">
                     <div class="field-label is-normal">
-                      <label class="label">Department</label>
+                      <label class="label" for="body">Description</label>
                     </div>
                     <div class="field-body">
                       <div class="field">
+                        <div class="control">
+                          <textarea class="textarea" id="body" name="body" placeholder="Project description"></textarea>
+                           {% for error in form.body.errors %}
+            `               <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %} 
+                        </div>
+                      </div>
+                    </div>
+              </div>
+<!--
+              <div class="field is-horizontal">
+                <div class="field-label is-normal">
+                  <label class="label" for="department">Department</label>
+                </div>
+                <div class="field-body">
+                  <div class="field">
+                    <p class="control is-expanded">
+                      <input class="input" type="text" id="department" name = "department" placeholder="">
+                      {% for error in form.projectname.errors %}
+            `          <span style="color: red;">[{{ error }}]</span>
+                      {% endfor %}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            -->
+            <div class="field">
+                    <div class="label is-normal">
+                        <label class="label" for="department">Department</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
                         <div class="field">
                             <div class="control">
                                 <div class="select">
-                                  <select>
-                                    <option>CSC</option>
-                                    <option>PSY</option>
-                                    <option>LIB</option>
-                                    <option>ENG</option>
-                                  </select>
+                                    <select name= "department" selectpicker form-control>
+                                    <option value="CSC" >CSC</option>
+                                    <option value="PSY" >PSY</option>
+                                    <option value="LIB" >LIB</option>
+                                    <option value="ENG" >ENG</option>
+                                    </select>
                                 </div>
                             </div>
-                          </div>
-                      </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                
+                </div>
               
               <div class="field is-horizontal">
                     <div class="field-label">
@@ -65,114 +102,86 @@
                       <div class="field is-narrow">
                         <div class="control">
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="goals" value="No Poverty">
                                 No Poverty
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="goals" value="Zero Hunger">
                                 Zero Hunger
                             </label>
-                            <br></br>
+                            <br>
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="goals" value="Good Health and Well-Being">
                                 Good Health and Well-Being
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="goals" value="Quality Education">
                                 Quality Education 
                             </label>
-                            <br></br>
+                            <br>
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="goals" value="Gender Equality">
                                 Gender Equality 
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="goals" value="Clean Water & Sanitation">
                                 Clean Water & Sanitation 
                             </label>
-                            <br></br>
+                            <br>
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="goals" value="Affordable & Clean Energy">
                                 Affordable & Clean Energy 
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="goals" value="Decent Work & Economic Growth">
                                 Decent Work & Economic Growth 
                             </label>
-                            <br></br>
+                            <br>
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="goals" value="Industry, Innovation, and Infrastructure">
                                 Industry, Innovation, and Infrastructure
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="goals" value="Reduced Inequalities">
                                 Reduced Inequalities 
                             </label>
-                            <br></br>
+                            <br>
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="goals" value="Sustainable Cities and Communities">
                                 Sustainable Cities and Communities
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="goals" value="Responsible Consumption and Production">
                                 Responsible Consumption and Production 
                             </label>
-                            <br></br>
+                            <br>
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="goals" value="Climate Action ">
                                 Climate Action 
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="goals" value="Life Below Water">
                                 Life Below Water 
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="goals" value="Life on Land">
                                 Life on Land 
                             </label>
-                            <br></br>
+                            <br>
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="goals" value="Peace & Justice Strong Institutions">
                                 Peace & Justice Strong Institutions 
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox">
+                                <input type="checkbox" name="goals" value="Partnerships for the Goals">
                                 Partnerships for the Goals 
                             </label>
                         </div>
                       </div>
                     </div>
                   </div>
-
-                  <!---
-                  <div class="field is-horizontal has-addons">
-                      <div class="field-label is-normal">
-                          <label class="label">Attachments</label>
-                      </div>
-                      <div class="field-body">
-                          <div class="control">
-                              <input type="text" class="input" placeholder="texts">
-                          </div>
-                          <div class="control is-expanded">
-                              <button class="button is-warning">browse</button>
-                          </div>
-                      </div>
-                  </div>
-
-                  <div class="field is-horizontal">
-                      <div class="field-label is-normal">
-                          <label class="label">Acknowledging Helpers?</label>
-                      </div>
-                      <div class="field-body">
-                          <div class="field">
-                              <div class="control">
-                                  <input type="textarea" class="input" placeHolder="Other people involved">
-                              </div>
-                          </div>
-                      </div>
-                  </div> -->  
-                  </main>
-                  <br></br>
+    
+                  <br>
                   <div class="field is-horizontal">
                       <div class="field-label">
                         <!-- Left empty for spacing -->
@@ -180,15 +189,15 @@
                       <div class="field-body">
                         <div class="field">
                           <div class="control">
-                            <button class="button is-primary">
+                            <button type="submit" class="button is-primary">
                               Submit
                             </button>
                           </div>
                         </div>
                       </div>
-                  </div>
-                    
+                  </div>         
         </main>
+        </form>
     </div>
 </section>
 {% endblock %}

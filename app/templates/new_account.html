@@ -1,36 +1,53 @@
-{% extends "base.html" %}
+{% extends "cleanbase.html" %}
 
 {% block head %}	{{ super() }}	{% endblock %}
 
 {% block Nav %}	{{ super() }}	{% endblock %}
 {% block content %}
 <section class="section">
+    <center>
+	<div class="column is-4">
             <h1 class="title">Sign-Up</h1>
+            <form action="", method="post" role = "form">
+            {{ form.hidden_tag() }}
             <main>
                 <div class="container">
                 <div class="field">
                     <div class="label">
-                        <label class="label">I'm a...</label>
+                        <label class="label" for="user_role">I'm a...</label>
                     </div>
-                    <div class="field-body">
-                        <div class="field is-narrow">
+                    <div class="field-body is-horizontal">
+                        <div class="field is-wide">
                         <div class="control">
-                            <button class="button is-primary is-outlined">student</button>
-                            <button class="button is-link is-outlined">faculty</button>
-                            <button class="button is-danger is-outlined">staff</button>
-                        </div>
+                            <label class="radio">
+                                <input type="radio" name="user_role" value="Student">
+                                Student
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="user_role" value="Faculty">
+                                Faculty
+                            </label>
+                            <br>
+                            <label class="radio">
+                                <input type="radio" name="user_role" value="Staff">
+                                Staff
+                            </label>
+                        </div> 
                         </div>
                     </div>
                 </div>
                 
                 <div class="field">
                         <div class="label">
-                            <label class="label">Username</label>
+                            <label class="label" for="username">Username</label>
                         </div>
                         <div class="field-body">
                             <div class="field">
                             <p class="control">
-                                <input class="input" type="text" placeholder="">
+                                <input class="input" id="username" name="username" type="text" placeholder="">
+                                {% for error in form.username.errors %}
+            `                   <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %} 
                             </p>
                             </div>
                         </div>
@@ -38,12 +55,15 @@
 
                 <div class="field">
                         <div class="label is-normal">
-                            <label class="label">Email</label>
+                            <label class="label" for="email">Email</label>
                         </div>
                         <div class="field-body">
                             <div class="field">
                                 <p class="control is-expanded has-icons-left">
-                                    <input class="input" type="text" placeholder="@southernct.edu">
+                                    <input class="input" id="email" name ="email" type="text" placeholder="@southernct.edu">
+                                    {% for error in form.email.errors %}
+            `                        <span style="color: red;">[{{ error }}]</span>
+                                    {% endfor %} 
                                     <span class="icon is-small is-left">
                                         <i class="fas fa-envelope"></i>
                                     </span>
@@ -54,12 +74,15 @@
 
                 <div class="field">
                         <div class="label is-normal">
-                            <label class="label">Password</label>
+                            <label class="label" for="password">Password</label>
                         </div>
                         <div class="field-body">
                             <div class="field">
                             <p class="control is-expanded has-icons-left">
-                                <input class="input" type="text" placeholder="">
+                                <input class="input" id="password" name="password" type="text" placeholder="">
+                                {% for error in form.password.errors %}
+            `                   <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %} 
                                 <span class="icon is-small is-left">
                                     <i class="fas fa-lock"></i>
                                 </span>
@@ -70,17 +93,20 @@
 
                 <div class="field">
                         <div class="label is-normal">
-                            <label class="label">Password Verification</label>
+                            <label class="label"for="password2">Password Verification</label>
                         </div>
                         <div class="field-body">
                             <div class="field">
                             <p class="control">
-                                <input class="input" type="text" placeholder="">
+                                <input class="input" id="password2" name="password2" type="text" placeholder="">
+                                {% for error in form.password2.errors %}
+            `                   <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %} 
                             </p>
                             </div>
                         </div>
                     </div> 
-
+<!--
                 <div class="field">
                     <div class="label is-normal">
                         <label class="label">Department</label>
@@ -101,13 +127,13 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>-->
                 <br>
                 <div class="field">
                     <div class="field-body">
                     <div class="field">
                         <div class="control">
-                        <button class="button is-primary">
+                        <button type="submit" class="button is-primary">
                             Submit
                         </button>
                         </div>
@@ -115,7 +141,10 @@
                     </div>
                 </div>
                 </div>
-            </main>      
+            </main> 
+            </form>
+        </div>
+	</center>
     </section>
 
 {% endblock %}

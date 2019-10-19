@@ -1,9 +1,9 @@
 #all page routes for application
 from flask import flash, render_template, request, redirect, url_for
 from flask_login import current_user, login_user, logout_user
-from app import app
-from app.forms import LoginForm, ProjectSearchForm
-from app.models import User
+from app import app, db
+from app.forms import LoginForm, ProjectSearchForm, ProjectSubmissionForm, SignupForm
+from app.models import User, Project, Goals
 from werkzeug.security import generate_password_hash, check_password_hash
 
 @app.route('/')
@@ -21,10 +21,25 @@ def goals():
 
 @app.route('/projects', methods=['GET','POST'])
 def projects():
+    
     search = ProjectSearchForm(request.form)
+    projects=[]
+    
     if request.method == 'Post':
-        return search_results(search)
-    return render_template('projects.html', form=search)
+        return render_template('projects.html')
+    
+    allprojects = Project.query.all()
+    for data in allprojects:
+        #need to query for the goals associated with project sperately
+        Goalslist = []
+        allgoals = Goals.query.filter_by(project_id=data.projectname).all()
+        for goal in allgoals:
+            Goalslist.append(goal)
+        
+        project = dict(projectname=data.projectname,department=data.department,username=User.query.get(data.user_id).username,goals = Goalslist,body=data.body)
+        projects.append(project)
+    
+    return render_template('projects.html', form=search, projects=projects)
 
 def search_results(search):
     results = []
@@ -57,18 +72,42 @@ def goals1():
 def myprofile():
 	return render_template('myprofile.html')
 
-@app.route('/submission_form')
+@app.route('/submission_form', methods=['GET', 'POST'])
 def submission_form():
-	return render_template('submission_form.html')
-
-@app.route('/new_account')
+    form = ProjectSubmissionForm()
+    if form.validate_on_submit():
+        project = Project(projectname = form.projectname.data, body = form.body.data, user_id = current_user.id, department=request.form.get('department'))
+        db.session.add(project) 
+        db.session.commit()
+        
+        goals = request.form.getlist('goals')
+        for x in goals:
+            goal = Goals(goal=x, project_id=form.projectname.data)
+            db.session.add(goal)
+            db.session.commit()
+        return redirect(url_for('projects'))
+    
+    
+    return render_template('submission_form.html', form=form)
+    
+@app.route('/new_account', methods=['GET', 'POST'])
 def new_account():
-	return render_template('new_account.html')
+    if current_user.is_authenticated:
+        return redirect(url_for('landing'))
+    form = SignupForm()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email.data, user_role=request.form.get('user_role'))
+        user.set_password(form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        flash('Congratulations, you are now a registered user!')
+        return redirect(url_for('landing'))
+    return render_template('new_account.html', title='Sign-Up', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
-        return redirect(url_for('index'))
+        return redirect(url_for('landing'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(username=form.username.data).first()
