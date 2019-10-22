@@ -9,11 +9,12 @@
 
 .slideshow-container {
   max-width: 500px;
+  max-height: 400px;
+  position: relative;
 }
 
 .mySlides {
   display: none;
-height: 100px;   
 }
 
 .prev,
@@ -28,12 +29,12 @@ height: 100px;
   font-weight: bold;
   font-size: 30px;
   transition: .6s ease;
-  border-radius: 0 3px 3px 0
+  border-radius: 0 1px 1px 0
 }
 
 .next {
   right: -50px;
-  border-radius: 3px 3px 3px 3px
+  border-radius: 1px 1px 1px 1px
 }
 
 .prev {
@@ -44,21 +45,8 @@ height: 100px;
 .prev:hover,
 .next:hover {
   color: #f2f2f2;
-  background-color: rgba(0, 0, 0, 0.8)
+  background-color: rgba(90, 90, 95, 0.432)
 }
-
-.text {
-  color: #f2f2f2;
-  font-size: 15px;
-  padding-top: 12px;
-padding-bottom: 12px;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
-  background-color: #222428
-}
-
 .numbertext {
   color: #f2f2f2;
   font-size: 12px;
@@ -106,29 +94,35 @@ padding-bottom: 12px;
         </div>
     </div>
     <div class="columns is-multiline is-centered">
-      <div class="column is-two-third">
-          <div class="column">
-            <div class="mySlides fade">
-              <img src="http://news.southernct.edu/wp-content/uploads/2018/09/SCSU_2018_solar_panels-6092.jpg" style="width:500px;height:300px;"/>
-                <div class="text">one</div>
-            </div>
-            <div class="mySlides fade">
-              <img src="{{url_for('static', filename='E-WEB-Goal-10.png')}}" style="width:500px;height:300px;"/>
-                <div class="text">two</div>
-            </div>
-            <div class="mySlides fade">
-              <img src="{{url_for('static', filename='E-WEB-Goal-11.png')}}" style="width:500px;height:300px;"/>
-                <div class="text">three</div>
-            </div>
-            <a class="prev" onclick='plusSlides(-1)'>&#10094;</a>
-            <a class="next" onclick='plusSlides(1)'>&#10095;</a>
-          </div>
-      </div>
-      <div class="column is-one-third">
+      <div class="column is-half">
           <div class="column">
               <figure class="image is-3by3">
                       <img src="http://news.southernct.edu/wp-content/uploads/2018/09/SCSU_2018_solar_panels-6092.jpg">
               </figure>
+          </div>
+      </div>
+
+      <div class="column is-half">
+          <div class="column">
+            <div class = "slideshow-container">
+              <div class="mySlides fade">
+                <img src="http://news.southernct.edu/wp-content/uploads/2018/09/SCSU_2018_solar_panels-6092.jpg" style="width:500px;height:300px;"/>
+              </div>
+              <div class="mySlides fade">
+                <img src="{{url_for('static', filename='E-WEB-Goal-10.png')}}" style="width:500px;height:300px;"/>
+              </div>
+              <div class="mySlides fade">
+                <img src="{{url_for('static', filename='E-WEB-Goal-11.png')}}" style="width:500px;height:300px;"/>
+              </div>
+              <a class="prev" onclick='plusSlides(-1)'>&#10094;</a>
+              <a class="next" onclick='plusSlides(1)'>&#10095;</a>
+
+              <div style="text-align:center">
+                <span class="dot" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+              </div>
+            </div>
           </div>
       </div>
   </div>
@@ -207,50 +201,4 @@ padding-bottom: 12px;
   }
 </script>
 
-
-    
-<!--
-<section>
-<div class="tile is-ancestor">
-        <div class="tile is-parent">
-          <article class="tile is-child box">
-            <p class="title">One</p>
-            <p class="subtitle">Subtitle</p>
-          </article>
-        </div>
-        <div class="tile is-parent">
-          <article class="tile is-child box">
-            <p class="title">Two</p>
-            <p class="subtitle">Subtitle</p>
-          </article>
-        </div>
-        <div class="tile is-parent">
-          <article class="tile is-child box">
-            <p class="title">Three</p>
-            <p class="subtitle">Subtitle</p>
-          </article>
-        </div>
-        <div class="tile is-parent">
-          <article class="tile is-child box">
-            <p class="title">Four</p>
-            <p class="subtitle">Subtitle</p>
-          </article>
-        </div>
-      </div>
- </section>
--->
-<!--
-<div class="columns">
-        <div class="column is-half">
-            <div class="column">
-                <figure class="image is-3by2">
-                        <img src="static/17_Sustainable_Goals_Poster.jpg">
-                </figure>
-            </div>
-            <div class="column">
-                <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-            </div>
-        </div>
-    </div>
--->
 {% endblock %}
