@@ -8,51 +8,55 @@
     <div class="columns is-mobile is-centered">
       <div class="column is-half">
             <div class="tile is-5 has-text-centered">
-                <div class="tile is-parent is-vertical has-text-centered">
+                <div class="tile is-parent has-text-centered">
                   <article class="tile is-child box">
                     <div class="title">
                       <h1>Edit Profile</h1>
                     </div>
                       <div class="field">
-                          <p class="control has-icons-left has-icons-right">
-                            <input class="input" type="text" id="username" name="fname" placeholder="first name">
-                            <span class="icon is-small is-left">
-                              <i class="fas fa-envelope"></i>
-                            </span>
+                          <div class="label is-normal">
+                              <label class="label" for="password">First name</label>
+                          </div>
+                          <p class="control">
+                            <input class="input" type="text" id="username" name="fname">
                           </p>
                       </div>
                       <div class="field">
-                        <p class="control has-icons-left">
-                          <input class="input" type="text" id="password" name="password" placeholder="last name">
-                          <span class="icon is-small is-left">
-                            <i class="fas fa-lock"></i>
-                          </span>
+                          <div class="label is-normal">
+                              <label class="label" for="password">Last name</label>
+                          </div>
+                        <p class="control">
+                          <input class="input" type="text" id="password" name="password">
                         </p>
                     </div>
                     <div class="field">
-                        <p class="control has-icons-left">
-                          <input class="input" type="text" id="password" name="password" placeholder="major">
-                          <span class="icon is-small is-left">
-                            <i class="fas fa-lock"></i>
-                          </span>
+                        <div class="label is-normal">
+                            <label class="label" for="password">Major</label>
+                        </div>
+                        <p class="control">
+                          <input class="input" type="text" id="password" name="password">
                         </p>
                     </div>
                     <div class="field">
-                        <p class="control has-icons-left">
-                          <input class="input" type="text" id="password" name="password" placeholder="minor">
-                          <span class="icon is-small is-left">
-                            <i class="fas fa-lock"></i>
-                          </span>
+                        <div class="label is-normal">
+                            <label class="label" for="password">Minor</label>
+                        </div>
+                        <p class="control">
+                          <input class="input" type="text" id="password" name="password">
                         </p>
                     </div>
-                    <div class="field-body">
-                        <p class="control has-icons-left">
-                          <input class="input" type="text" id="password" name="password" placeholder="about">
-                          <span class="icon is-small is-left">
-                            <i class="fas fa-lock"></i>
-                          </span>
-                        </p>
-                    </div>
+                    <div class="field">
+                        <div class="label is-normal">
+                          <label class="label">About</label>
+                        </div>
+                        <div class="field-body">
+                          <div class="field">
+                            <div class="control">
+                              <textarea class="textarea" maxlength="500" placeholder="Tell us about yourself"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
 
                     <br>
                     <button type="submit" class="button is-primary">
