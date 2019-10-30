@@ -1,0 +1,24 @@
+{% extends "cleanbase.html" %}
+
+{% block head %}	{{ super() }}	{% endblock %}
+
+{% block Nav %}	{{ super() }}	{% endblock %}
+{% block content %}
+
+<div class="field">
+    <label class="label">First Name</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="e.g Alex">
+    </div>
+  </div>
+  
+  <div class="field">
+    <label class="label">Last Name</label>
+    <div class="control">
+      <input class="input" type="text" placeholder="e.g. Smith">
+    </div>
+  </div>
+
+
+
+{% endblock %}
