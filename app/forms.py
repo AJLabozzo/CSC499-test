@@ -44,3 +44,11 @@ class ProjectSubmissionForm(FlaskForm):
         name = Project.query.filter_by(projectname=projectname.data).first()
         if name is not None:
             raise ValidationError('Please use a different title.')
+
+class ProfileForm(FlaskForm):
+	fname = StringField('first name')
+	lname = StringField('last name')
+	major = StringField('your major')
+	minor = StringField('minor - if any')
+	about = TextAreaField('About me', validators=[Length(min=0, max=500)])
+	submit	= SubmitField('Submit')

@@ -37,7 +37,9 @@
             </div>
              {% if current_user.is_authenticated%} 
             <div class="container">     
-                <a href="../submission_form">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp -Project Submission Form</a>    
+                <a>My Projects</a>
+                <br>
+                <a href="../submission_form"> Project Submission Form</a>    
             </div>
               {% endif %}
           </div>
@@ -56,6 +58,8 @@
       <th><abbr title="Goals">SustainabilityGoals</abbr></th>
       <th><abbr title="Status">Status</abbr></th>
       <th><abbr title="Description">Description</abbr></th>
+      <th><abbr title="Project Members">Project Members</abbr></th>
+      <th><abbr title="Edit"></abbr></th>
     </tr>
   </thead>
   <tfoot>
@@ -73,6 +77,8 @@
       <td>{{data.goals}}</td>
       <td>{{data.status}}</td>
       <td>{{data.body}}</td>
+      <td></td>
+      <td></td>
       </tr>
       {% endfor %}
   </tbody>

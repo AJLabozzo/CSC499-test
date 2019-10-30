@@ -1,6 +1,6 @@
 #all page routes for application
 from flask import flash, render_template, request, redirect, url_for
-from flask_login import current_user, login_user, logout_user
+from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db
 from app.forms import LoginForm, ProjectSearchForm, ProjectSubmissionForm, SignupForm
 from app.models import User, Project, Goals
@@ -36,7 +36,12 @@ def projects():
         for goal in allgoals:
             Goalslist.append(goal)
         
-        project = dict(projectname=data.projectname,department=data.department,username=User.query.get(data.user_id).username,goals = Goalslist,body=data.body)
+        if data.progress == False:
+            currentstate = "In progress"
+        else: 
+            currentstate = "Completed"
+        
+        project = dict(projectname=data.projectname,department=data.department,username=User.query.get(data.user_id).username,goals = Goalslist,status=currentstate,body=data.body)
         projects.append(project)
     
     return render_template('projects.html', form=search, projects=projects)
@@ -68,11 +73,14 @@ def about():
 def goals1():
 	return render_template('goal1.html')
 
-@app.route('/myprofile')
-def myprofile():
-	return render_template('myprofile.html')
-
+@app.route('/profile/<username>')
+def profile(username):
+	user = User.query.filter_by(username=username).first_or_404()
+	return render_template('myprofile.html', user=user)
+	
+	
 @app.route('/submission_form', methods=['GET', 'POST'])
+@login_required
 def submission_form():
     form = ProjectSubmissionForm()
     if form.validate_on_submit():
@@ -86,9 +94,23 @@ def submission_form():
             db.session.add(goal)
             db.session.commit()
         return redirect(url_for('projects'))
-    
-    
     return render_template('submission_form.html', form=form)
+
+@app.route('/edit_profile', methods=['GET', 'POST'])
+@login_required
+def edit_profile():
+    form = ProfileForm()
+    if form.validate_on_submit():
+        current_user.username = form.username.data
+        current_user.bio = form.about.data
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('edit_profile'))
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.about_me.data = current_user.about_me
+    return render_template('edit_profile.html', title='Edit Profile',
+                           form=form)
     
 @app.route('/new_account', methods=['GET', 'POST'])
 def new_account():
