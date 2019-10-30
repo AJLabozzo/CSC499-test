@@ -6,85 +6,80 @@
 
 {% block content %}
 
+<link rel="stylesheet" href="../css/kanban.css">
+
 <style>
-    .tabnav {
-      display: table;
-      width: 100%;
-      padding: 0;
-      margin: 0;
-    }
-    .tabnav li {
-      display: table-cell;
-      border: 2px solid #fff;
-      border-bottom-width: 0;
-    }
-    .tabnav a {
-      display: block;
-      background-color: #aaa;
-      color: #fff;
-      padding: .4em 1em;
-      text-decoration: none;
-    }
-    .tabnav .tab-active {
-      border: 1px solid #aaa;
-      border-bottom-width: 0;
-      background-color: #fff;
-      color: #222;
-    }
-    </style>
+  .collapsible {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border-style: outset;
+    border-radius: 5px;
+    border-color: hsl(171, 100%, 41%);
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+  
+  .active, .collapsible:hover {
+    font-weight: bold;
+
+
+  }
+  
+  .content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: white;
+  }
+</style>
+
+
 
 <body>
 <br>
-<section>
+  <section>
     <div class="columns">
-        <div class="column is-full"></div>
-      </div>
-      <div class="columns">
-        <div class="column is-full"></div>
-      </div>
-    <div class = "columns">
+      <div class="column is-full"></div>
+    </div>
+    <div class="columns">
+      <div class="column is-full"></div>
+    </div>
+
+    <div class = "columns is-multiline is-centered">
       <div class="column is-full">
-    <div class="tile is-ancestor">
-            <div class="tile is-parent">
-              <article class="tile is-child notification is-primary">
-                <p class="title">
-                    <span class="icon">
-                      <ion-icon name="calendar"></ion-icon>
-                    </span>
-                    Events
-                </p>
-                <p class="subtitle">What is up?</p>
-                <div class="content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
-                  </div>
-              </article>
-            </div>
+        <div class="tile is-ancestor">
+
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-primary">
+              <p class="title has-text-centered">
+                <span class="icon"><ion-icon name="calendar"></ion-icon></span>
+                Events
+              </p>
+              <div class="content">
+              </div>
+            </article>
+          </div>
+
+          <div class="tile is-parent">
+            <article class="tile is-child notification is-link">
+              <p class="title has-text-centered">
+                <span class="icon"><ion-icon name="contacts"></ion-icon></span>
+                Clubs
+              </p>
+            </article>
+          </div>
 
             <div class="tile is-parent">
-              <article class="tile is-child notification is-warning">
-                <p class="title">
-                  <span class="icon">
-                    <ion-icon name="contacts"></ion-icon>
-                  </span>
-                  Clubs
+              <article class="tile is-child notification is-black">
+                <p class="title has-text-centered">
+                  <span class="icon"><ion-icon name="paper-plane"></ion-icon></span>Internships
                 </p>
-                <p class="subtitle">oh</p>
                 <div class="content">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
-                  </div>
-              </article>
-            </div>
-
-            <div class="tile is-parent">
-              <article class="tile is-child notification is-success">
-                <p class="title">
-                  <span class="icon">
-                    <ion-icon name="paper-plane"></ion-icon>
-                  </span>
-                  Internships</p>
-                <p class="subtitle">With some content</p>
-                <div class="content">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
                 </div>
               </article>
             </div>
@@ -92,51 +87,95 @@
         </div>
       </div>  
 
-      <!--
-      <div class="tabs">
-          <div class="collapsible collapsible-collapsed" data-collapsible-set="tabs-example">
-            <h4>Tab A</h4>
-            <p>And this is the content for tab A. <a href="#">Sample link to test tab order.</a></p>
-          </div>
-          <div class="collapsible" data-collapsible-set="tabs-example">
-            <h4>Tab B</h4>
-            <p>And this is the content for tab B. <a href="#">Sample link to test tab order.</a></p>
-          </div>
-          <div class="collapsible collapsible-collapsed" data-collapsible-set="tabs-example">
-            <h4>Tab C</h4>
-            <p>And this is the content for tab C. <a href="#">Sample link to test tab order.</a></p>
-          </div>
-          <div class="collapsible collapsible-collapsed" data-collapsible-set="tabs-example">
-            <h4>Tab D</h4>
-            <p>And this is the content for tab D. <a href="#">Sample link to test tab order.</a></p>
-          </div>
-        </div>
-      <br>
-      -->
-
-
-      <!--
-      <div class="columns is-multiline">
-          <div class="column is-one-third">
-            <p>is-one-third</p>
-          </div>
-          <div class="column is-one-third">
-            <code>is-one-quarter</code>
-          </div>
-          <div class="column is-one-third">
-            <code>is-one-quarter</code>
-          </div>
-      </div>
-    -->
-
       
-</section>
+      <div class = "columns is-multiline is-centered">
+          
+        <div class="column is-one-third">
+          <article class="message is-primary">
+              <div class="message-body">
+                  <button class="collapsible">Earth Day || Apr. 22</button>
+                  <div class="content">
+                    <p>Where: ASC 212<br>
+                    Join us for activities, food, and more!
+                    </p>
+                  </div>
+                  <button class="collapsible">Open Section 2</button>
+                  <div class="content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  </div>
+                  <button class="collapsible">Open Section 3</button>
+                  <div class="content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  </div>
+              </div>
+            </article>
+          </div>
 
-<link rel="stylesheet" href="collapsible.css">
-<script type="text/javascript" src="jquery.js"></script>
-<script type="text/javascript" src="collapsible.js"></script>
+      <div class="column is-one-third">
+            <article class="message is-link">
+                <div class="message-body has-text-link">
+                  <button class="collapsible">Habitat For Humanity</button>
+                  <div class="content">
+                    <p>ASC 212<br>
+                      Mondays 1-2pm<br>
+                    Join us at our weekly meetings for... 
+                    </p>
+                  </div>
+                  <button class="collapsible">Open Section 2</button>
+                  <div class="content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  </div>
+                  <button class="collapsible">Open Section 3</button>
+                  <div class="content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  </div>
+                </div>
+            </article>
+          </div>
+
+      <div class="column is-one-third">
+            <article class="message is-black">
+                <div class="message-body">
+                  <button class="collapsible">Open Section 2</button>
+                  <div class="content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  </div>
+                  <button class="collapsible">Open Section 3</button>
+                  <div class="content">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  </div>
+                </div>
+          </article>
+      </div>
+
+
+      </div>
+
+
+  </section>
+
+
+  <script>
+      var coll = document.getElementsByClassName("collapsible");
+      var i;
+      
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.maxHeight){
+            content.style.maxHeight = null;
+          } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+          } 
+        });
+      }
+  </script>
+
+<script src="https://kit.fontawesome.com/7dc3015a44.js" crossorigin="anonymous"></script>
+
 <!-- For the icons:-->
-<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+  <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
 </body>
 
 {% endblock %}
