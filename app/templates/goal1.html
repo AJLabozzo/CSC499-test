@@ -6,20 +6,71 @@
 {% block content %}
 <section class="container">
   <br></br>
-  <div class="tile is-vertical is-3">
+  <div class="tile is-ancestor">
+    <div class="tile is-vertical is-9">
       <div class="tile">
-        <div class="tile is-parent is-vertical">
-          <article class="tile is-child notification box">
-            <p class="subtitle">Goal 1</p>
-            <figure class="image is-640x480">
-                <img src="https://sustainabledevelopment.un.org/content/images/E_SDG_Icons-01.jpg" alt="Goal 1 - No Poverty">
-            </figure>
-            <br></br>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <p class="title">Goal 1</p>
+            <p class="subtitle">Subtitle</p>
+            <div class="content">
+                <figure>
+                    <img src="{{url_for('static', filename='E-WEB-Goal-01.png')}}" alt="Placeholder image">
+                </figure>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Morbi maximus, leo sit amet vehicula eleifend, nunc dui porta orci, quis semper odio felis ut quam.</p>
+            </div>
           </article>
         </div>
+        <div class="tile is-8 is-vertical">
+          <div class="tile">
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">Clubs</p>
+                <p class="subtitle">Subtitle</p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">Courses</p>
+                <p class="subtitle">Subtitle</p>
+              </article>
+            </div>
+          </div>
+          <div class="tile is-parent">
+            <article class="tile is-child box">
+              <p class="title">Research</p>
+              <p class="subtitle">Subtitle</p>
+            </article>
+          </div>
+        </div>
       </div>
+      <div class="tile">
+        <div class="tile is-12 is-parent">
+          <article class="tile is-child box">
+            <p class="title">Projects</p>
+            <p class="subtitle">Subtitle</p>
+            <div class="content">
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+            </div>
+          </article>
+        </div>
+        
+      </div>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <div class="content">
+          <p class="title">Southern Involvment</p>
+          <p class="subtitle">Subtitle</p>
+          <div class="content">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit. Vestibulum volutpat tellus diam, consequat gravida libero rhoncus ut. Morbi maximus, leo sit amet vehicula eleifend, nunc dui porta orci, quis semper odio felis ut quam.</p>
+            <p>Integer sollicitudin, tortor a mattis commodo, velit urna rhoncus erat, vitae congue lectus dolor consequat libero. Donec leo ligula, maximus et pellentesque sed, gravida a metus. Cras ullamcorper a nunc ac porta. Aliquam ut aliquet lacus, quis faucibus libero. Quisque non semper leo.</p>
+          </div>
+        </div>
+      </article>
+    </div>
   </div>
+
 </section>
            <!--
         <div class="tile is-parent is-vertical">
