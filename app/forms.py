@@ -46,9 +46,9 @@ class ProjectSubmissionForm(FlaskForm):
             raise ValidationError('Please use a different title.')
 
 class ProfileForm(FlaskForm):
-	fname = StringField('first name')
-	lname = StringField('last name')
-	major = StringField('your major')
-	minor = StringField('minor - if any')
+	fname = StringField('first name', validators=[Length(max=64)])
+	lname = StringField('last name', validators=[Length(max=64)])
+	major = StringField('your major', validators=[Length(max=64)])
+	minor = StringField('minor - if any', validators=[Length(max=64)])
 	about = TextAreaField('About me', validators=[Length(min=0, max=500)])
 	submit	= SubmitField('Submit')

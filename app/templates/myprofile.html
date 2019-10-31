@@ -10,7 +10,7 @@
 <div class="tile is-ancestor">
     <div class="tile is-4 is-vertical is-parent">
       <div class="tile is-child box">
-            <p class="title is-size-3">John Doe</p>
+            <p class="title is-size-3">{{user.fname}} {{user.lname}}</p>
         <article class="tile is-child notification">
             <figure class="image">
                 <img src="https://inside.southernct.edu/sites/default/files/sustainablesouthernlogo.jpg">
@@ -19,11 +19,13 @@
             <p> {{user.email}} </p>
             <p> {{user.user_role}}</p>
             <p> {{user.major}}</p>
+			<p> {{user.minor}}</p>
             <br>
         </article>
         <article class="tile is-child notification">
           <br>
-          <p> Hi! This box contains info about me. No more than 240 characters.</p>
+          <p> </p>
+		  <p>{{user.bio}}</p>
         </article>
       </div>
       <div class="tile is-child box">
@@ -46,10 +48,10 @@
         <p class="title is-size-3">Projects</p>
         {% for data in projects %}
         <p><strong>{{data.projectname}}</strong></p>
-        <P>Professor Who/Sponsor</P>
+        <P>{{data.user_id}}</P>
         <P>Since: Oct. 2019</P>
-        <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam semper diam at erat pulvinar, at pulvinar felis blandit.</p>
-        <progress class="progress is-small is-primary" value="15" max="100">15%</progress>
+        <p>{{data.body}}</p>
+        <!--<progress class="progress is-small is-primary" value="15" max="100">15%</progress>-->
         {% endfor %}
       </div>
 

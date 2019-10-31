@@ -57,7 +57,9 @@
                         <li><a href="../goals">Goals</a></li>
 						<li><a href="../projects">Projects</a></li>
 						<li><a href="../events">Opportunities</a></li>
+                        {% if current_user.is_authenticated%}
 						<li><a href="{{ url_for('profile', username=current_user.username) }}">My Profile</a></li>
+                        {% endif %}
                     </ul>
                 </aside>
 				</div>

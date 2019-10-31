@@ -12,48 +12,69 @@
                   <article class="tile is-child box">
                     <div class="title">
                       <h1>Edit Profile</h1>
+                      <h2 class="is-size-5">check box to apply changes</h2>
                     </div>
+                      <form action="" method="post" novalidate>
+                      {{ form.hidden_tag() }}
                       <div class="field">
                           <div class="label is-normal">
-                              <label class="label" for="password">First name</label>
+                              <label class="label" for="fname">First name</label>
                           </div>
                           <p class="control">
-                            <input class="input" type="text" id="username" name="fname">
+                            <input class="input" type="text" id="fname" name="fname">
                           </p>
+                          <label class="checkbox">
+                                <input type="checkbox" name="fnamebox">
+                          </label>
                       </div>
                       <div class="field">
                           <div class="label is-normal">
-                              <label class="label" for="password">Last name</label>
+                              <label class="label" for="lname">Last name</label>
+                              {% for error in form.lname.errors %}
+            `                   <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %} 
                           </div>
                         <p class="control">
-                          <input class="input" type="text" id="password" name="password">
+                          <input class="input" type="text" id="lname" name="lname">
                         </p>
+                          <label class="checkbox">
+                                <input type="checkbox" name="lnamebox">
+                          </label>
                     </div>
                     <div class="field">
                         <div class="label is-normal">
-                            <label class="label" for="password">Major</label>
+                            <label class="label" for="major">Major</label>
                         </div>
                         <p class="control">
-                          <input class="input" type="text" id="password" name="password">
+                          <input class="input" type="text" id="major" name="major">
                         </p>
+                        <label class="checkbox">
+                                <input type="checkbox" name="majorbox">
+                          </label>
                     </div>
                     <div class="field">
                         <div class="label is-normal">
-                            <label class="label" for="password">Minor</label>
+                            <label class="label" for="minor">Minor</label>
                         </div>
                         <p class="control">
-                          <input class="input" type="text" id="password" name="password">
+                          <input class="input" type="text" id="minor" name="minor">
                         </p>
+                        <label class="checkbox">
+                                <input type="checkbox" name="minorbox">
+                          </label>
                     </div>
                     <div class="field">
                         <div class="label is-normal">
-                          <label class="label">About</label>
+                          <label class="label" for="about">About</label>
                         </div>
                         <div class="field-body">
                           <div class="field">
                             <div class="control">
-                              <textarea class="textarea" maxlength="500" placeholder="Tell us about yourself"></textarea>
+                              <textarea class="textarea" maxlength="500" id="about" name="about" placeholder="Tell us about yourself"></textarea>
                             </div>
+                              <label class="checkbox">
+                              <input type="checkbox" name="aboutbox">
+                          </label>
                           </div>
                         </div>
                       </div>
@@ -62,6 +83,7 @@
                     <button type="submit" class="button is-primary">
                         Submit
                     </button>
+                      </form>      
                   </article>
               </div>
             </div>
