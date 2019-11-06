@@ -3,7 +3,7 @@ from flask import flash, render_template, request, redirect, url_for
 from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db
 from app.forms import LoginForm, ProjectSearchForm, ProjectSubmissionForm, SignupForm, ProfileForm
-from app.models import User, Project, Goals
+from app.models import User, Project, Goals, Members
 from werkzeug.security import generate_password_hash, check_password_hash
 
 @app.route('/')
@@ -30,11 +30,11 @@ def projects():
     
     allprojects = Project.query.all()
     for data in allprojects:
-        #need to query for the goals associated with project sperately
+        #need to query for the goals associated with project seperately
         Goalslist = []
         allgoals = Goals.query.filter_by(project_id=data.projectname).all()
         for goal in allgoals:
-            Goalslist.append(goal)
+            Goalslist.append(goal.goal)
         
         if data.progress == False:
             currentstate = "In progress"
@@ -45,6 +45,7 @@ def projects():
         projects.append(project)
     
     return render_template('projects.html', form=search, projects=projects)
+    
 
 def search_results(search):
     results = []
@@ -61,6 +62,29 @@ def search_results(search):
         table = Results(results)
         return render_template('projects.html', form=search, table=table)
 
+@app.route('/myprojects', methods=['GET', 'POST'])
+@login_required
+def myprojects():
+    user = User.query.filter_by(username=current_user.username).first_or_404()
+    projects=[]
+    allprojects = Project.query.filter_by(user_id = user.id).all()
+    for data in allprojects:
+        #need to query for the goals associated with project seperately
+        Goalslist = []
+        allgoals = Goals.query.filter_by(project_id=data.projectname).all()
+        for goal in allgoals:
+            Goalslist.append(goal.goal)
+        
+        if data.progress == False:
+            currentstate = "In progress"
+        else: 
+            currentstate = "Completed"
+        
+        project = dict(projectname=data.projectname,department=data.department,username=User.query.get(data.user_id).username,goals = Goalslist,status=currentstate,body=data.body)
+        projects.append(project)
+        
+    return render_template('myprojects.html', projects=projects)
+    
 @app.route('/events')
 def events():
 	return render_template('events.html')
@@ -76,7 +100,23 @@ def goals1():
 @app.route('/profile/<username>')
 def profile(username):
 	user = User.query.filter_by(username=username).first_or_404()
-	projects = Project.query.filter_by(user_id = user.id).all()
+	projects=[]
+	allprojects = Project.query.filter_by(user_id = user.id).all()
+	for data in allprojects:
+        #need to query for the goals associated with project seperately
+		Goalslist = []
+		allgoals = Goals.query.filter_by(project_id=data.projectname).all()
+		for goal in allgoals:
+			Goalslist.append(goal.goal)
+        
+		if data.progress == False:
+			currentstate = "In progress"
+		else: 
+			currentstate = "Completed"
+        
+		project = dict(projectname=data.projectname,department=data.department,username=User.query.get(data.user_id).username,goals = Goalslist,status=currentstate,body=data.body)
+		projects.append(project)
+		
 	return render_template('myprofile.html', user=user, projects=projects)
 	
 	
