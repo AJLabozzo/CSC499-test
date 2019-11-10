@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block head %}	{{ super() }}	{% endblock %}
+
+{% block Nav %}	{{ super() }}	{% endblock %}
+{% block content %}
+<section class="container">
+  <br></br>
+  <div class="tile is-ancestor">
+    <div class="tile is-vertical is-10">
+      <div class="tile">
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <p class="title">Goal 1</p>
+            <p><a>https://sustainabledevelopment.un.org/sdg1</a></p>
+            <div class="content">
+                <figure>
+                    <img src="{{url_for('static', filename='E-WEB-Goal-01.png')}}" alt="Placeholder image">
+                </figure>
+              <p></p>
+            </div>
+          </article>
+        </div>
+        <div class="tile is-8 is-vertical">
+          <div class="tile">
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">Organizations + Programs</p>
+                <p class="subtitle">Subtitle</p>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">Courses</p>
+                <p class="subtitle">Subtitle</p>
+              </article>
+            </div>
+          </div>
+          <div class="tile is-parent">
+            <article class="tile is-child box">
+              <p class="title">Research</p>
+              <p class="subtitle">Subtitle</p>
+            </article>
+          </div>
+        </div>
+      </div>
+      <div class="tile">
+        <div class="tile is-12 is-parent">
+          <article class="tile is-child box">
+            <p class="title">Projects</p>
+            <p class="subtitle">Subtitle</p>
+            <div class="content">
+              <p></p>
+            </div>
+          </article>
+        </div>
+        
+      </div>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <div class="content">
+          <p class="title">Southern Involvment</p>
+          <p class="subtitle">Operations</p>
+          <p class="subtitle">Programs</p>
+          <div class="content">
+            <p></p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+</section>
+
+{% endblock %}
+
