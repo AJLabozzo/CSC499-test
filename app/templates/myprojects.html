@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block head %}	{{ super() }}	{% endblock %}
+
+{% block Nav %}	{{ super() }}	{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="../css/kanban.css">
+
+<style>
+  .collapsible {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border-style: outset;
+    border-radius: 5px;
+    border-color: hsl(171, 100%, 41%);
+    text-align: center;
+    outline: none;
+    font-size: 15px;
+  }
+  
+  .active, .collapsible:hover {
+    font-weight: bold;
+
+
+  }
+  
+  .content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: white;
+  }
+</style>
+
+<section class="section">
+    <h1 class="title">Your Projects Page</h1>
+    
+    <div class="columns is-full">
+        <div class="column is-full">
+            <article class="message is-info">
+              <div class="message-body">
+                  {% for data in projects %}
+                  <button class="collapsible">{{data.projectname}}</button>
+                  <div class="content">
+                    <p style="text-align:right"><a href="../editProject">edit project</a></p>
+                    <p>Department: {{data.department}}</p>
+                    <p>Description: {{data.body}}</p>
+                    <p>Status:{{data.status}}</p>
+                    <p>Goals:{{data.goals}}</p>
+                    <p>ProjectMembers:{{data.progress}}</p>
+                  </div>
+                  {% endfor %}
+              </div>
+            </article>
+        </div>
+    </div>
+</section>
+    
+    
+    
+ <script>
+      var coll = document.getElementsByClassName("collapsible");
+      var i;
+      
+      for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function() {
+          this.classList.toggle("active");
+          var content = this.nextElementSibling;
+          if (content.style.maxHeight){
+            content.style.maxHeight = null;
+          } else {
+            content.style.maxHeight = content.scrollHeight + "px";
+          } 
+        });
+      }
+  </script>
+
+<script src="https://kit.fontawesome.com/7dc3015a44.js" crossorigin="anonymous"></script>
+
+<!-- For the icons:-->
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
+{% endblock %}

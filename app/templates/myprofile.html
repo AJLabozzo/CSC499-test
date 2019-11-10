@@ -3,61 +3,82 @@
 {% block head %}	{{ super() }}	{% endblock %}
 
 {% block Nav %}	{{ super() }}	{% endblock %}
+
 {% block content %}
 
-<section>
 <br>
-<div class="tile is-ancestor">
-    <div class="tile is-4 is-vertical is-parent">
-      <div class="tile is-child box">
-            <p class="title is-size-3">{{user.fname}} {{user.lname}}</p>
-        <article class="tile is-child notification">
-            <figure class="image">
-                <img src="https://inside.southernct.edu/sites/default/files/sustainablesouthernlogo.jpg">
-            </figure>
-            <br>
-            <p> {{user.email}} </p>
-            <p> {{user.user_role}}</p>
-            <p> {{user.major}}</p>
-			<p> {{user.minor}}</p>
-            <br>
-        </article>
-        <article class="tile is-child notification">
-          <br>
-          <p> </p>
-		  <p>{{user.bio}}</p>
-        </article>
-      </div>
-      <div class="tile is-child box">
-        <p class="subtitle">forms</p>
-        <p><a class="has-text" href="../submission_form">submission form</a>
-        <p><a class="has-text" href="../edit_profile">edit my profile</a>
-        </p>
-      </div>
+<section>
+   <div class="columns">
+      <div class="column is-full"></div>
+    </div>
+    <div class="columns">
+      <div class="column is-full"></div>
     </div>
     
-    <div class="tile is-parent">
-      <div class="tile is-child box">
-          <p class="title is-size-3">Badges</p>
-          <figure class="image is-96x96">
-              <img src="../static/E_GIF_02.gif" alt="Badge - Zero Hunger">
-            </figure>
-      </div>
+    <div class = "columns is-multiline is-centered">
+        <div class="column is-full">
+            <div class="tile is-ancestor">
+    
+            <div class="tile is-vertical is-parent">
+              <div class="tile is-child box">
+                    <p class="title is-size-3 has-text-centered">{{user.fname}} {{user.lname}}</p>
+                <article class="tile is-child notification">
+                    <figure class="image">
+                        <img src="https://inside.southernct.edu/sites/default/files/sustainablesouthernlogo.jpg">
+                    </figure>
+                    <br>
+                    <p> {{user.email}} </p>
+                    <p> {{user.user_role}}</p>
+                    <p> {{user.major}}</p>
+                    <p> {{user.minor}}</p>
+                    <br>
+                </article>
+                <article class="tile is-child notification">
+                  <br>
+                  <p> </p>
+                  <p>{{user.bio}}</p>
+                </article>
+              </div>
         
-      <div class="tile is-child is-narrow box">
-        <p class="title is-size-3">Projects</p>
-        {% for data in projects %}
-        <p><strong>{{data.projectname}}</strong></p>
-        <P>{{data.user_id}}</P>
-        <P>Since: Oct. 2019</P>
-        <p>{{data.body}}</p>
-        <!--<progress class="progress is-small is-primary" value="15" max="100">15%</progress>-->
-        {% endfor %}
-      </div>
+              <div class="tile is-child box">
+                <p class="subtitle is-size-3 has-text-centered">Links</p>
+                <p><a class="has-text" href="../submission_form">submission form</a></p>
+                <p><a class="has-text" href="../edit_profile">edit my profile</a></p>
+                <p><a class="has-text" href="../myprojects">my projects</a></p>   
+              </div>   
+            </div>
 
+            <div class="tile is-vertical is-parent">
+                <div class="tile is-child box">
+                <p class="title is-size-3 has-text-centered">Projects</p>
+                    {% for data in projects %}
+                    <div class="tile is-child box">
+                    <p align="center"><strong>{{data.projectname}}</strong></p>
+                    <p>Creator: {{data.username}}</p>
+                    <p>Department: {{data.department}}</p>
+                    <p>Description: {{data.body}}</p>
+                    <p>Status:{{data.status}}</p>
+                    <p>Goals:{{data.goals}}</p>
+                    <p>ProjectMembers:{{data.progress}}</p>
+                    <!--<progress class="progress is-small is-primary" value="15" max="100">15%</progress>-->
+                    </div>
+                    <br>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="tile is-vertical is-parent">
+                <div class="tile is-child box">
+                  <p class="title is-size-3 has-text-centered">Badges</p>
+                  <figure class="image is-96x96">
+                      <img src="../static/E_GIF_02.gif" alt="Badge - Zero Hunger">
+                  </figure>
+                </div>
+            </div>
+
+            </div>
+        </div>
     </div>
-  </div>
 </section>
-
 
 {% endblock %}
