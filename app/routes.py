@@ -2,7 +2,7 @@
 from flask import flash, render_template, request, redirect, url_for
 from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db
-from app.forms import LoginForm, ProjectSearchForm, ProjectSubmissionForm, SignupForm, ProfileForm
+from app.forms import LoginForm, ProjectSearchForm, ProjectSubmissionForm, SignupForm, ProfileForm, ProjectForm
 from app.models import User, Project, Goals, Members
 from werkzeug.security import generate_password_hash, check_password_hash
 
@@ -125,7 +125,7 @@ def profile(username):
 def submission_form():
     form = ProjectSubmissionForm()
     if form.validate_on_submit():
-        project = Project(projectname = form.projectname.data, body = form.body.data, user_id = current_user.id, department=request.form.get('department'))
+        project = Project(projectname = form.projectname.data, body = form.body.data, user_id = current_user.id, department=form.department.data)
         db.session.add(project) 
         db.session.commit()
         
@@ -134,8 +134,23 @@ def submission_form():
             goal = Goals(goal=x, project_id=form.projectname.data)
             db.session.add(goal)
             db.session.commit()
+        
+        projectMembers = request.form.get('members')
+        members = projectMembers.split()
+        for x in members:
+            member = Members(member_id=x, project_id=form.projectname.data)
+            db.session.add(member)
+            db.session.commit()
+        
         return redirect(url_for('projects'))
     return render_template('submission_form.html', form=form)
+
+@app.route('/editProject',methods=['GET','POST'])
+@login_required
+def editProject():
+    form = ProjectForm()
+    
+    return render_template('editProject.html', form=form)
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required

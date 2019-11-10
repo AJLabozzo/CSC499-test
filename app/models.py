@@ -40,8 +40,8 @@ class Project(db.Model):
 
 class Members(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    member_id = db.Column(db.Integer, index = True)
-    project_id = db.Column(db.Integer, index = True)
+    member_id = db.Column(db.String(64))
+    project_id = db.Column(db.String(64))
     
     def __repr__(self):
         return '<Members {}>'.format(self.member_id)
