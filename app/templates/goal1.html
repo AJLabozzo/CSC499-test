@@ -50,7 +50,41 @@
             <p class="title">Projects</p>
             <p class="subtitle">Subtitle</p>
             <div class="content">
-              <p></p>
+              <div><table class="table">
+  <thead>
+    <tr>
+      <th><abbr title="Position">#</abbr></th>
+      <th><abbr title="Project">Project</abbr></th>
+      <th><abbr title="Department">Department</abbr></th>
+      <th><abbr title="Faculty">Faculty</abbr></th>
+      <th><abbr title="Goals">SustainabilityGoals</abbr></th>
+      <th><abbr title="Status">Status</abbr></th>
+      <th><abbr title="Description">Description</abbr></th>
+      <th><abbr title="Project Members">Project Members</abbr></th>
+      <th><abbr title="Edit"></abbr></th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+    </tr>
+  </tfoot>
+        
+  <tbody>
+      {% for data in projects %}
+    <tr>
+      <th>{{loop.index}}</th>
+      <td>{{data.projectname}}</td>
+      <td>{{data.department}}</td>
+      <td><a href="{{ url_for('profile', username=data.username) }}">{{data.username}}</a></td>
+      <td>{{data.goals}}</td>
+      <td>{{data.status}}</td>
+      <td>{{data.body}}</td>
+      <td></td>
+      <td></td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table></div>
             </div>
           </article>
         </div>

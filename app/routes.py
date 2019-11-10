@@ -91,16 +91,26 @@ def events():
 
 @app.route('/goal1')
 def goals1():
-   
-    ''' 
-    projectID = []
-    allprojects = Goals.query.filter_by(goal = 'Zero Hunger').all()
-    for project in allprojects:
-        projects.append(project)
     
-    '''
+    projectsbygoal = []
+    getprojects = Goals.query.filter_by(goal = 'Zero Hunger').all()
+    for item in getprojects:
+        projectsbygoal.append(item)
+    
+    allprojects = []
+    for data in projectsbygoal:
         
-    return render_template('goal1.html')
+        currentproject = Project.query.filter_by(projectname = data.project_id).first()
+        
+        if currentproject.progress == False:
+            currentstate = "In progress"
+        else: 
+            currentstate = "Completed"
+            
+        projectdict = dict(projectname=currentproject.projectname,department=currentproject.department,username=User.query.get(currentproject.user_id).username,status=currentstate,body=currentproject.body)
+        allprojects.append(projectdict)
+        
+    return render_template('goal1.html', projects=allprojects)
 
 @app.route('/goal2')
 def goals2():
