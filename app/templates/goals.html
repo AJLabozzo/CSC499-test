@@ -6,24 +6,25 @@
 
 {% block content %}
 <div class="container">
-   <section class="hero is-info is-small">
-      <div class="hero-body">
-        <div class="container has-text-centered">
-          <p class="title">
-            Sustainability Goals
-          </p>
-          <p class="subtitle">
-			"The Sustainable Development Goals are a call for action by all countries – poor, rich and middle-income – to promote prosperity while protecting the planet. They recognize that ending poverty must go hand-in-hand with strategies that build economic growth and address a range of social needs including education, health, social protection, and job opportunities, while tackling climate change and environmental protection."
-			-United Nations SDG 
-          </p>
-        </div>
-      </div>
-    </section>
+	<!--
     <div class="box cta">
       <p class="has-text-centered">
          Below are the U.N. Sustainability Goals. When you click on them they will open more information on related projects, communities, and events.
       </p>
-    </div>
+	</div>
+-->
+	<section class="hero is-small is-info is-bold">
+		<div class="hero-body">
+		  <div class="container has-text-centered">
+			<h1 class="title">Sustainability Goals</h1>
+			<p class="subtitle has-text-centered">
+				"The Sustainable Development Goals are a call for action by all countries – poor, rich and middle-income – to promote prosperity while protecting the planet. They recognize that ending poverty must go hand-in-hand with strategies that build economic growth and address a range of social needs including education, health, social protection, and job opportunities, while tackling climate change and environmental protection."
+				-United Nations SDG 
+			  </p>
+		  </div>
+		</div>
+	  </section>
+	  <br>
 	<center>
 	<section class="container">
 		<div class="tile is-ancestor">
@@ -44,7 +45,7 @@
 						<img src="/static/E-WEB-Goal-02.png" alt="Placeholder image">
 					</figure>
 					<p class="subtitle"></p>
-					<a class="has-text-white is-size-4" href="https://sustainabledevelopment.un.org/sdg2">
+					<a class="has-text-white is-size-4" href="../goal2">
 						<span class="button is-link modal-button" data-target="modal-image">Goal 2</span>
 					</a>
 			  	</article>
@@ -55,7 +56,7 @@
 						<img src="{{url_for('static', filename='E-WEB-Goal-03.png')}}" alt="Placeholder image">
 					</figure>
 					<p class="subtitle"></p>
-					<a class="has-text-white is-size-4" href="https://sustainabledevelopment.un.org/sdg3">
+					<a class="has-text-white is-size-4" href="../goal3">
 						<span class="button is-link modal-button" data-target="modal-image">Goal 3</span>
 					</a>
 			  	</article>
@@ -211,7 +212,7 @@
 					<article class="tile is-child box">
 						<figure>
 							<img src="{{url_for('static', filename='E-WEB-Goal-16.png')}}" alt="Placeholder image">
-							</figure>
+						</figure>
 						<p class="subtitle"></p>
 						<a class="has-text-white is-size-4" href="../goal1">
 							<span class="button is-link modal-button" data-target="modal-image">Goal 16</span>
@@ -222,11 +223,18 @@
 					<article class="tile is-child box">
 						<figure>
 							<img src="{{url_for('static', filename='E-WEB-Goal-17.png')}}" alt="Placeholder image">
-							</figure>
+						</figure>
 						<p class="subtitle"></p>
 						<a class="has-text-white is-size-4" href="../goal1">
 							<span class="button is-link modal-button" data-target="modal-image">Goal 17</span>
 						</a>
+						</article>
+				</div>
+				<div class="tile is-parent">
+					<article class="tile is-child box">
+						<figure>
+							<img src="{{url_for('static', filename='E-WEB-Goal-17.png')}}" alt="Placeholder image">
+						</figure>
 						</article>
 				</div>
 			</div>
