@@ -73,6 +73,14 @@ def about():
 def goals1():
 	return render_template('goal1.html')
 
+@app.route('/goal2')
+def goals2():
+	return render_template('goal2.html')
+
+@app.route('/goal3')
+def goals3():
+	return render_template('goal3.html')
+
 @app.route('/profile/<username>')
 def profile(username):
 	user = User.query.filter_by(username=username).first_or_404()

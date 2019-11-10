@@ -1,6 +1,111 @@
+{% extends "base.html" %}
+
 {% block head %}	{{ super() }}	{% endblock %}
 
 {% block Nav %}	{{ super() }}	{% endblock %}
 {% block content %}
+<link rel="stylesheet" href="https://unpkg.com/bulma-modal-fx/dist/css/modal-fx.min.css" />
+
+
+<section class="container">
+  <br></br>
+  <div class="tile is-ancestor">
+    <div class="tile is-vertical is-9">
+      <div class="tile">
+        <div class="tile is-parent">
+          <article class="tile is-child box">
+            <p class="title">Goal 2</p>
+            <p class="subtitle">2</p>
+            <div class="content">
+                <figure>
+                    <img src="{{url_for('static', filename='E-WEB-Goal-02.png')}}" alt="Placeholder image">
+                </figure>
+              <p></p>
+            </div>
+          </article>
+        </div>
+        <div class="tile is-8 is-vertical">
+          <div class="tile">
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">Clubs</p>
+                <p class="subtitle">Subtitle</p>
+                <span class="button is-link modal-button" data-target="modal-card">Modal Card</span>
+              </article>
+            </div>
+            <div class="tile is-parent">
+              <article class="tile is-child box">
+                <p class="title">Courses</p>
+                <p class="subtitle">Subtitle</p>
+              </article>
+            </div>
+          </div>
+          <div class="tile is-parent">
+            <article class="tile is-child box">
+              <p class="title">Research</p>
+              <p class="subtitle">Subtitle</p>
+            </article>
+          </div>
+        </div>
+      </div>
+      <div class="tile">
+        <div class="tile is-12 is-parent">
+          <article class="tile is-child box">
+            <p class="title">Projects</p>
+            <p class="subtitle">Subtitle</p>
+            <div class="content">
+              <p></p>
+            </div>
+          </article>
+        </div>
+        
+      </div>
+    </div>
+    <div class="tile is-parent">
+      <article class="tile is-child box">
+        <div class="content">
+          <p class="title">Southern Involvment</p>
+          <p class="subtitle">Operations</p>
+          <p class="subtitle">Programs</p>
+          <div class="content">
+            <p></p>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+</section>
+<section>
+<div id="modal-card" class="modal modal-fx-3dSlit">
+    <div class="modal-background"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+            <p class="modal-card-title">Modal title</p>
+            <button class="delete" aria-label="close"></button>
+            </header>
+            <section class="modal-card-body">
+            <!-- Content ... -->
+            </section>
+            <footer class="modal-card-foot">
+            <button class="button is-success">Save changes</button>
+            <button class="button">Cancel</button>
+            </footer>
+        </div>
+    </div>
+</div>
+</section>
+<script src="https://unpkg.com/bulma-modal-fx/dist/js/modal-fx.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.9.1/js/OverlayScrollbars.min.js'></script>  
+    <script src="../js/wild.js"></script>
+        <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        //The first argument are the elements to which the plugin shall be initialized
+        //The second argument has to be at least a empty object or a object with your desired options
+        OverlayScrollbars(document.querySelectorAll("body"), { });
+        });
+        </script>  
 
 {% endblock %}
+

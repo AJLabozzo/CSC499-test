@@ -17,7 +17,40 @@
     width: 100%;
     border-style: outset;
     border-radius: 5px;
-    border-color: hsl(171, 100%, 41%);
+    border-color:hsl(171, 100%, 41%);
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+  .collapsible2 {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border-style: outset;
+    border-radius: 5px;
+    border-color:hsl(229, 61%, 44%);
+    text-align: left;
+    outline: none;
+    font-size: 15px;
+  }
+  #blueBorder {
+    border-color:hsl(229, 61%, 44%);
+  }
+
+  #blackBorder{
+    border-color:hsl(228, 2%, 45%);
+  }
+  .collapsible3 {
+    background-color: white;
+    color: black;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    border-style: outset;
+    border-radius: 5px;
+    border-color:hsl(228, 2%, 45%);
     text-align: left;
     outline: none;
     font-size: 15px;
@@ -25,7 +58,6 @@
   
   .active, .collapsible:hover {
     font-weight: bold;
-
 
   }
   
@@ -114,18 +146,18 @@
       <div class="column is-one-third">
             <article class="message is-link">
                 <div class="message-body has-text-link">
-                  <button class="collapsible">Habitat For Humanity</button>
+                  <button class="collapsible" id="blueBorder">Habitat For Humanity</button>
                   <div class="content">
                     <p>ASC 212<br>
                       Mondays 1-2pm<br>
                     Join us at our weekly meetings for... 
                     </p>
                   </div>
-                  <button class="collapsible">Open Section 2</button>
+                  <button class="collapsible" id="blueBorder">Open Section 2</button>
                   <div class="content">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                   </div>
-                  <button class="collapsible">Open Section 3</button>
+                  <button class="collapsible" id="blueBorder">Open Section 3</button>
                   <div class="content">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                   </div>
@@ -136,11 +168,11 @@
       <div class="column is-one-third">
             <article class="message is-black">
                 <div class="message-body">
-                  <button class="collapsible">Open Section 2</button>
+                  <button class="collapsible" id="blackBorder">Open Section 2</button>
                   <div class="content">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                   </div>
-                  <button class="collapsible">Open Section 3</button>
+                  <button class="collapsible3" id="blackBorder">Open Section 3</button>
                   <div class="content">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                   </div>

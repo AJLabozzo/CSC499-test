@@ -54,10 +54,12 @@
                     </p>
                     <ul class="menu-list">
                         <!--<li><a class="is-active">Dashboard</a></li> -->
-                        <li><a href="../goals">Goals</a></li>
-						<li><a href="../projects">Projects</a></li>
-						<li><a href="../events">Opportunities</a></li>
-						<li><a href="{{ url_for('profile', username=current_user.username) }}">My Profile</a></li>
+                        <li ><a href="../goals"><span class="icon is-small is-left">
+							<ion-icon name="medal"></ion-icon>
+						  </span> Goals</a></li>
+						<li><a href="../projects"><span class="icon is-small is-left"><ion-icon name="analytics"></ion-icon></span> Projects</a></li>
+						<li><a href="../events"><span class="icon is-small is-left"><ion-icon name="aperture"></ion-icon></span> Opportunities</a></li>
+						<li><a href="{{ url_for('profile', username=current_user.username) }}"><span class="icon is-small is-left"><ion-icon name="person"></ion-icon></span> My Profile</a></li>
                     </ul>
                 </aside>
 				</div>
@@ -71,4 +73,8 @@
 		<script src="../js/wild.js"></script>
 	</body>
 	{% endblock %}
+
+
 </html>
+
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>

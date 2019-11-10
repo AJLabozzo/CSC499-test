@@ -46,88 +46,67 @@
                             <p class="control">
                                 <input class="input" id="username" name="username" type="text" placeholder="">
                                 {% for error in form.username.errors %}
-            `                   <span style="color: red;">[{{ error }}]</span>
+                                <span style="color: red;">[{{ error }}]</span>
                                 {% endfor %} 
                             </p>
                             </div>
                         </div>
                     </div> 
 
-                <div class="field">
-                        <div class="label is-normal">
-                            <label class="label" for="email">Email</label>
-                        </div>
-                        <div class="field-body">
-                            <div class="field">
-                                <p class="control is-expanded has-icons-left">
-                                    <input class="input" id="email" name ="email" type="text" placeholder="@southernct.edu">
-                                    {% for error in form.email.errors %}
-            `                        <span style="color: red;">[{{ error }}]</span>
-                                    {% endfor %} 
-                                    <span class="icon is-small is-left">
-                                        <i class="fas fa-envelope"></i>
-                                    </span>
-                                </p>
-                            </div>
-                        </div>
-                </div> 
-
-                <div class="field">
-                        <div class="label is-normal">
-                            <label class="label" for="password">Password</label>
-                        </div>
-                        <div class="field-body">
-                            <div class="field">
-                            <p class="control is-expanded has-icons-left">
-                                <input class="input" id="password" name="password" type="text" placeholder="">
-                                {% for error in form.password.errors %}
-            `                   <span style="color: red;">[{{ error }}]</span>
-                                {% endfor %} 
-                                <span class="icon is-small is-left">
-                                    <i class="fas fa-lock"></i>
-                                </span>
-                            </p>
-                            </div>
-                        </div>
-                    </div> 
-
-                <div class="field">
-                        <div class="label is-normal">
-                            <label class="label"for="password2">Password Verification</label>
-                        </div>
-                        <div class="field-body">
-                            <div class="field">
-                            <p class="control">
-                                <input class="input" id="password2" name="password2" type="text" placeholder="">
-                                {% for error in form.password2.errors %}
-            `                   <span style="color: red;">[{{ error }}]</span>
-                                {% endfor %} 
-                            </p>
-                            </div>
-                        </div>
-                    </div> 
-<!--
                 <div class="field">
                     <div class="label is-normal">
-                        <label class="label">Department</label>
+                        <label class="label" for="email">Email</label>
                     </div>
                     <div class="field-body">
                         <div class="field">
-                        <div class="field">
-                            <div class="control">
-                                <div class="select">
-                                    <select>
-                                    <option>CSC</option>
-                                    <option>PSY</option>
-                                    <option>LIB</option>
-                                    <option>ENG</option>
-                                    </select>
-                                </div>
-                            </div>
-                            </div>
+                            <p class="control is-expanded has-icons-left">
+                                <input class="input" id="email" name ="email" type="text" placeholder="@southernct.edu">
+                                {% for error in form.email.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %} 
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                            </p>
                         </div>
                     </div>
-                </div>-->
+                </div> 
+
+                <div class="field">
+                    <div class="label is-normal">
+                        <label class="label" for="password">Password</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                        <p class="control is-expanded has-icons-left">
+                            <input class="input" id="password" name="password" type="password" placeholder="">
+                            {% for error in form.password.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %} 
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </p>
+                        </div>
+                    </div>
+                    </div> 
+
+                <div class="field">
+                    <div class="label is-normal">
+                        <label class="label"for="password2">Password Verification</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                        <p class="control">
+                            <input class="input" id="password2" name="password2" type="password" placeholder="">
+                            {% for error in form.password2.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %} 
+                        </p>
+                        </div>
+                    </div>
+                </div> 
+
                 <br>
                 <div class="field">
                     <div class="field-body">
