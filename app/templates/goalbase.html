@@ -7,17 +7,103 @@
 <section class="container">
   <br></br>
   <div class="tile is-ancestor">
-    <div class="tile is-vertical is-10">
+    <div class="tile is-vertical is-11">
       <div class="tile">
         <div class="tile is-parent">
           <article class="tile is-child box">
-            <p class="title">Goal 1</p>
-            <p><a>https://sustainabledevelopment.un.org/sdg1</a></p>
+            <p class="title">{{goal}}</p>
             <div class="content">
+              {% if goal=="No Poverty"%}    
                 <figure>
                     <img src="{{url_for('static', filename='E-WEB-Goal-01.png')}}" alt="Placeholder image">
                 </figure>
-              <p></p>
+              <p><a href="https://sustainabledevelopment.un.org/sdg1">Click here to learn more </a></p>
+              {% elif goal=="Zero Hunger"%}
+                <figure>
+                    <img src="{{url_for('static', filename='E-WEB-Goal-02.png')}}" alt="Placeholder image">
+                </figure>
+              <p><a href="https://sustainabledevelopment.un.org/sdg2">Click here to learn more </a></p>
+              {% elif goal=="Good Health and Well-Being"%}
+                <figure>
+                    <img src="{{url_for('static', filename='E-WEB-Goal-03.png')}}" alt="Placeholder image">
+                </figure>
+              <p><a href="https://sustainabledevelopment.un.org/sdg3">Click here to learn more </a></p>
+              {% elif goal=="Quality Education"%}
+                <figure>
+                    <img src="{{url_for('static', filename='E-WEB-Goal-04.png')}}" alt="Placeholder image">
+                </figure>
+              <p><a href="https://sustainabledevelopment.un.org/sdg4">Click here to learn more </a></p>
+              {% elif goal=="Gender Equality"%}
+                <figure>
+                    <img src="{{url_for('static', filename='E-WEB-Goal-05.png')}}" alt="Placeholder image">
+                </figure>
+              <p><a href="https://sustainabledevelopment.un.org/sdg5">Click here to learn more </a></p>
+              {% elif goal=="Clean Water & Sanitation"%}
+                <figure>
+                    <img src="{{url_for('static', filename='E-WEB-Goal-06.png')}}" alt="Placeholder image">
+                </figure>
+              <p><a href="https://sustainabledevelopment.un.org/sdg6">Click here to learn more </a></p>
+              {% elif goal=="Affordable & Clean Energy"%}
+                <figure>
+                    <img src="{{url_for('static', filename='E-WEB-Goal-07.png')}}" alt="Placeholder image">
+                </figure>
+              <p><a href="https://sustainabledevelopment.un.org/sdg7">Click here to learn more </a></p>
+              {% elif goal=="Decent Work & Economic Growth"%}
+                <figure>
+                    <img src="{{url_for('static', filename='E-WEB-Goal-08.png')}}" alt="Placeholder image">
+                </figure>
+              <p><a href="https://sustainabledevelopment.un.org/sdg8">Click here to learn more </a></p>
+                {% elif goal=="Decent Work & Economic Growth"%}
+                <figure>
+                    <img src="{{url_for('static', filename='E-WEB-Goal-09.png')}}" alt="Placeholder image">
+                </figure>
+              <p><a href="https://sustainabledevelopment.un.org/sdg9">Click here to learn more </a></p>
+                {% elif goal=="Industry, Innovation, and Infrastructure"%}
+                <figure>
+                    <img src="{{url_for('static', filename='E-WEB-Goal-09.png')}}" alt="Placeholder image">
+                </figure>
+              <p><a href="https://sustainabledevelopment.un.org/sdg9">Click here to learn more </a></p>
+                {% elif goal=="Reduced Inequalities"%}
+                <figure>
+                    <img src="{{url_for('static', filename='E-WEB-Goal-10.png')}}" alt="Placeholder image">
+                </figure>
+              <p><a href="https://sustainabledevelopment.un.org/sdg10">Click here to learn more </a></p>
+                {% elif goal=="Sustainable Cities and Communities"%}
+                <figure>
+                    <img src="{{url_for('static', filename='E-WEB-Goal-11.png')}}" alt="Placeholder image">
+                </figure>
+              <p><a href="https://sustainabledevelopment.un.org/sdg11">Click here to learn more </a></p>
+                {% elif goal=="Responsible Consumption and Production"%}
+                <figure>
+                    <img src="{{url_for('static', filename='E-WEB-Goal-12.png')}}" alt="Placeholder image">
+                </figure>
+              <p><a href="https://sustainabledevelopment.un.org/sdg12">Click here to learn more </a></p>
+                {% elif goal=="Climate Action"%}
+                <figure>
+                    <img src="{{url_for('static', filename='E-WEB-Goal-13.png')}}" alt="Placeholder image">
+                </figure>
+              <p><a href="https://sustainabledevelopment.un.org/sdg13">Click here to learn more </a></p>
+                {% elif goal=="Life Below Water"%}
+                <figure>
+                    <img src="{{url_for('static', filename='E-WEB-Goal-14.png')}}" alt="Placeholder image">
+                </figure>
+              <p><a href="https://sustainabledevelopment.un.org/sdg14">Click here to learn more </a></p>
+                {% elif goal=="Life on Land"%}
+                <figure>
+                    <img src="{{url_for('static', filename='E-WEB-Goal-15.png')}}" alt="Placeholder image">
+                </figure>
+              <p><a href="https://sustainabledevelopment.un.org/sdg15">Click here to learn more </a></p>
+                {% elif goal=="Peace & Justice Strong Institutions"%}
+                <figure>
+                    <img src="{{url_for('static', filename='E-WEB-Goal-16.png')}}" alt="Placeholder image">
+                </figure>
+              <p><a href="https://sustainabledevelopment.un.org/sdg16">Click here to learn more </a></p>
+                {% elif goal=="Partnerships for the Goals"%}
+                <figure>
+                    <img src="{{url_for('static', filename='E-WEB-Goal-17.png')}}" alt="Placeholder image">
+                </figure>
+              <p><a href="https://sustainabledevelopment.un.org/sdg17">Click here to learn more </a></p>
+              {% endif %}
             </div>
           </article>
         </div>
@@ -26,51 +112,84 @@
             <div class="tile is-parent">
               <article class="tile is-child box">
                 <p class="title">Organizations + Programs</p>
-                <p class="subtitle">Subtitle</p>
+                <p></p>
               </article>
             </div>
             <div class="tile is-parent">
               <article class="tile is-child box">
                 <p class="title">Courses</p>
-                <p class="subtitle">Subtitle</p>
+                <p class="subtitle"></p>
               </article>
             </div>
           </div>
-          <div class="tile is-parent">
-            <article class="tile is-child box">
-              <p class="title">Research</p>
-              <p class="subtitle">Subtitle</p>
-            </article>
-          </div>
         </div>
       </div>
-      <div class="tile">
+    </div>
+  </div>
+      
+  <div class="tile is-ancestor">
+      <div class="tile is-6 is-parent">
+          <article class="tile is-child box">
+            <div class="content">
+              <p class="title">Southern Involvment</p>
+              <p class="subtitle">Operations</p>
+              <p class="subtitle">Programs</p>
+              <div class="content">
+                <p></p>
+              </div>
+            </div>
+          </article>
+        </div>
+      <div class="tile is-parent">
+          <article class="tile is-child box">
+            <p class="title">Research</p>
+            <p class="subtitle">Subtitle</p>
+          </article>
+        </div>
+ </div>
+  
+
+  <div class="tile is-ancestor">
         <div class="tile is-12 is-parent">
           <article class="tile is-child box">
             <p class="title">Projects</p>
             <p class="subtitle">Subtitle</p>
             <div class="content">
-              <p></p>
+              <div><table class="table">
+  <thead>
+    <tr>
+      <th><abbr title="Position">#</abbr></th>
+      <th><abbr title="Project">Project</abbr></th>
+      <th><abbr title="Department">Department</abbr></th>
+      <th><abbr title="Faculty">Faculty</abbr></th>
+      <th><abbr title="Status">Status</abbr></th>
+      <th><abbr title="Description">Description</abbr></th>
+      <th><abbr title="Project Members">Project Members</abbr></th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+    </tr>
+  </tfoot>
+        
+  <tbody>
+      {% for data in projects %}
+    <tr>
+      <th>{{loop.index}}</th>
+      <td>{{data.projectname}}</td>
+      <td>{{data.department}}</td>
+      <td><a href="{{ url_for('profile', username=data.username) }}">{{data.username}}</a></td>
+      <td>{{data.status}}</td>
+      <td>{{data.body}}</td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table></div>
             </div>
           </article>
         </div>
-        
       </div>
-    </div>
-    <div class="tile is-parent">
-      <article class="tile is-child box">
-        <div class="content">
-          <p class="title">Southern Involvment</p>
-          <p class="subtitle">Operations</p>
-          <p class="subtitle">Programs</p>
-          <div class="content">
-            <p></p>
-          </div>
-        </div>
-      </article>
-    </div>
-  </div>
-
+  
 </section>
 
 {% endblock %}

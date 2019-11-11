@@ -89,11 +89,10 @@ def myprojects():
 def events():
 	return render_template('events.html')
 
-@app.route('/goal1')
-def goals1():
-    
+@app.route('/goal/<goal>')
+def goal(goal):
     projectsbygoal = []
-    getprojects = Goals.query.filter_by(goal = 'Zero Hunger').all()
+    getprojects = Goals.query.filter_by(goal=goal).all()
     for item in getprojects:
         projectsbygoal.append(item)
     
@@ -109,73 +108,8 @@ def goals1():
             
         projectdict = dict(projectname=currentproject.projectname,department=currentproject.department,username=User.query.get(currentproject.user_id).username,status=currentstate,body=currentproject.body)
         allprojects.append(projectdict)
-        
-    return render_template('goal1.html', projects=allprojects)
-
-@app.route('/goal2')
-def goals2():
-	return render_template('goal2.html')
-
-@app.route('/goal3')
-def goals3():
-	return render_template('goal3.html')
-
-@app.route('/goal4')
-def goals4():
-	return render_template('goal4.html')
-
-@app.route('/goal5')
-def goals5():
-	return render_template('goal5.html')
-
-@app.route('/goal6')
-def goals6():
-	return render_template('goal6.html')
-
-@app.route('/goal7')
-def goals7():
-	return render_template('goal7.html')
-
-@app.route('/goal8')
-def goals8():
-	return render_template('goal8.html')
-
-@app.route('/goal9')
-def goals9():
-	return render_template('goal9.html')
-
-@app.route('/goal10')
-def goals10():
-	return render_template('goal10.html')
-
-@app.route('/goal11')
-def goals11():
-	return render_template('goal11.html')
-
-@app.route('/goal12')
-def goals12():
-	return render_template('goal12.html')
-
-@app.route('/goal13')
-def goals13():
-	return render_template('goal13.html')
-
-@app.route('/goal14')
-def goals14():
-	return render_template('goal14.html')
-
-@app.route('/goal15')
-def goals15():
-	return render_template('goal15.html')
-
-@app.route('/goal16')
-def goals16():
-	return render_template('goal16.html')
-
-@app.route('/goal17')
-def goals17():
-	return render_template('goal17.html')
-
+    return render_template('goalbase.html', goal=goal, projects = allprojects)
+    
 @app.route('/profile/<username>')
 def profile(username):
 	user = User.query.filter_by(username=username).first_or_404()
