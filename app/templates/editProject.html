@@ -6,8 +6,7 @@
 {% block content %}
 <section class="section">
     <div class="container">
-        <h1 class="title">Project Form Submission</h1>
-        <h2 class="title is-size-5">check box to apply change</h2>
+        <h1 class="title">Project Edit Form</h1>
         <form action="", method="post" role = "form">
             {{ form.hidden_tag() }}
         <main>
@@ -18,14 +17,11 @@
                 <div class="field-body">
                   <div class="field">
                     <p class="control is-expanded">
-                      <input  class="input" type="text" id="projectname" name="projectname" placeholder="Project name">
+                      <input  class="input" type="text" id="projectname" name="projectname" placeholder="Project name" {{projectname}}>
                         {% for error in form.projectname.errors %}
             `           <span style="color: red;">[{{ error }}]</span>
                         {% endfor %}
                     </p>
-                      <label class="checkbox">
-                        <input type="checkbox" name="fnamebox">
-                      </label>
                   </div>
                 </div>
               </div> 
@@ -37,21 +33,18 @@
                     <div class="field-body">
                       <div class="field">
                         <div class="control">
-                          <textarea class="textarea" id="body" name="body" placeholder="Project description"></textarea>
+                          <textarea class="textarea" id="body" name="body" placeholder="Project description" {{body}}></textarea>
                            {% for error in form.body.errors %}
             `               <span style="color: red;">[{{ error }}]</span>
                            {% endfor %} 
                         </div>
-                          <label class="checkbox">
-                        <input type="checkbox" name="fnamebox">
-                      </label>
                       </div>
                     </div>
               </div>
             
               <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                  <label class="label" for="projectname">Department</label>
+                  <label class="label" for="projectname" {{department}}>Department</label>
                 </div>
                 <div class="field-body">
                   <div class="field">
@@ -61,9 +54,6 @@
             `           <span style="color: red;">[{{ error }}]</span>
                         {% endfor %}
                     </p>
-                      <label class="checkbox">
-                        <input type="checkbox" name="fnamebox">
-                      </label>
                   </div>
                 </div>
               </div> 
@@ -165,12 +155,32 @@
                         <div class="control">
                           <textarea class="textarea" id="members" name="members" placeholder="(Seperate multiple users by comma. ',')"></textarea> 
                         </div>
-                          <label class="checkbox">
-                        <input type="checkbox" name="fnamebox">
-                      </label>
                       </div>
                     </div>
               </div>
+            
+              <div class="container">
+                <div class="field">
+                    <div class="label">
+                        <label class="label" for="user_role">Project Status</label>
+                    </div>
+                    <div class="field-body is-horizontal">
+                        <div class="field is-wide">
+                        <div class="control">
+                            <label class="radio">
+                                <input type="radio" name="status" value="complete">
+                                Complete
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="status" value="inprogress">
+                                In Progress
+                            </label>
+                            <br>
+                        </div> 
+                        </div>
+                    </div>
+                </div>
+               </div>
             
                   <br>
                   <div class="field is-horizontal">

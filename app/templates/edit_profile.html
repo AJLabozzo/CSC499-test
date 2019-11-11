@@ -12,20 +12,16 @@
                   <article class="tile is-child box">
                     <div class="title">
                       <h1>Edit Profile</h1>
-                      <h2 class="is-size-5">check box to apply changes</h2>
                     </div>
-                      <form action="" method="post" novalidate>
+                      <form action="" method="post">
                       {{ form.hidden_tag() }}
                       <div class="field">
                           <div class="label is-normal">
                               <label class="label" for="fname">First name</label>
                           </div>
                           <p class="control">
-                            <input class="input" type="text" id="fname" name="fname">
+                            <input class="input" type="text" id="fname" name="fname" {{ form.fname }} 
                           </p>
-                          <label class="checkbox">
-                                <input type="checkbox" name="fnamebox">
-                          </label>
                       </div>
                       <div class="field">
                           <div class="label is-normal">
@@ -35,33 +31,25 @@
                                 {% endfor %} 
                           </div>
                         <p class="control">
-                          <input class="input" type="text" id="lname" name="lname">
+                          <input class="input" type="text" id="lname" name="lname" {{ form.lname }}
                         </p>
-                          <label class="checkbox">
-                                <input type="checkbox" name="lnamebox">
-                          </label>
+                         
                     </div>
                     <div class="field">
                         <div class="label is-normal">
                             <label class="label" for="major">Major</label>
                         </div>
                         <p class="control">
-                          <input class="input" type="text" id="major" name="major">
+                          <input class="input" type="text" id="major" name="major" {{ form.major }} 
                         </p>
-                        <label class="checkbox">
-                                <input type="checkbox" name="majorbox">
-                          </label>
                     </div>
                     <div class="field">
                         <div class="label is-normal">
                             <label class="label" for="minor">Minor</label>
                         </div>
                         <p class="control">
-                          <input class="input" type="text" id="minor" name="minor">
+                          <input class="input" type="text" id="minor" name="minor" {{ form.minor }} 
                         </p>
-                        <label class="checkbox">
-                                <input type="checkbox" name="minorbox">
-                          </label>
                     </div>
                     <div class="field">
                         <div class="label is-normal">
@@ -70,11 +58,8 @@
                         <div class="field-body">
                           <div class="field">
                             <div class="control">
-                              <textarea class="textarea" maxlength="500" id="about" name="about" placeholder="Tell us about yourself"></textarea>
+                              <textarea class="textarea" maxlength="500" id="about" name="about" placeholder="Tell us about yourself" {{ form.about}}</textarea>
                             </div>
-                              <label class="checkbox">
-                              <input type="checkbox" name="aboutbox">
-                          </label>
                           </div>
                         </div>
                       </div>

@@ -39,13 +39,14 @@
                   <p>{{user.bio}}</p>
                 </article>
               </div>
-        
+              {% if user == current_user %}
               <div class="tile is-child box">
                 <p class="subtitle is-size-3 has-text-centered">Links</p>
                 <p><a class="has-text" href="../submission_form">submission form</a></p>
                 <p><a class="has-text" href="../edit_profile">edit my profile</a></p>
                 <p><a class="has-text" href="../myprojects">my projects</a></p>   
-              </div>   
+              </div>
+              {% endif %}
             </div>
 
             <div class="tile is-vertical is-parent">
@@ -75,7 +76,6 @@
                   </figure>
                 </div>
             </div>
-
             </div>
         </div>
     </div>
