@@ -1,9 +1,38 @@
-{% extends "cleanbase.html" %}
+{% extends "base.html" %}
 
 {% block head %}	{{ super() }}	{% endblock %}
 
 {% block Nav %}	{{ super() }}	{% endblock %}
-{% block content %}
 
+{% block content %}
+<section class = "container">
+    <br>
+    <div class="columns">
+        <div class="column">
+            <div class="tabs is-centered is-boxed is-medium is-fullwidth">
+                <ul>
+                    <li class="is-active">
+                    <a href="../projects">
+                        <span class="icon is-small"><ion-icon name="analytics"></ion-icon></span>
+                        <span>Projects</span>
+                    </a>
+                    </li>
+                    <li>
+                    <a href="../users_admin_view">
+                        <span class="icon is-small"><ion-icon name="people"></ion-icon></span>
+                        <span>Users</span>
+                    </a>
+                    </li>
+                    <li>
+                    <a href="#">
+                        <span class="icon is-small"><ion-icon name="aperture"></ion-icon></span>                        
+                        <span>Opportunities</span>
+                    </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
 
 {% endblock %}

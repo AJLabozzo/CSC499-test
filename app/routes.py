@@ -89,6 +89,14 @@ def myprojects():
 def events():
 	return render_template('events.html')
 
+@app.route('/admin_view')
+def admin_view():
+	return render_template('admin_view.html')
+
+@app.route('/users_admin_view')
+def users_admin_view():
+	return render_template('users_admin_view.html')
+
 @app.route('/goal/<goal>')
 def goal(goal):
     projectsbygoal = []
@@ -219,6 +227,10 @@ def login():
         login_user(user, remember=form.remember_me.data)
         return redirect(url_for('landing'))
     return render_template('login.html', title='Sign In', form=form)
+
+@app.route('/reset_pass')
+def reset_pass():
+	return render_template('reset_pass.html')
 
 @app.route('/logout')
 def logout():
