@@ -6,51 +6,62 @@
 {% block Nav %}	{{ super() }}	{% endblock %}
 
 {% block content %}
-<center>
-    <div class="columns is-mobile is-centered">
-      <div class="column is-half">
-            <div class="tile is-5 has-text-centered">
-                <div class="tile is-parent is-vertical has-text-centered">
-                  <article class="tile is-child box">
-                    <div class="title">
-                      <h1>Sign In</h1>
-                    </div>
-                      <form action="" method="post" novalidate>
-                      {{ form.hidden_tag() }}
-                      <div class="field">
-                          <p class="control has-icons-left has-icons-right">
-                            <input class="input" type="email" id="username" name="username" placeholder="Username">
-                            {% for error in form.username.errors %}
-                            <span style="color: red;">[{{ error }}]</span>
-                            {% endfor %} 
-                            <span class="icon is-small is-left">
-                              <i class="fas fa-envelope"></i>
-                            </span>
-                          </p>
+<section class="hero is-fullheight-with-navbar">
+    <div class="hero-body">
+      <div class="container">
+          <center>
+              <div class="columns is-mobile is-centered">
+                <div class="column is-half">
+                      <div class="tile is-7 has-text-centered">
+                          <div class="tile is-parent is-vertical has-text-centered">
+                            <article class="tile is-child is-link notification">
+                              <div class="title">
+                                <h1>Sign In</h1>
+                              </div>
+                                <form action="" method="post" novalidate>
+                                {{ form.hidden_tag() }}
+                                <div class="field">
+                                    <p class="control has-icons-left has-icons-right">
+                                      <input class="input is-medium" type="email" id="username" name="username" placeholder="Username">
+                                      {% for error in form.username.errors %}
+                                      <span style="color: red;">[{{ error }}]</span>
+                                      {% endfor %} 
+                                      <span class="icon is-small is-left">
+                                          <ion-icon name="mail"></ion-icon>                           
+                                      </span>
+                                    </p>
+                                </div>
+                                <div class="field">
+                                  <p class="control has-icons-left">
+                                    <input class="input is-medium" type="password" id="password" name="password" placeholder="Password">
+                                    {% for error in form.password.errors %}
+                                    <span style="color: red;">[{{ error }}</span>
+                                     {% endfor %} 
+                                    <span class="icon is-small is-left">
+                                        <ion-icon name="key"></ion-icon>
+                                    </span>
+                                  </p>
+                              </div>
+                              <br>
+                              <button type="submit" class="button is-primary is-medium">
+                                  Submit
+                              </button>
+                              <br>
+                              <br>
+                              <p class="is-size-7">
+                                <a href="../reset_pass">Forgot Password</a>
+                              </p>
+                                </form>
+                            </article>
+                        </div>
                       </div>
-                      <div class="field">
-                        <p class="control has-icons-left">
-                          <input class="input" type="password" id="password" name="password" placeholder="Password">
-                          {% for error in form.password.errors %}
-                          <span style="color: red;">[{{ error }}</span>
-                           {% endfor %} 
-                          <span class="icon is-small is-left">
-                            <i class="fas fa-lock"></i>
-                          </span>
-                        </p>
-                    </div>
-                    <br>
-                    <button type="submit" class="button is-primary">
-                        Submit
-                    </button>
-                    <p class="is-size-7">
-                      <a>Forgot Password</a>
-                    </p>
-                      </form>
-                  </article>
+                </div>
               </div>
-            </div>
+          </center>  
       </div>
     </div>
-</center>
+  </section>
+
+<script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+
 {% endblock %}

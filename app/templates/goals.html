@@ -5,14 +5,8 @@
 {% block Nav %}	{{ super() }}	{% endblock %}
 
 {% block content %}
+<body>
 <div class="container">
-	<!--
-    <div class="box cta">
-      <p class="has-text-centered">
-         Below are the U.N. Sustainability Goals. When you click on them they will open more information on related projects, communities, and events.
-      </p>
-	</div>
--->
 	<section class="hero is-small is-info is-bold">
 		<div class="hero-body">
 		  <div class="container has-text-centered">
@@ -175,7 +169,7 @@
 		<section class="container">
 			<div class="tile is-ancestor">
 				<div class="tile is-parent">
-						<article class="tile is-child box">
+					<article class="tile is-child box">
 						<figure>
 							<img src="{{url_for('static', filename='E-WEB-Goal-13.png')}}" alt="Placeholder image">
 						</figure>
@@ -183,10 +177,10 @@
 						<a class="has-text-white is-size-4" href="{{ url_for('goal', goal='Climate Action') }}">
 							<span class="button is-link modal-button" data-target="modal-image">Goal 13</span>
 						</a>
-						</article>
+					</article>
 				</div>
 				<div class="tile is-parent">
-						<article class="tile is-child box">
+					<article class="tile is-child box">
 						<figure>
 							<img src="{{url_for('static', filename='E-WEB-Goal-14.png')}}" alt="Placeholder image">
 						</figure>
@@ -194,7 +188,7 @@
 						<a class="has-text-white is-size-4" href="{{ url_for('goal', goal='Life Below Water') }}">
 							<span class="button is-link modal-button" data-target="modal-image">Goal 14</span>
 						</a>
-						</article>
+					</article>
 				</div>
 				<div class="tile is-parent">
 						<article class="tile is-child box">
@@ -205,7 +199,7 @@
 						  <a class="has-text-white is-size-4" href="{{ url_for('goal', goal='Life on Land') }}">
 							  <span class="button is-link modal-button" data-target="modal-image">Goal 15</span>
 						  </a>
-						</article>
+					</article>
 				  </div>
 
 				<div class="tile is-parent">
@@ -217,7 +211,7 @@
 						<a class="has-text-white is-size-4" href="{{ url_for('goal', goal='Peace & Justice Strong Institutions') }}">
 							<span class="button is-link modal-button" data-target="modal-image">Goal 16</span>
 						</a>
-						</article>
+					</article>
 				</div>
 				<div class="tile is-parent">
 					<article class="tile is-child box">
@@ -228,58 +222,22 @@
 						<a class="has-text-white is-size-4" href="{{ url_for('goal', goal='Partnerships for the Goals') }}"c>
 							<span class="button is-link modal-button" data-target="modal-image">Goal 17</span>
 						</a>
-						</article>
+					</article>
 				</div>
 				<div class="tile is-parent">
 					<article class="tile is-child box">
+						<br>
+						<br>
 						<figure>
-							<img src="{{url_for('static', filename='E-WEB-Goal-17.png')}}" alt="Placeholder image">
+							<img src="http://more.southernct.edu/wp-content/uploads/2018/02/SCSU-justified-003399-1000px.png" alt="Placeholder image">
 						</figure>
-						</article>
+					</article>
 				</div>
 			</div>
 		</section>
 
-</center>
-</div>
-{% endblock %}
+	</center>
+	</div>
+</body>
 
-<!--
-<div class="column is-3 modal-button" data-target="modal-image">
-	<section class="container">
-		<div class="column is-3 modal-button" data-target="modal-image">
-			<div class="card is-shady">
-				<div class="card-image">
-				  <figure>
-					<img src="https://sustainabledevelopment.un.org/content/images/E_SDG_Icons-01.jpg" alt="Placeholder image">
-				  </figure>
-				</div>
-				<div class="card-content">
-				  <div class="content">
-					<h4>Click anywhere on card</h4>
-					<p></p>
-					<a class="has-text-white is-size-4" href="../goal1">
-					<span class="button is-link modal-button" data-target="modal-image">Goal 1</span>
-					</a>
-				  </div>
-				</div>
-			</div>
-			<div class="card is-shady">
-				<div class="card-image">
-				  <figure>
-					<img src="https://sustainabledevelopment.un.org/content/images/E_SDG_Icons-01.jpg" alt="Placeholder image">
-				  </figure>
-				</div>
-				<div class="card-content">
-				  <div class="content">
-					<h4>Click anywhere on card</h4>
-					<p></p>
-					<a class="has-text-white is-size-4" href="../goal1">
-					<span class="button is-link modal-button" data-target="modal-image">Goal 1</span>
-					</a>
-				  </div>
-				</div>
-			</div>
-		</div>
-	</section>
--->
+{% endblock %}
