@@ -116,6 +116,7 @@ def goal(goal):
             
         projectdict = dict(projectname=currentproject.projectname,department=currentproject.department,username=User.query.get(currentproject.user_id).username,status=currentstate,body=currentproject.body)
         allprojects.append(projectdict)
+        
     return render_template('goalbase.html', goal=goal, projects = allprojects)
     
 @app.route('/profile/<username>')
@@ -166,11 +167,19 @@ def submission_form():
         return redirect(url_for('projects'))
     return render_template('submission_form.html', form=form)
 
-@app.route('/editProject',methods=['GET','POST'])
+@app.route('/editProject/<name>',methods=['GET','POST'])
 @login_required
-def editProject():
+def editProject(name):
     form = ProjectForm()
-    
+    project = Project.query.filter_by(projectname=name).first()
+    if form.validate_on_submit():
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('profile', username=current_user.username))
+    elif request.method == 'GET':
+        form.projectname.data = project.projectname
+        form.body.data = project.body
+        form.department.data = project.department
     return render_template('editProject.html', form=form)
 
 @app.route('/edit_profile', methods=['GET', 'POST'])
@@ -178,24 +187,19 @@ def editProject():
 def edit_profile():
     form = ProfileForm()
     if form.validate_on_submit():
-        if request.form.get('fnamebox'):
-            current_user.fname = form.fname.data
-        if request.form.get('lnamebox'):
-            current_user.lname = form.lname.data
-        if request.form.get('majorbox'):
-            current_user.major = form.major.data
-        if request.form.get('minorbox'):
-            current_user.minor = form.minor.data
-        if request.form.get('aboutbox'):
-            current_user.bio = form.about.data
-        db.session.commit()
-        flash('Your changes have been saved.')
-        return redirect(url_for('profile', username=current_user.username))
-    elif request.method == 'GET':
         current_user.fname = form.fname.data
         current_user.lname = form.lname.data
         current_user.major = form.major.data
         current_user.minor = form.minor.data
+        current_user.bio = form.about.data
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('profile', username=current_user.username))
+    elif request.method == 'GET':
+        form.fname.data = current_user.fname
+        form.lname.data = current_user.lname
+        form.major.data = current_user.major
+        form.minor.data = current_user.minor
         form.about.data = current_user.bio
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
@@ -237,9 +241,3 @@ def logout():
     logout_user()
     return redirect(url_for('landing'))
 
-'''
-@app.route('/myProfile/<username>')
-@login_required
-def profile(username):
-	return render_template('profile.html')
-	'''
