@@ -178,7 +178,7 @@
       <th>{{loop.index}}</th>
       <td>{{data.projectname}}</td>
       <td>{{data.department}}</td>
-      <td><a href="{{ url_for('profile', username=data.username) }}">{{data.username}}</a></td>
+      <td><a href="{{ url_for('main.profile', username=data.username) }}">{{data.username}}</a></td>
       <td>{{data.status}}</td>
       <td>{{data.body}}</td>
       </tr>

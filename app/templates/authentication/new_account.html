@@ -1,0 +1,129 @@
+{% extends "cleanbase.html" %}
+
+{% block head %}	{{ super() }}	{% endblock %}
+
+{% block Nav %}	{{ super() }}	{% endblock %}
+{% block content %}
+<section class="section">
+    <center>
+	<div class="column is-4">
+            <h1 class="title">Sign-Up</h1>
+            <form action="", method="post" role = "form">
+            {{ form.hidden_tag() }}
+            <main>
+                <div class="container">
+                <div class="field">
+                    <div class="label">
+                        <label class="label" for="user_role">I'm a...</label>
+                    </div>
+                    <div class="field-body is-horizontal">
+                        <div class="field is-wide">
+                        <div class="control">
+                            <label class="radio">
+                                <input type="radio" name="user_role" value="Student">
+                                Student
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="user_role" value="Faculty">
+                                Faculty
+                            </label>
+                            <br>
+                            <label class="radio">
+                                <input type="radio" name="user_role" value="Staff">
+                                Staff
+                            </label>
+                        </div> 
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="field">
+                        <div class="label">
+                            <label class="label" for="username">Username</label>
+                        </div>
+                        <div class="field-body">
+                            <div class="field">
+                            <p class="control">
+                                <input class="input" id="username" name="username" type="text" placeholder="">
+                                {% for error in form.username.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %} 
+                            </p>
+                            </div>
+                        </div>
+                    </div> 
+
+                <div class="field">
+                    <div class="label is-normal">
+                        <label class="label" for="email">Email</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control is-expanded has-icons-left">
+                                <input class="input" id="email" name ="email" type="text" placeholder="@southernct.edu">
+                                {% for error in form.email.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %} 
+                                <span class="icon is-small is-left">
+                                    <i class="fas fa-envelope"></i>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                </div> 
+
+                <div class="field">
+                    <div class="label is-normal">
+                        <label class="label" for="password">Password</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                        <p class="control is-expanded has-icons-left">
+                            <input class="input" id="password" name="password" type="password" placeholder="">
+                            {% for error in form.password.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %} 
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </p>
+                        </div>
+                    </div>
+                    </div> 
+
+                <div class="field">
+                    <div class="label is-normal">
+                        <label class="label"for="password2">Password Verification</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                        <p class="control">
+                            <input class="input" id="password2" name="password2" type="password" placeholder="">
+                            {% for error in form.password2.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %} 
+                        </p>
+                        </div>
+                    </div>
+                </div> 
+
+                <br>
+                <div class="field">
+                    <div class="field-body">
+                    <div class="field">
+                        <div class="control">
+                        <button type="submit" class="button is-primary">
+                            Submit
+                        </button>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </main> 
+            </form>
+        </div>
+	</center>
+    </section>
+
+{% endblock %}
