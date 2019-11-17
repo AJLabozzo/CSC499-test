@@ -40,8 +40,8 @@
             </div>
         
          <div class="container">     
-                <p style="text-align: right"><a href="../myprojects">My Projects</a></p>
-                <p style="text-align: right"><a href="../submission_form"> Project Submission Form</a></p>   
+                <p style="text-align: right"><a href="{{ url_for('main.myprojects') }}">My Projects</a></p>
+                <p style="text-align: right"><a href="{{ url_for('main.submission_form') }}"> Project Submission Form</a></p>   
             </div>
     </div>           
         
@@ -71,7 +71,7 @@
       <th>{{loop.index}}</th>
       <td>{{data.projectname}}</td>
       <td>{{data.department}}</td>
-      <td><a href="{{ url_for('profile', username=data.username) }}">{{data.username}}</a></td>
+      <td><a href="{{ url_for('main.profile', username=data.username) }}">{{data.username}}</a></td>
       <td>{{data.goals}}</td>
       <td>{{data.status}}</td>
       <td>{{data.body}}</td>

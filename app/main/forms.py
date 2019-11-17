@@ -3,29 +3,8 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, Selec
 from wtforms.validators import DataRequired, Length, Email, ValidationError, EqualTo
 from app.models import User, Project
 
-class LoginForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired(),Length(max=64)])
-    password = PasswordField('Password', validators=[DataRequired(),Length(max=128)])
-    remember_me = BooleanField('Remember Me')
-    submit = SubmitField('Sign In')
-    
-class SignupForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired(),Length(max=64)])
-    email = StringField('Email', validators=[DataRequired(), Email(),Length(max=120)])
-    password = PasswordField('Password', validators=[DataRequired(),Length(max=128)])
-    password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')]) 
-    submit = SubmitField('Register')
-    
-    def validate_username(self, username):
-        user = User.query.filter_by(username=username.data).first()
-        if user is not None:
-            raise ValidationError('Please use a different username.')
 
-    def validate_email(self, email):
-        user = User.query.filter_by(email=email.data).first()
-        if user is not None:
-            raise ValidationError('Please use a different email address.')
-    
+
 class ProjectSearchForm(FlaskForm):
     choices = [('Goal', 'Goal'),
                ('Faculty', 'Faculty'),

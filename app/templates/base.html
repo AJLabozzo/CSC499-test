@@ -29,15 +29,15 @@
 				<div class="navbar-end">
 					<div class="navbar-item">
                         {% if current_user.is_anonymous%}
-				        <a class="has-text-white is-size-4" href="../login">Login</a>
+				        <a class="has-text-white is-size-4" href="{{ url_for('authentication.login') }}">Login</a>
                         {% else %}
-                        <a class="has-text-white is-size-4" href="../logout">Logout</a>
+                        <a class="has-text-white is-size-4" href="{{ url_for('authentication.logout') }}">Logout</a>
                         {% endif %}
 					</div>
                     {% if current_user.is_anonymous%}
 					<p class="navbar-item has-text-white is-size-4">|</p>
 					<div class="navbar-item">
-						<a class="has-text-white is-size-4" href="../new_account">Sign Up</a>
+						<a class="has-text-white is-size-4" href="{{ url_for('authentication.new_account') }}">Sign Up</a>
                         {% endif %}
 					</div>
 				</div>
@@ -54,13 +54,13 @@
                     </p>
                     <ul class="menu-list">
                         <!--<li><a class="is-active">Dashboard</a></li> -->
-                        <li ><a href="../goals"><span class="icon is-small is-left">
+                        <li ><a href="{{ url_for('main.goals') }}"><span class="icon is-small is-left">
 							<ion-icon name="medal"></ion-icon>
 						  </span> Goals</a></li>
-						<li><a href="../projects"><span class="icon is-small is-left"><ion-icon name="analytics"></ion-icon></span> Projects</a></li>
-						<li><a href="../events"><span class="icon is-small is-left"><ion-icon name="aperture"></ion-icon></span> Opportunities</a></li>
+						<li><a href="{{ url_for('main.projects') }}"><span class="icon is-small is-left"><ion-icon name="analytics"></ion-icon></span> Projects</a></li>
+						<li><a href="{{ url_for('main.events') }}"><span class="icon is-small is-left"><ion-icon name="aperture"></ion-icon></span> Opportunities</a></li>
                         {% if current_user.is_authenticated%}
-						<li><a href="{{ url_for('profile', username=current_user.username) }}"><span class="icon is-small is-left"><ion-icon name="person"></ion-icon></span> My Profile</a></li>
+						<li><a href="{{ url_for('main.profile', username=current_user.username) }}"><span class="icon is-small is-left"><ion-icon name="person"></ion-icon></span> My Profile</a></li>
                         {% endif %}
                     </ul>
                 </aside>
