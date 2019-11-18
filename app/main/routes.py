@@ -6,7 +6,6 @@ from app.main.forms import ProjectSearchForm, ProjectSubmissionForm, ProfileForm
 from app.main import bp
 from app.models import User, Project, Goals, Members
 from werkzeug.security import generate_password_hash, check_password_hash
-from app.email import send_password_reset_email
 from datetime import datetime
 
 

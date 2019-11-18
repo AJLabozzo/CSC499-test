@@ -37,8 +37,8 @@ def new_account():
         return redirect(url_for('authentication.login'))
     return render_template('authentication/new_account.html', title='Sign-Up', form=form)
 
-@bp.route('/reset_password_request', methods=['GET', 'POST'])
-def reset_password_request():
+@bp.route('/reset_pass_request', methods=['GET', 'POST'])
+def reset_pass_request():
     if current_user.is_authenticated:
         return redirect(url_for('main.landing'))
     form = ResetPasswordRequestForm()
@@ -51,8 +51,8 @@ def reset_password_request():
     return render_template('authentication/reset_pass_request.html',
                            title='Reset Password', form=form)
 
-@bp.route('/reset_password/<token>', methods=['GET', 'POST'])
-def reset_password(token):
+@bp.route('/reset_pass/<token>', methods=['GET', 'POST'])
+def reset_pass(token):
     if current_user.is_authenticated:
         return redirect(url_for('main.landing'))
     user = User.verify_reset_password_token(token)
