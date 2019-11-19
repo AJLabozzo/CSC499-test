@@ -44,3 +44,13 @@ class ProfileForm(FlaskForm):
 	minor = StringField('minor - if any', validators=[Length(max=64)])
 	about = TextAreaField('About me', validators=[Length(min=0, max=500)])
 	submit	= SubmitField('Submit')
+
+
+class UserSearchForm(FlaskForm):
+    choices = [('Student', 'Student'),
+               ('Faculty', 'Faculty'),
+               ('Staff', 'Staff'),
+               ('Department', 'Department')]
+        
+    select = SelectField('', choices=choices)
+    search = StringField('')

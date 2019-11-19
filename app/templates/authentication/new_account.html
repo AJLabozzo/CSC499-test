@@ -7,6 +7,10 @@
 <section class="section">
     <center>
 	<div class="column is-4">
+        <div class="tile is-11 has-text-centered has-text-white">
+            <div class="tile is-parent is-vertical has-text-centered has-text-white">
+            <article class="tile is-child notification has-text-white is-link">
+            <div class="title">
             <h1 class="title">Sign-Up</h1>
             <form action="", method="post" role = "form">
             {{ form.hidden_tag() }}
@@ -14,7 +18,7 @@
                 <div class="container">
                 <div class="field">
                     <div class="label">
-                        <label class="label" for="user_role">I'm a...</label>
+                        <label class="label has-text-white" for="user_role">I'm a...</label>
                     </div>
                     <div class="field-body is-horizontal">
                         <div class="field is-wide">
@@ -39,7 +43,7 @@
                 
                 <div class="field">
                         <div class="label">
-                            <label class="label" for="username">Username</label>
+                            <label class="label has-text-white" for="username">Username</label>
                         </div>
                         <div class="field-body">
                             <div class="field">
@@ -55,7 +59,7 @@
 
                 <div class="field">
                     <div class="label is-normal">
-                        <label class="label" for="email">Email</label>
+                        <label class="label  has-text-white" for="email">Email</label>
                     </div>
                     <div class="field-body">
                         <div class="field">
@@ -74,7 +78,7 @@
 
                 <div class="field">
                     <div class="label is-normal">
-                        <label class="label" for="password">Password</label>
+                        <label class="label has-text-white" for="password">Password</label>
                     </div>
                     <div class="field-body">
                         <div class="field">
@@ -93,7 +97,7 @@
 
                 <div class="field">
                     <div class="label is-normal">
-                        <label class="label"for="password2">Password Verification</label>
+                        <label class="label has-text-white"for="password2">Password Verification</label>
                     </div>
                     <div class="field-body">
                         <div class="field">
@@ -106,24 +110,23 @@
                         </div>
                     </div>
                 </div> 
-
                 <br>
                 <div class="field">
-                    <div class="field-body">
-                    <div class="field">
                         <div class="control">
-                        <button type="submit" class="button is-primary">
+                        <button type="submit" class="button is-primary is-fullwidth">
                             Submit
                         </button>
-                        </div>
-                    </div>
                     </div>
                 </div>
                 </div>
             </main> 
             </form>
         </div>
+        </article>
+	        </div>
+            </div>
+        </div>
 	</center>
-    </section>
+</section>
 
 {% endblock %}

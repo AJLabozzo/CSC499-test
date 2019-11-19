@@ -14,7 +14,7 @@
                 <div class="column is-half">
                       <div class="tile is-7 has-text-centered">
                           <div class="tile is-parent is-vertical has-text-centered">
-                            <article class="tile is-child is-link notification">
+                            <article class="tile is-child notification is-link">
                               <div class="title">
                                 <h1>Sign In</h1>
                               </div>
@@ -48,8 +48,14 @@
                               </button>
                               <br>
                               <br>
+                              <button type="control" class="button is-warning is-small"><a href="{{ url_for('authentication.new_account') }}">
+                                  Create Account 
+                                </a>
+                              </button>
+                              <br>
+                              <br>
                               <p class="is-size-7">
-                                <a href="../reset_pass">Forgot Password</a>
+                                <a href="{{ url_for('authentication.reset_password_request') }}"></a>Forgot Password</a>
                               </p>
                                 </form>
                             </article>
