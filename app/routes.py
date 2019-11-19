@@ -2,7 +2,7 @@
 from flask import flash, render_template, request, redirect, url_for
 from flask_login import current_user, login_user, logout_user, login_required
 from app import app, db
-from app.forms import LoginForm, ProjectSearchForm, ProjectSubmissionForm, SignupForm, ProfileForm, ProjectForm, ResetPasswordRequestForm, ResetPasswordForm
+from app.forms import LoginForm, ProjectSearchForm, ProjectSubmissionForm, SignupForm, editProfileForm, editProjectForm, ResetPasswordRequestForm, ResetPasswordForm
 from app.models import User, Project, Goals, Members
 from werkzeug.security import generate_password_hash, check_password_hash
 from app.email import send_password_reset_email
@@ -171,7 +171,7 @@ def submission_form():
 @app.route('/editProject/<name>',methods=['GET','POST'])
 @login_required
 def editProject(name):
-    form = ProjectForm()
+    form = editProjectForm()
     project = Project.query.filter_by(projectname=name).first()
     if form.validate_on_submit():
         db.session.commit()
@@ -186,7 +186,7 @@ def editProject(name):
 @app.route('/edit_profile', methods=['GET', 'POST'])
 @login_required
 def edit_profile():
-    form = ProfileForm()
+    form = editProfileForm()
     if form.validate_on_submit():
         current_user.fname = form.fname.data
         current_user.lname = form.lname.data

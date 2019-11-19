@@ -71,10 +71,12 @@
       <td>{{data.projectname}}</td>
       <td>{{data.department}}</td>
       <td><a href="{{ url_for('main.profile', username=data.username) }}">{{data.username}}</a></td>
-      <td>{{data.goals}}</td>
+      <td>
+          {{data.goals}}
+      </td>
       <td>{{data.status}}</td>
       <td>{{data.body}}</td>
-      <td></td>
+      <td>{{data.projectmembers}}</td>
       <td></td>
       </tr>
       {% endfor %}
