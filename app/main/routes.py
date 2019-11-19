@@ -587,7 +587,7 @@ def edit_profile():
         current_user.bio = form.about.data
         db.session.commit()
         flash('Your changes have been saved.')
-        return redirect(url_for('profile', username=current_user.username))
+        return redirect(url_for('main.profile', username=current_user.username))
     elif request.method == 'GET':
         form.fname.data = current_user.fname
         form.lname.data = current_user.lname
