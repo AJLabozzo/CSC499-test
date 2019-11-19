@@ -55,12 +55,16 @@
                     {% for data in projects %}
                     <div class="tile is-child box">
                     <p align="center"><strong>{{data.projectname}}</strong></p>
-                    <p>Creator: {{data.username}}</p>
+                    <p>Author: <a href="{{ url_for('main.profile', username=data.username) }}">{{data.username}}</a></p>
                     <p>Department: {{data.department}}</p>
                     <p>Description: {{data.body}}</p>
                     <p>Status:{{data.status}}</p>
-                    <p>Goals:{{data.goals}}</p>
-                    <p>ProjectMembers:{{data.progress}}</p>
+                    <p>Goals:{%for goal in data.goals %}
+                        <a href="{{ url_for('main.goal', goal=goal) }}">{{goal}}</a><br>
+                        {% endfor %}</p>
+                    <p>ProjectMembers:{% for user in data.projectmembers%}
+                        <a href="{{ url_for('main.profile', username=user) }}">{{user}}</a><br>
+                        {% endfor %}</p>
                     <!--<progress class="progress is-small is-primary" value="15" max="100">15%</progress>-->
                     </div>
                     <br>
@@ -71,9 +75,11 @@
             <div class="tile is-vertical is-parent">
                 <div class="tile is-child box">
                   <p class="title is-size-3 has-text-centered">Badges</p>
+                  {% for badge in badges %}
                   <figure class="image is-96x96">
-                      <img src="../static/E_GIF_02.gif" alt="Badge - Zero Hunger">
+                      <img src="../static/E_GIF_{{badge}}.gif">
                   </figure>
+                  {% endfor %}
                 </div>
             </div>
             </div>

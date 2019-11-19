@@ -47,11 +47,6 @@
                   <button class="collapsible">{{data.projectname}}</button>
                   <div class="content">
                     <p style="text-align:right"><a href="{{ url_for('main.editProject', name=data.projectname) }}">edit project</a></p>
-                    <p>Department: {{data.department}}</p>
-                    <p>Description: {{data.body}}</p>
-                    <p>Status:{{data.status}}</p>
-                    <p>Goals:{{data.goals}}</p>
-                    <p>ProjectMembers:{{data.progress}}</p>
                   </div>
                   {% endfor %}
               </div>

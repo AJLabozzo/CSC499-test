@@ -6,7 +6,7 @@
 {% block Nav %}	{{ super() }}	{% endblock %}
 
 {% block content %}
-<section class="hero is-fullheight-with-navbar">
+<section class="hero is-link is-fullheight-with-navbar">
     <div class="hero-body">
       <div class="container">
           <center>
@@ -14,30 +14,32 @@
                 <div class="column is-half">
                       <div class="tile is-7 has-text-centered">
                           <div class="tile is-parent is-vertical has-text-centered">
-                            <article class="tile is-child notification is-link">
+                            <article class="tile is-child notification">
                               <div class="title">
                                 <h1>Reset Password</h1>
                               </div>
-                              <div class="field">
-                                    <div class="label is-normal">
-                                        <label class="label has-text-white" for="email">Email Address</label>
-                                    </div>
-                                    <div class="field-body">
-                                        <div class="field">
-                                            <p class="control is-expanded has-icons-left">
-                                                <input class="input" id="email" name ="email" type="text" placeholder="@southernct.edu">
-                                                <span style="color: red;"></span>
-                                                <span class="icon is-small is-left">
-                                                    <ion-icon name="mail"></ion-icon>
-                                                </span>
-                                            </p>
+                                <form action="" method="post" novalidate>
+                                    <div class="field">
+                                        <div class="label">
+                                            <label class="label" for="username">Password</label>
                                         </div>
+                                        <p class="control has-icons-left">
+                                            <input class="input is-medium" type="password" id="password" name="password" placeholder="Password">
+                                        </p>
                                     </div>
-                                </div> 
-                                <br>
-                                <button type="submit" class="button is-primary is-medium">
-                                    Submit
-                                </button>
+                                    <div class="field">
+                                        <div class="label">
+                                            <label class="label" for="username">Confirm password</label>
+                                        </div>
+                                        <p class="control has-icons-left">
+                                            <input class="input is-medium" type="password" id="password" name="password" placeholder="Password">
+                                        </p>
+                                    </div>
+                                    <br>
+                                    <button type="submit" class="button is-primary is-medium">
+                                        Submit
+                                    </button>
+                                </form>
                             </article>
                         </div>
                       </div>

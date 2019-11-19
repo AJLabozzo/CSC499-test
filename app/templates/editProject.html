@@ -17,7 +17,7 @@
                 <div class="field-body">
                   <div class="field">
                     <p class="control is-expanded">
-                      <input  class="input" type="text" id="projectname" name="projectname" placeholder="Project name" {{projectname}}>
+                      <input  class="input" type="text" id="projectname" name="projectname" placeholder="Project name" {{form.projectname}}
                         {% for error in form.projectname.errors %}
             `           <span style="color: red;">[{{ error }}]</span>
                         {% endfor %}
@@ -33,7 +33,7 @@
                     <div class="field-body">
                       <div class="field">
                         <div class="control">
-                          <textarea class="textarea" id="body" name="body" placeholder="Project description" {{body}}></textarea>
+                          <textarea class="textarea" id="body" name="body" placeholder="Project description" {{form.body}}</textarea>
                            {% for error in form.body.errors %}
             `               <span style="color: red;">[{{ error }}]</span>
                            {% endfor %} 
@@ -44,12 +44,12 @@
             
               <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                  <label class="label" for="projectname" {{department}}>Department</label>
+                  <label class="label" for="projectname" >Department</label>
                 </div>
                 <div class="field-body">
                   <div class="field">
                     <p class="control is-expanded">
-                      <input  class="input" type="text" id="department" name="department" placeholder="department">
+                      <input  class="input" type="text" id="department" name="department" placeholder="department" {{form.department}}
                         {% for error in form.department.errors %}
             `           <span style="color: red;">[{{ error }}]</span>
                         {% endfor %}
@@ -66,78 +66,146 @@
                       <div class="field is-narrow">
                         <div class="control">
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="No Poverty">
+                                {%if goals.g1==True %}
+                                <input type="checkbox" name="g1" checked>
+                                {% else %}
+                                <input type="checkbox" name="g1">
+                                {%endif%}
                                 No Poverty
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Zero Hunger">
+                                {%if goals.g2==True %}
+                                <input type="checkbox" name="g2" checked>
+                                {% else %}
+                                <input type="checkbox" name="g2">
+                                {%endif%}
                                 Zero Hunger
                             </label>
                             <br>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Good Health and Well-Being">
+                                {%if goals.g3 %}
+                                <input type="checkbox" name="g3"checked>
+                                {% else %}
+                                <input type="checkbox" name="g3">
+                                {%endif%}
                                 Good Health and Well-Being
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Quality Education">
+                                {%if goals.g4%}
+                                <input type="checkbox" name="g4" checked>
+                                {% else %}
+                                <input type="checkbox" name="g4">
+                                {%endif%}
                                 Quality Education 
                             </label>
                             <br>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Gender Equality">
+                                {%if goals.g5 %}
+                                <input type="checkbox" name="g5" checked>
+                                {% else %}
+                                <input type="checkbox" name="g5">
+                                {%endif%}
                                 Gender Equality 
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Clean Water & Sanitation">
+                                {%if goals.g6%}
+                                <input type="checkbox" name="g6" checked>
+                                {% else %}
+                                <input type="checkbox" name="g6">
+                                {%endif%}
                                 Clean Water & Sanitation 
                             </label>
                             <br>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Affordable & Clean Energy">
+                                {%if goals.g7 %}
+                                <input type="checkbox" name="g7" checked>
+                                {% else %}
+                                <input type="checkbox" name="g7">
+                                {%endif%}
                                 Affordable & Clean Energy 
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Decent Work & Economic Growth">
+                                {%if goals.g8%}
+                                <input type="checkbox" name="g8" checked>
+                                {% else %}
+                                <input type="checkbox" name="g8">
+                                {%endif%}
                                 Decent Work & Economic Growth 
                             </label>
                             <br>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Industry, Innovation, and Infrastructure">
+                                {%if goals.g9%}
+                                <input type="checkbox" name="g9" checked>
+                                {% else %}
+                                <input type="checkbox" name="g9">
+                                {%endif%}
                                 Industry, Innovation, and Infrastructure
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Reduced Inequalities">
+                                {%if goals.g10 %}
+                                <input type="checkbox" name="g10" checked>
+                                {% else %}
+                                <input type="checkbox" name="g10">
+                                {%endif%}
                                 Reduced Inequalities 
                             </label>
                             <br>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Sustainable Cities and Communities">
+                                {%if goals.g11 %}
+                                <input type="checkbox" name="g11" checked>
+                                {% else %}
+                                <input type="checkbox" name="g11" >
+                                {%endif%}
                                 Sustainable Cities and Communities
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Responsible Consumption and Production">
+                                {%if goals.g12 %}
+                                <input type="checkbox" name="g12" checked>
+                                {% else %}
+                                <input type="checkbox" name="g12">
+                                {%endif%}
                                 Responsible Consumption and Production 
                             </label>
                             <br>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Climate Action ">
+                                {%if goals.g13 %}
+                                <input type="checkbox" name="g13" checked>
+                                {% else %}
+                                <input type="checkbox" name="g13">
+                                {%endif%}
                                 Climate Action 
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Life Below Water">
+                                {%if goals.g14 %}
+                                <input type="checkbox" name="g14" checked>
+                                {% else %}
+                                <input type="checkbox" name="g14" >
+                                {%endif%}
                                 Life Below Water 
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Life on Land">
+                                {%if goals.g15 %}
+                                <input type="checkbox" name="g15" checked>
+                                {% else %}
+                                <input type="checkbox" name="g15" >
+                                {%endif%}
                                 Life on Land 
                             </label>
                             <br>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Peace & Justice Strong Institutions">
+                                {%if goals.g16 %}
+                                <input type="checkbox" name="g15" checked>
+                                {% else %}
+                                <input type="checkbox" name="goals" >
+                                {%endif%}
                                 Peace & Justice Strong Institutions 
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Partnerships for the Goals">
+                                {%if goals.g17 %}
+                                <input type="checkbox" name="goals" checked>
+                                {% else %}
+                                <input type="checkbox" name="goals" >
+                                {%endif%}
                                 Partnerships for the Goals 
                             </label>
                         </div>
@@ -148,12 +216,19 @@
                 
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                  <label class="label" for="members">Add Project Member Username</label>
+                    <label class="label" for="member">Add Project Member</label>
                 </div>
                 <div class="field-body">
                       <div class="field">
                         <div class="control">
-                          <textarea class="textarea" id="members" name="members" placeholder="(Seperate multiple users by comma. ',')"></textarea> 
+                            {% if form.member==None %}
+                            <input class="input" id="member" name="member" placeholder="Enter a Username">
+                            {% else %}
+                            <input class="input" id="member" name="member" placeholder="Enter a Username" {{form.member}}
+                            {% endif %}
+                            {% for error in form.member.errors %}
+            `               <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
                         </div>
                       </div>
                     </div>
@@ -167,15 +242,14 @@
                     <div class="field-body is-horizontal">
                         <div class="field is-wide">
                         <div class="control">
-                            <label class="radio">
-                                <input type="radio" name="status" value="complete">
+                            <label class="checkbox">
+                                {%if project.progress %}
+                                <input type="checkbox" name="status" checked>
+                                {% else %}
+                                <input type="checkbox" name="status" >
+                                {%endif%}
                                 Complete
                             </label>
-                            <label class="radio">
-                                <input type="radio" name="status" value="inprogress">
-                                In Progress
-                            </label>
-                            <br>
                         </div> 
                         </div>
                     </div>

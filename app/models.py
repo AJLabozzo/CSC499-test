@@ -1,9 +1,10 @@
+import jwt
 from app import db, login
+from time import time
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from flask import current_app
-import jwt
 
 class User(UserMixin, db.Model):
 	id = db.Column(db.Integer, primary_key=True)
@@ -30,7 +31,7 @@ class User(UserMixin, db.Model):
     
 	def get_reset_password_token(self, expires_in=600):
 		return jwt.encode({'reset_password': self.id, 'exp': time() + expires_in},
-							app.config['SECRET_KEY'], algorithm='HS256').decode('utf-8')
+							current_app.config['SECRET_KEY'], algorithm='HS256').decode('utf-8')
 
 	@staticmethod
 	def verify_reset_password_token(token):
@@ -55,19 +56,35 @@ class Project(db.Model):
 
 class Members(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    member_id = db.Column(db.String(64))
-    project_id = db.Column(db.String(64))
+    member= db.Column(db.String(64))
+    project= db.Column(db.String(64))
     
     def __repr__(self):
-        return '<Members {}>'.format(self.member_id)
+        return '<Members {}>'.format(self.member)
 
 class Goals(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    goal = db.Column(db.String(64))
-    project_id = db.Column(db.String(64))
+    project_id = db.Column(db.String(64), index=True, unique=True)
+    g1 = db.Column(db.Boolean, unique=False, default=False)
+    g2 = db.Column(db.Boolean, unique=False, default=False)
+    g3 = db.Column(db.Boolean, unique=False, default=False)
+    g4 = db.Column(db.Boolean, unique=False, default=False)
+    g5 = db.Column(db.Boolean, unique=False, default=False)
+    g6 = db.Column(db.Boolean, unique=False, default=False)
+    g7 = db.Column(db.Boolean, unique=False, default=False)
+    g8 = db.Column(db.Boolean, unique=False, default=False)
+    g9 = db.Column(db.Boolean, unique=False, default=False)
+    g10 = db.Column(db.Boolean, unique=False, default=False)
+    g11 = db.Column(db.Boolean, unique=False, default=False)
+    g12 = db.Column(db.Boolean, unique=False, default=False)
+    g13 = db.Column(db.Boolean, unique=False, default=False)
+    g14 = db.Column(db.Boolean, unique=False, default=False)
+    g15 = db.Column(db.Boolean, unique=False, default=False)
+    g16 = db.Column(db.Boolean, unique=False, default=False)
+    g17 = db.Column(db.Boolean, unique=False, default=False)
     
     def __repr__(self):
-        return '<Goals {}>'.format(self.goal)
+        return '<Goals {}>'.format(self.project_id)
 
 
 @login.user_loader

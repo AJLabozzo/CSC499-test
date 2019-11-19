@@ -67,78 +67,78 @@
                       <div class="field is-narrow">
                         <div class="control">
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="No Poverty">
+                                <input type="checkbox" name="g1">
                                 No Poverty
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Zero Hunger">
+                                <input type="checkbox" name="g2">
                                 Zero Hunger
                             </label>
                             <br>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Good Health and Well-Being">
-                                Good Health and Well-Being
+                                <input type="checkbox" name="g3">
+                                Good Health & Well-Being
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Quality Education">
+                                <input type="checkbox" name="g4">
                                 Quality Education 
                             </label>
                             <br>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Gender Equality">
+                                <input type="checkbox" name="g5">
                                 Gender Equality 
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Clean Water & Sanitation">
+                                <input type="checkbox" name="g6">
                                 Clean Water & Sanitation 
                             </label>
                             <br>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Affordable & Clean Energy">
+                                <input type="checkbox" name="g7">
                                 Affordable & Clean Energy 
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Decent Work & Economic Growth">
+                                <input type="checkbox" name="g8">
                                 Decent Work & Economic Growth 
                             </label>
                             <br>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Industry, Innovation, and Infrastructure">
+                                <input type="checkbox" name="g9">
                                 Industry, Innovation, and Infrastructure
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Reduced Inequalities">
+                                <input type="checkbox" name="g10">
                                 Reduced Inequalities 
                             </label>
                             <br>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Sustainable Cities and Communities">
+                                <input type="checkbox" name="g11">
                                 Sustainable Cities and Communities
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Responsible Consumption and Production">
+                                <input type="checkbox" name="g12">
                                 Responsible Consumption and Production 
                             </label>
                             <br>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Climate Action">
+                                <input type="checkbox" name="g13">
                                 Climate Action 
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Life Below Water">
+                                <input type="checkbox" name="g14">
                                 Life Below Water 
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Life on Land">
+                                <input type="checkbox" name="g15">
                                 Life on Land 
                             </label>
                             <br>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Peace & Justice Strong Institutions">
+                                <input type="checkbox" name="g16">
                                 Peace & Justice Strong Institutions 
                             </label>
                             <label class="checkbox">
-                                <input type="checkbox" name="goals" value="Partnerships for the Goals">
+                                <input type="checkbox" name="g17">
                                 Partnerships for the Goals 
                             </label>
                         </div>
@@ -149,12 +149,15 @@
                 
             <div class="field is-horizontal">
                 <div class="field-label is-normal">
-                  <label class="label" for="members">Add Project Member Username</label>
+                    <label class="label" for="member">Add Project Member</label>
                 </div>
                 <div class="field-body">
                       <div class="field">
                         <div class="control">
-                          <textarea class="textarea" id="members" name="members" placeholder="(Seperate multiple users by comma. ',')"></textarea> 
+                          <input class="input" id="member" name="member" placeholder="Enter a Username">
+                            {% for error in form.member.errors %}
+            `               <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
                         </div>
                       </div>
                     </div>
