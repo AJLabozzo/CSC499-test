@@ -30,23 +30,54 @@
             </div>
         </div>
         <center>
-                <div class="buttons">
-                        <button class="button is-link is-rounded is-outlined"><ion-icon name="add-circle-outline"></ion-icon> Add Admin</button>
-                        <button class="button is-danger is-rounded is-outlined"><ion-icon name="close-circle-outline"></ion-icon> Delete Account</button>
-                    </div>
+            <div class="buttons">
+                <button class="button is-link is-rounded is-outlined"></ion-icon> Add Admin</button>
+                <button class="button is-danger is-rounded is-outlined" type="submit"><ion-icon name="add-circle-outline"></ion-icon><ion-icon name="close-circle-outline"></ion-icon> Delete Account</button>
+            </div>
+            <div class="field has-addons">
+                <div class="control">
+                  <input class="input is-info" type="text" placeholder="">
+                </div>
+                <div class="control">
+                  <a class="button is-info">
+                    Search
+                  </a>
+                </div>
+            </div>
         </center>
        
         <div>
             <table class="table is-hoverable is-fullwidth">
                 <thead>
                     <tr>
-                    <th><abbr title="Name">Name</abbr></th>
+                    <th><abbr title="#">#</abbr></th>
+                    <th><abbr title="check">box</abbr></th>
                     <th><abbr title="Role">Role</abbr></th>
+                    <th><abbr title="Dept">Department</abbr></th>
+                    <th><abbr title="FName">FName</abbr></th>
+                    <th><abbr title="LName">LName</abbr></th>
                     <th><abbr title="Email">Email</abbr></th>
                     <th><abbr title="Username">Username</abbr></th>
                     <th><abbr title="Admin">Admin</abbr></th>
                     </tr>
                 </thead>
+
+                <tbody>
+                    {% for data in users %}
+                    <tr>
+                    <th>{{loop.index}}</th>
+                    <th><input name="data" type="checkbox" value="{{ data.id }}"/></th>                       
+                    <td>{{data.user_role}}</td>  
+                    <td>{{data.department}}</td>               
+                    <td>{{data.fname}}</td>
+                    <td>{{data.lname}}</td>
+                    <td>{{data.username}}</td>
+                    <td>{{data.email}}</td>
+                    <td>{{data.admin}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+
             </table>
         </div>
     </section>

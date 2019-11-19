@@ -2,7 +2,7 @@
 from flask import flash, render_template, request, redirect, url_for, request, jsonify, current_app, g
 from flask_login import current_user, login_required
 from app import db
-from app.main.forms import ProjectSearchForm, ProjectSubmissionForm, ProfileForm, ProjectForm
+from app.main.forms import ProjectSearchForm, ProjectSubmissionForm, ProfileForm, ProjectForm, UserSearchForm
 from app.main import bp
 from app.models import User, Project, Goals, Members
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -94,6 +94,57 @@ def myprojects():
 def events():
 	return render_template('events.html')
 
+
+@bp.route('/admin_view')
+def admin_view():
+	return render_template('admin_view.html')
+    
+@bp.route('/users_admin_view', methods=['GET', 'POST'])
+def users_admin_view():
+    users=[]
+    allusers = User.query.all()
+    
+    for data in allusers:       
+        user = dict(role=data.user_role,department=data.department, fname=data.fname, lname=data.lname, username=data.username, email=data.email, admin=data.admin)
+        users.append(user)
+
+    return render_template('users_admin_view.html', users=users)
+
+def users_search_results(search):
+    results = []
+    search_string = search.data['search']
+ 
+    if search.data['search'] == '':
+        qry = Users.query.all()
+        results = qry
+ 
+    if not results:
+        flash('No results found!')
+        return redirect('/projects')
+    else:
+        table = Results(results)
+        return render_template('users_admin_view.html', form=search, table=table)
+
+@bp.route('/users_admin_view/<int:user_id>/delete/', methods = ['GET','POST'])
+def deleteUser(user_id):
+    search = UserSearchForm(request.form)
+    userToDelete = db.session.query(User).filter_by(id=id().one)
+
+
+    if request.method == "POST":
+        if request.form["id"]:
+            User.query.filter(User.id.in_(request.form["id"])).delete()
+            db.session.commit()
+
+        return redirect(url_for('users_admin_view.html', user_id=id))
+
+   # if request.method == 'POST':
+   #     db.session.delete(userToDelete)
+   #     db.session.commit() 
+   #     return redirect(url_for('users_admin_view.html', user_id=id))
+   # else:
+   #     return render_template('users_adminv_view.html',user=userToDelete)
+
 @bp.route('/goal/<goal>')
 def goal(goal):
     projectsbygoal = []
@@ -137,7 +188,6 @@ def profile(username):
 		projects.append(project)
 		
 	return render_template('myprofile.html', user=user, projects=projects)
-	
 	
 @bp.route('/submission_form', methods=['GET', 'POST'])
 @login_required
