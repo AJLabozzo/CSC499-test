@@ -2,11 +2,7 @@
 from flask import flash, render_template, request, redirect, url_for, request, jsonify, current_app, g
 from flask_login import current_user, login_required
 from app import db
-<<<<<<< HEAD
-from app.main.forms import ProjectSearchForm, ProjectSubmissionForm, ProfileForm, ProjectForm, UserSearchForm
-=======
-from app.main.forms import ProjectSearchForm, ProjectSubmissionForm, editProfileForm, editProjectForm
->>>>>>> master
+from app.main.forms import ProjectSearchForm, ProjectSubmissionForm, editProfileForm, editProjectForm, UserSearchForm
 from app.main import bp
 from app.models import User, Project, Goals, Members
 from werkzeug.security import generate_password_hash, check_password_hash
