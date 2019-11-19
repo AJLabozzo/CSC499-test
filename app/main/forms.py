@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, TextAreaField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, TextAreaField, RadioField
 from wtforms.validators import DataRequired, Length, Email, ValidationError, EqualTo
 from app.models import User, Project
 
@@ -69,12 +69,9 @@ class editProjectForm(FlaskForm):
     g16 = BooleanField('')
     g17 = BooleanField('')
     member = StringField('',validators=[Length(max=64)])
+    status = BooleanField('')
     submit = SubmitField('Submit')
     
-    def validate_projectname(self, projectname):
-        name = Project.query.filter_by(projectname=projectname.data).first()
-        if name is not None:
-            raise ValidationError('Please use a different title.')
     
     def validate_member(self, member):
         user = User.query.filter_by(username=member.data).first()

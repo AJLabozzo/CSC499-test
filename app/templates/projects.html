@@ -56,7 +56,6 @@
       <th><abbr title="Status">Status</abbr></th>
       <th><abbr title="Description">Description</abbr></th>
       <th><abbr title="Project Members">Project Members</abbr></th>
-      <th><abbr title="Edit"></abbr></th>
     </tr>
   </thead>
   <tfoot>
@@ -72,11 +71,17 @@
       <td>{{data.department}}</td>
       <td><a href="{{ url_for('main.profile', username=data.username) }}">{{data.username}}</a></td>
       <td>
-          {{data.goals}}
+          {%for goal in data.goals %}
+          <a href="{{ url_for('main.goal', goal=goal) }}">{{goal}}</a><br>
+          {% endfor %}
       </td>
       <td>{{data.status}}</td>
       <td>{{data.body}}</td>
-      <td>{{data.projectmembers}}</td>
+      <td>
+          {% for user in data.projectmembers%}
+          <a href="{{ url_for('main.profile', username=user) }}">{{user}}</a><br>
+          {% endfor %}
+      </td>
       <td></td>
       </tr>
       {% endfor %}
