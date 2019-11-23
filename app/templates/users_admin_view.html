@@ -1,72 +1,60 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <section class = "container">
-        <br>
-        <div class="columns">
-            <div class="column">
-                <div class="tabs is-centered is-boxed is-medium is-fullwidth">
-                    <ul>
-                        <li>
-                        <a href="../projects">
-                            <span class="icon is-small"><ion-icon name="analytics"></ion-icon></span>
-                            <span>Projects</span>
-                        </a>
-                        </li>
-                        <li class="is-active">
-                        <a href="../users_admin_view">
-                            <span class="icon is-small"><ion-icon name="people"></ion-icon></span>
-                            <span>Users</span>
-                        </a>
-                        </li>
-                        <li>
-                        <a href="#">
-                            <span class="icon is-small"><ion-icon name="aperture"></ion-icon></span>                        
-                            <span>Opportunities</span>
-                        </a>
-                        </li>
-                    </ul>
-                </div>
+<section class = "container">
+    <br>
+    <div class="columns">
+        <div class="column">
+            <div class="tabs is-centered is-boxed is-medium is-fullwidth">
+                <ul>
+                    <li><a href="../projects">
+                        <span class="icon is-small"><ion-icon name="analytics"></ion-icon></span>
+                        <span>Projects</span>
+                    </a></li>
+                    <li class="is-active"><a href="../users_admin_view">
+                        <span class="icon is-small"><ion-icon name="people"></ion-icon></span>
+                        <span>Users</span>
+                    </a></li>
+                    <li><a href="#">
+                        <span class="icon is-small"><ion-icon name="aperture"></ion-icon></span>                        
+                        <span>Opportunities</span>
+                    </a></li>
+                </ul>
             </div>
         </div>
-        <center>
-            <div class="buttons">
-                <button class="button is-link is-rounded is-outlined"></ion-icon> Add Admin</button>
-                <button class="button is-danger is-rounded is-outlined" type="submit"><ion-icon name="add-circle-outline"></ion-icon><ion-icon name="close-circle-outline"></ion-icon> Delete Account</button>
+    </div>
+    <center>
+        <div class="field has-addons">
+            <div class="control">
+                <input class="input is-info" type="text" placeholder="">
             </div>
-            <div class="field has-addons">
-                <div class="control">
-                  <input class="input is-info" type="text" placeholder="">
-                </div>
-                <div class="control">
-                  <a class="button is-info">
-                    Search
-                  </a>
-                </div>
+            <div class="control">
+                <a class="button is-info">
+                Search
+                </a>
             </div>
-        </center>
-       
-        <div>
-            <table class="table is-hoverable is-fullwidth">
-                <thead>
-                    <tr>
-                    <th><abbr title="#">#</abbr></th>
-                    <th><abbr title="check">box</abbr></th>
-                    <th><abbr title="Role">Role</abbr></th>
-                    <th><abbr title="Dept">Department</abbr></th>
-                    <th><abbr title="FName">FName</abbr></th>
-                    <th><abbr title="LName">LName</abbr></th>
-                    <th><abbr title="Email">Email</abbr></th>
-                    <th><abbr title="Username">Username</abbr></th>
-                    <th><abbr title="Admin">Admin</abbr></th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    {% for data in users %}
+        </div>
+    </center> 
+    <div>
+        <table class="table is-hoverable is-fullwidth">
+            <thead>
+                <tr>
+                <th><abbr title="#">#</abbr></th>
+                <th><abbr title="edit">Edit</abbr></th>
+                <th><abbr title="Role">Role</abbr></th>
+                <th><abbr title="Dept">Department</abbr></th>
+                <th><abbr title="FName">FName</abbr></th>
+                <th><abbr title="LName">LName</abbr></th>
+                <th><abbr title="Username">Username</abbr></th>
+                <th><abbr title="Email">Email</abbr></th>
+                <th><abbr title="Admin">Admin</abbr></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for data in users %}
                     <tr>
                     <th>{{loop.index}}</th>
-                    <th><input name="data" type="checkbox" value="{{ data.id }}"/></th>                       
+                    <th><a href="../edit_user_admin_view"><button class="button is-link is-rounded is-outlined"> Edit</button></a></th>
                     <td>{{data.user_role}}</td>  
                     <td>{{data.department}}</td>               
                     <td>{{data.fname}}</td>
@@ -75,15 +63,14 @@
                     <td>{{data.email}}</td>
                     <td>{{data.admin}}</td>
                     </tr>
-                    {% endfor %}
-                </tbody>
+                {% endfor %}
+            </tbody>
 
-            </table>
-        </div>
-    </section>
+        </table>
+    </div>
+</section>
 
         
-</body>
 
 
 {% endblock %}

@@ -2,7 +2,7 @@
 from flask import flash, render_template, request, redirect, url_for, request, jsonify, current_app, g
 from flask_login import current_user, login_required
 from app import db
-from app.main.forms import ProjectSearchForm, ProjectSubmissionForm, editProfileForm, editProjectForm, UserSearchForm
+from app.main.forms import ProjectSearchForm, ProjectSubmissionForm, editProfileForm, editProjectForm, UserSearchForm, editUserAdminViewForm
 from app.main import bp
 from app.models import User, Project, Goals, Members
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -125,6 +125,26 @@ def events():
 @bp.route('/admin_view')
 def admin_view():
 	return render_template('admin_view.html')
+
+@bp.route('/edit_user_admin_view')
+def edit_user_admin_view():
+    form = editUserAdminViewForm()
+    if form.validate_on_submit():
+        current_user.fname = form.fname.data
+        current_user.lname = form.lname.data
+        current_user.major = form.major.data
+        current_user.minor = form.minor.data
+        current_user.bio = form.about.data
+        db.session.commit()
+        flash('Your changes have been saved.')
+        return redirect(url_for('main.profile', username=current_user.username))
+    elif request.method == 'GET':
+        form.fname.data = current_user.fname
+        form.lname.data = current_user.lname
+        form.major.data = current_user.major
+        form.minor.data = current_user.minor
+        form.about.data = current_user.bio
+    return render_template('edit_profile.html', title='Edit Profile', form=form)
     
 @bp.route('/users_admin_view', methods=['GET', 'POST'])
 def users_admin_view():
@@ -142,7 +162,7 @@ def users_search_results(search):
     search_string = search.data['search']
  
     if search.data['search'] == '':
-        qry = Users.query.all()
+        qry = User.query.all()
         results = qry
  
     if not results:
@@ -152,9 +172,9 @@ def users_search_results(search):
         table = Results(results)
         return render_template('users_admin_view.html', form=search, table=table)
 
-@bp.route('/users_admin_view/<int:user_id>/delete/', methods = ['GET','POST'])
-def deleteUser(user_id):
-    search = UserSearchForm(request.form)
+@bp.route('/users_admin_view/<int:user_id>/edit/', methods = ['GET','POST'])
+def editUser(user_id):
+    form = editProfileForm()
     userToDelete = db.session.query(User).filter_by(id=id().one)
 
 
@@ -171,6 +191,16 @@ def deleteUser(user_id):
    #     return redirect(url_for('users_admin_view.html', user_id=id))
    # else:
    #     return render_template('users_adminv_view.html',user=userToDelete)
+
+@bp.route('/users_admin_view/<int:user_id>/delete/', methods = ['GET','POST'])
+def deleteUser(user_id):
+	form = editProfileForm()
+	userToDelete = db.session.query(User).filter_by(id=id().one)
+
+	if request.method == 'POST':
+		db.session.delete(userToDelete)
+		db.session.commit()
+		return redirect(url_for('users_admin_view', id=id))
 
 @bp.route('/goal/<goal>')
 def goal(goal):

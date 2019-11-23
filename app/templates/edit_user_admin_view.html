@@ -1,0 +1,45 @@
+{% extends "cleanbase.html" %}
+
+{% block head %}	{{ super() }}	{% endblock %}
+
+{% block Nav %}	{{ super() }}	{% endblock %}
+{% block content %}
+<center>
+    <div class="columns is-mobile is-centered">
+        <div class="column is-half">
+            <div class="tile is-5 has-text-centered">
+                <div class="tile is-parent has-text-centered">
+                    <article class="tile is-child box">
+                        <div class="title">
+                            <h1>Edit Profile</h1>
+                        </div>
+                        <div class="field">
+                            <div class="label is-normal">
+                                <label class="label" for="fname">First name</label>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="label is-normal">
+                                <label class="label" for="lname">Last name</label>
+                            </div> 
+                        </div>
+                        <div class="field">
+                            <div class="label is-normal">
+                                <label class="label" for="major">Functions</label>
+                            </div>
+                           <!-- <p class="title is-size-3 has-text-centered">{{user.fname}} {{user.lname}}</p>-->
+                        </div>
+                        <div class="buttons">
+                            <button class="button is-link is-rounded is-outlined"> Make Administrator</button>
+                            <button class="button is-danger is-rounded is-outlined"> Delete account</button>
+                        </div>
+                                
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</center>
+
+
+{% endblock %}
