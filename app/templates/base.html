@@ -55,7 +55,9 @@
                         <li ><a href="{{ url_for('main.goals') }}"><span class="icon is-small is-left"><ion-icon name="medal"></ion-icon></span> Goals</a></li>
 						<li><a href="{{ url_for('main.projects') }}"><span class="icon is-small is-left"><ion-icon name="analytics"></ion-icon></span> Projects</a></li>
 						<li><a href="{{ url_for('main.events') }}"><span class="icon is-small is-left"><ion-icon name="aperture"></ion-icon></span> Opportunities</a></li>
+                        {% if current_user.admin == True %}
 						<li><a href="{{ url_for('main.admin_view') }}"><span class="icon is-small is-left"><ion-icon name="briefcase"></ion-icon></span> Administrator</a></li>
+                        {% endif %}
                         {% if current_user.is_authenticated %}
 						<li><a href="{{ url_for('main.profile', username=current_user.username) }}"><span class="icon is-small is-left"><ion-icon name="person"></ion-icon></span> My Profile</a></li>
 						{% endif %}
