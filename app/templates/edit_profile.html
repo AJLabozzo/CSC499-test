@@ -7,73 +7,73 @@
 <center>
     <div class="columns is-mobile is-centered">
       <div class="column is-half">
-            <div class="tile is-5 has-text-centered">
-                <div class="tile is-parent has-text-centered">
-                  <article class="tile is-child box">
-                    <div class="title">
-                      <h1>Edit Profile</h1>
-                    </div>
-                      <form action="" method="post">
-                      {{ form.hidden_tag() }}
-                      <div class="field">
-                          <div class="label is-normal">
-                              <label class="label" for="fname">First name</label>
-                          </div>
-                          <p class="control">
-                            <input class="input" type="text" id="fname" name="fname" {{ form.fname }} 
-                          </p>
-                      </div>
-                      <div class="field">
-                          <div class="label is-normal">
-                              <label class="label" for="lname">Last name</label>
-                              {% for error in form.lname.errors %}
-            `                   <span style="color: red;">[{{ error }}]</span>
-                                {% endfor %} 
-                          </div>
-                        <p class="control">
-                          <input class="input" type="text" id="lname" name="lname" {{ form.lname }}
-                        </p>
-                         
-                    </div>
-                    <div class="field">
-                        <div class="label is-normal">
-                            <label class="label" for="major">Major</label>
-                        </div>
-                        <p class="control">
-                          <input class="input" type="text" id="major" name="major" {{ form.major }} 
-                        </p>
-                    </div>
-                    <div class="field">
-                        <div class="label is-normal">
-                            <label class="label" for="minor">Minor</label>
-                        </div>
-                        <p class="control">
-                          <input class="input" type="text" id="minor" name="minor" {{ form.minor }} 
-                        </p>
-                    </div>
-                    <div class="field">
-                        <div class="label is-normal">
-                          <label class="label" for="about">About</label>
-                        </div>
-                        <div class="field-body">
-                          <div class="field">
-                            <div class="control">
-                              <textarea class="textarea" maxlength="500" id="about" name="about" placeholder="Tell us about yourself" {{ form.about}}</textarea>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                    <br>
-                    <button type="submit" class="button is-primary">
-                        Submit
-                    </button>
-                      </form>      
-                  </article>
+        <div class="tile is-5 has-text-centered">
+          <div class="tile is-parent has-text-centered">
+            <article class="tile is-child box">
+              <div class="title">
+                <h1>Edit Profile</h1>
               </div>
-            </div>
+                  <form action="" method="post">
+                  {{ form.hidden_tag() }}
+                  <div class="field">
+                      <div class="label is-normal">
+                          <label class="label" for="fname">First name</label>
+                      </div>
+                      <p class="control">
+                        <input class="input" type="text" id="fname" name="fname" {{ form.fname }} 
+                      </p>
+                  </div>
+                  <div class="field">
+                      <div class="label is-normal">
+                          <label class="label" for="lname">Last name</label>
+                          {% for error in form.lname.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %} 
+                      </div>
+                    <p class="control">
+                      <input class="input" type="text" id="lname" name="lname" {{ form.lname }}
+                    </p>
+                      
+                </div>
+                <div class="field">
+                    <div class="label is-normal">
+                        <label class="label" for="major">Major</label>
+                    </div>
+                    <p class="control">
+                      <input class="input" type="text" id="major" name="major" {{ form.major }} 
+                    </p>
+                </div>
+                <div class="field">
+                    <div class="label is-normal">
+                        <label class="label" for="minor">Minor</label>
+                    </div>
+                    <p class="control">
+                      <input class="input" type="text" id="minor" name="minor" {{ form.minor }} 
+                    </p>
+                </div>
+                <div class="field">
+                    <div class="label is-normal">
+                      <label class="label" for="about">About</label>
+                    </div>
+                    <div class="field-body">
+                      <div class="field">
+                        <div class="control">
+                          <textarea class="textarea" maxlength="500" id="about" name="about" placeholder="Tell us about yourself" {{ form.about}}</textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                <br>
+                <button type="submit" class="button is-primary">
+                    Submit
+                </button>
+              </form>      
+          </article>
+        </div>
       </div>
     </div>
+  </div>
 </center>
 
 

@@ -95,3 +95,10 @@ class UserSearchForm(FlaskForm):
         
     select = SelectField('', choices=choices)
     search = StringField('')
+
+class editUserAdminViewForm(FlaskForm):
+    username = StringField('last name', validators=[Length(max=64)])
+    admin = BooleanField('')
+    delete = BooleanField('')
+    delete2 = StringField('', validators=[Length(max=64)])
+    submit	= SubmitField('Submit')
