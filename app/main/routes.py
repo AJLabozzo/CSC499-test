@@ -90,21 +90,6 @@ def projects():
 	return render_template('projects.html', form=search, projects=projects)
     
 
-def search_results(search):
-    results = []
-    search_string = search.data['search']
- 
-    if search.data['search'] == '':
-        qry = Project.query.all()
-        results = qry
- 
-    if not results:
-        flash('No results found!')
-        return redirect('/projects')
-    else:
-        table = Results(results)
-        return render_template('projects.html', form=search, table=table)
-
 @bp.route('/myprojects', methods=['GET', 'POST'])
 @login_required
 def myprojects():
