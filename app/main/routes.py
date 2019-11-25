@@ -123,31 +123,106 @@ def events():
 
 
 @bp.route('/admin_view')
+@login_required
 def admin_view():
-	return render_template('admin_view.html')
+    if current_user.admin == False:
+	    return redirect(url_for('main.landing'))
+    search = ProjectSearchForm(request.form)
+    projects=[]
 
-@bp.route('/edit_user_admin_view')
-def edit_user_admin_view():
+    if request.method == 'Post':
+	    return render_template('projects.html')
+
+    allprojects = Project.query.all()
+    for data in allprojects:
+        goals = Goals.query.filter_by(project_id=data.projectname).first()
+        
+        goalslist=[]
+        if goals is not None:
+            if goals.g1==True:
+                goalslist.append('No Poverty')
+            if goals.g2==True:
+                goalslist.append('Zero Hunger')
+            if goals.g3==True:
+                goalslist.append('Good Health & Well-Being')
+            if goals.g4==True:
+                goalslist.append('Quality Education')
+            if goals.g5==True:
+                goalslist.append('Gender Equality')
+            if goals.g6==True:
+                goalslist.append('Clean Water & Sanitation')
+            if goals.g7==True:
+                goalslist.append('Affordable & Clean Energy')
+            if goals.g8==True:
+                goalslist.append('Decent Work & Economic Growth')
+            if goals.g9==True:
+                goalslist.append('Industry, Innovation, and Infrastructure')
+            if goals.g10==True:
+                goalslist.append('Reduced Inequalities')
+            if goals.g11==True:
+                goalslist.append('Sustainable Cities and Communities')
+            if goals.g12==True:
+                goalslist.append('Responsible Consumption and Production')
+            if goals.g13==True:
+                goalslist.append('Climate Action')
+            if goals.g14==True:
+                goalslist.append('Life Below Water')
+            if goals.g15==True:
+                goalslist.append('Life on Land')
+            if goals.g16==True:
+                goalslist.append('Peace & Justice Strong Institutions')
+            if goals.g17==True:
+                goalslist.append('Partnerships for the Goals')
+                
+        
+        memberslist = []
+        allmembers = Members.query.filter_by(project=data.projectname).all()
+        for member in allmembers:
+            memberslist.append(member.member)   
+            
+        if data.progress == False:
+            currentstate = "In progress"
+        else: 
+            currentstate = "Completed"
+        
+        project = dict(projectname=data.projectname,department=data.department,username=User.query.get(data.user_id).username,goals=goalslist, status=currentstate,body=data.body,projectmembers=memberslist)
+        projects.append(project)
+
+    return render_template('admin_view.html', form=search, projects=projects)
+
+
+@bp.route('/edit_user_settings/<user_id>/edit/', methods = ['GET','POST'])
+@login_required
+def edit_user_settings(user_id):
+    if current_user.admin == False:
+	    return redirect(url_for('main.landing'))
     form = editUserAdminViewForm()
-    if form.validate_on_submit():
-        current_user.fname = form.fname.data
-        current_user.lname = form.lname.data
-        current_user.major = form.major.data
-        current_user.minor = form.minor.data
-        current_user.bio = form.about.data
-        db.session.commit()
-        flash('Your changes have been saved.')
-        return redirect(url_for('main.profile', username=current_user.username))
+    user = User.query.filter_by(username=user_id).first()
+
+    if request.method == 'POST':
+	    if form.delete.data and form.delete2.data == user.username:
+		    db.session.delete(user)
+		
+	    if form.admin.data:
+		    user.admin = form.admin.data
+	    else:
+		    user.admin = False
+
+	    db.session.commit()
+	    flash('Your changes have been saved.')
+	    return redirect(url_for('main.users_admin_view'))
+
     elif request.method == 'GET':
-        form.fname.data = current_user.fname
-        form.lname.data = current_user.lname
-        form.major.data = current_user.major
-        form.minor.data = current_user.minor
-        form.about.data = current_user.bio
-    return render_template('edit_profile.html', title='Edit Profile', form=form)
-    
+	    form.admin.data = user.admin
+    return render_template('edit_user_settings.html', form=form, user=user)
+	
+
 @bp.route('/users_admin_view', methods=['GET', 'POST'])
+@login_required
 def users_admin_view():
+    if current_user.admin == False:
+	    return redirect(url_for('main.landing'))
+ 	
     users=[]
     allusers = User.query.all()
     
@@ -172,35 +247,6 @@ def users_search_results(search):
         table = Results(results)
         return render_template('users_admin_view.html', form=search, table=table)
 
-@bp.route('/users_admin_view/<int:user_id>/edit/', methods = ['GET','POST'])
-def editUser(user_id):
-    form = editProfileForm()
-    userToDelete = db.session.query(User).filter_by(id=id().one)
-
-
-    if request.method == "POST":
-        if request.form["id"]:
-            User.query.filter(User.id.in_(request.form["id"])).delete()
-            db.session.commit()
-
-        return redirect(url_for('users_admin_view.html', user_id=id))
-
-   # if request.method == 'POST':
-   #     db.session.delete(userToDelete)
-   #     db.session.commit() 
-   #     return redirect(url_for('users_admin_view.html', user_id=id))
-   # else:
-   #     return render_template('users_adminv_view.html',user=userToDelete)
-
-@bp.route('/users_admin_view/<int:user_id>/delete/', methods = ['GET','POST'])
-def deleteUser(user_id):
-	form = editProfileForm()
-	userToDelete = db.session.query(User).filter_by(id=id().one)
-
-	if request.method == 'POST':
-		db.session.delete(userToDelete)
-		db.session.commit()
-		return redirect(url_for('users_admin_view', id=id))
 
 @bp.route('/goal/<goal>')
 def goal(goal):
@@ -595,7 +641,10 @@ def editProject(name):
 		db.session.commit()
         
 		flash('Your changes have been saved.')
-		return redirect(url_for('main.profile', username=current_user.username))
+		if current_user.admin == True:
+			return redirect(url_for('main.admin_view'))
+		else:
+		    return redirect(url_for('main.myprojects'))
 	elif request.method == 'GET':
 		form.projectname.data = project.projectname
 		form.body.data = project.body
@@ -626,3 +675,7 @@ def edit_profile():
         form.about.data = current_user.bio
     return render_template('edit_profile.html', title='Edit Profile',
                            form=form)
+
+@bp.route('/opportunities_admin_view')
+def opportunities_admin_view():
+	return render_template('opportunities_admin_view.html')

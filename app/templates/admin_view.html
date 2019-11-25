@@ -12,19 +12,19 @@
             <div class="tabs is-centered is-boxed is-medium is-fullwidth">
                 <ul>
                     <li class="is-active">
-                    <a href="../projects">
+                    <a href="{{ url_for('main.admin_view') }}">
                         <span class="icon is-small"><ion-icon name="analytics"></ion-icon></span>
                         <span>Projects</span>
                     </a>
                     </li>
                     <li>
-                    <a href="../users_admin_view">
+                    <a href="{{ url_for('main.users_admin_view') }}">
                         <span class="icon is-small"><ion-icon name="people"></ion-icon></span>
                         <span>Users</span>
                     </a>
                     </li>
                     <li>
-                    <a href="#">
+                    <a href="{{ url_for('main.opportunities_admin_view') }}">
                         <span class="icon is-small"><ion-icon name="aperture"></ion-icon></span>                        
                         <span>Opportunities</span>
                     </a>
@@ -32,7 +32,67 @@
                 </ul>
             </div>
         </div>
-    </div>
+    </div>                
+                
+    <div class="field is-horizontal is-grouped">
+        <div class="field has-addons">
+            <div class="control">
+            <input class="input is-info" type="text" placeholder="Find a project">
+            </div>
+            <div class="control">
+            <a class="button is-info">
+                Search
+            </a>
+            </div>
+        </div>
+    </div>           
+        
+                
+            <div><table class="table is-hoverable">
+          <thead>
+            <tr>
+              <th><abbr title="Position">#</abbr></th>
+              <th><abbr title="Position"></abbr></th>
+              <th><abbr title="Project">Project</abbr></th>
+              <th><abbr title="Department">Department</abbr></th>
+              <th><abbr title="Author">Author</abbr></th>
+              <th><abbr title="Goals">SustainabilityGoals</abbr></th>
+              <th><abbr title="Status">Status</abbr></th>
+              <th><abbr title="Description">Description</abbr></th>
+              <th><abbr title="Project Members">Project Members</abbr></th>
+            </tr>
+          </thead>
+          
+                
+          <tbody>
+              {% for data in projects %}
+            <tr>
+              <th>{{loop.index}}</th>
+              <th><a href="{{ url_for('main.editProject', name=data.projectname) }}"><button class="button is-link is-rounded is-outlined"> Edit</button></a></th>
+              <td>{{data.projectname}}</td>
+              <td>{{data.department}}</td>
+              <td><a href="{{ url_for('main.profile', username=data.username) }}">{{data.username}}</a></td>
+              <td>
+                  {%for goal in data.goals %}
+                  <a href="{{ url_for('main.goal', goal=goal) }}">{{goal}}</a><br>
+                  {% endfor %}
+              </td>
+              <td>{{data.status}}</td>
+              <td>{{data.body}}</td>
+              <td>
+                  {% for user in data.projectmembers%}
+                  <a href="{{ url_for('main.profile', username=user) }}">{{user}}</a><br>
+                  {% endfor %}
+              </td>
+              <td></td>
+              </tr>
+              {% endfor %}
+          </tbody>
+        </table>
+        </div>
+        
+        
 </section>
+
 
 {% endblock %}

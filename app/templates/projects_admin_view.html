@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+
+{% block head %}	{{ super() }}	{% endblock %}
+
+{% block Nav %}	{{ super() }}	{% endblock %}
+
+{% block content %}
+<section class="section">
+    <h1 class="title">Project Search Page</h1>
+        
+        
+    <div class="field is-horizontal is-grouped">
+        <div class="field has-addons">
+          <div class="control">
+            <input class="input is-info" type="text" placeholder="Find a project">
+          </div>
+          <div class="control">
+            <a class="button is-info">
+              Search
+            </a>
+          </div>
+        </div>
+    </div>           
+        
+        
+    <div><table class="table is-hoverable">
+  <thead>
+    <tr>
+      <th><abbr title="Position">#</abbr></th>
+      <th><abbr title="edit"></abbr></th>
+      <th><abbr title="Project">Project</abbr></th>
+      <th><abbr title="Department">Department</abbr></th>
+      <th><abbr title="Author">Author</abbr></th>
+      <th><abbr title="Goals">SustainabilityGoals</abbr></th>
+      <th><abbr title="Status">Status</abbr></th>
+      <th><abbr title="Description">Description</abbr></th>
+      <th><abbr title="Project Members">Project Members</abbr></th>
+    </tr>
+  </thead>
+  <tfoot>
+    <tr>
+    </tr>
+  </tfoot>
+        
+  <tbody>
+      {% for data in projects %}
+    <tr>
+      <th>{{loop.index}}</th>
+      <th><a href="{{ url_for('main.editProject', name=data.projectname) }}"><button class="button is-link is-rounded is-outlined"> Edit</button></a></th>
+      <td>{{data.projectname}}</td>
+      <td>{{data.department}}</td>
+      <td><a href="{{ url_for('main.profile', username=data.username) }}">{{data.username}}</a></td>
+      <td>
+          {%for goal in data.goals %}
+          <a href="{{ url_for('main.goal', goal=goal) }}">{{goal}}</a><br>
+          {% endfor %}
+      </td>
+      <td>{{data.status}}</td>
+      <td>{{data.body}}</td>
+      <td>
+          {% for user in data.projectmembers%}
+          <a href="{{ url_for('main.profile', username=user) }}">{{user}}</a><br>
+          {% endfor %}
+      </td>
+      <td></td>
+      </tr>
+      {% endfor %}
+  </tbody>
+</table>
+</div>
+
+</section>      
+
+{% endblock %}

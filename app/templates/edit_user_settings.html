@@ -1,0 +1,65 @@
+{% extends "cleanbase.html" %}
+
+{% block head %}	{{ super() }}	{% endblock %}
+
+{% block Nav %}	{{ super() }}	{% endblock %}
+{% block content %}
+<center>
+    <div class="columns is-mobile is-centered">
+        <div class="column is-half">
+            <div class="tile is-5 has-text-centered">
+                <div class="tile is-parent has-text-centered">
+                    <article class="tile is-child box">
+                        <div class="title">
+                            <h1>Edit User Settings</h1>
+                        </div>
+                        <form action="", method="post" role = "form">
+                        {{ form.hidden_tag() }}
+                        <div class="label is-normal">
+                            <label class="label">Username</label>
+                        </div>
+                            <p id="username" name="username">{{ user.username }}</p>
+                        <div class="label is-normal">
+                            <label class="label">Functions:</label>
+                        </div>
+                        <label class="checkbox">
+                            Make Administrator 
+                            {%if user.admin %}
+                            <input type="checkbox" name="admin" checked> 
+                            {% else %}
+                            <input type="checkbox" name="admin"> 
+                            {%endif%}
+                        </label>
+                        <br>
+                        <label class="checkbox">
+                                Delete User 
+                                <input type="checkbox" name="delete"> 
+                        </label>
+                        <div class="field">
+                                <div class="label is-normal">
+                                    <label class="label" for="delete2">To verify deletion enter account username</label>
+                                </div>
+                                <p class="control">
+                                  <input class="input" type="text" id="delete2" name="delete2">
+                                </p>
+                            </div>
+                        <br>
+                        <br>
+                            
+                            <button type="submit" class="button is-success is-rounded is-outlined">
+                              Save changes
+                            </button>
+                        </form> 
+                        <a href="{{url_for('main.users_admin_view')}}">
+                            <button type="submit" class="button is-link is-rounded is-outlined is-small">Cancel</button>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</center>
+
+
+
+{% endblock %}

@@ -7,15 +7,15 @@
         <div class="column">
             <div class="tabs is-centered is-boxed is-medium is-fullwidth">
                 <ul>
-                    <li><a href="../projects">
+                    <li><a href="{{ url_for('main.admin_view') }}">
                         <span class="icon is-small"><ion-icon name="analytics"></ion-icon></span>
                         <span>Projects</span>
                     </a></li>
-                    <li class="is-active"><a href="../users_admin_view">
+                    <li class="is-active"><a href="{{ url_for('main.users_admin_view') }}">
                         <span class="icon is-small"><ion-icon name="people"></ion-icon></span>
                         <span>Users</span>
                     </a></li>
-                    <li><a href="#">
+                    <li><a href="{{ url_for('main.opportunities_admin_view') }}">
                         <span class="icon is-small"><ion-icon name="aperture"></ion-icon></span>                        
                         <span>Opportunities</span>
                     </a></li>
@@ -54,12 +54,12 @@
                 {% for data in users %}
                     <tr>
                     <th>{{loop.index}}</th>
-                    <th><a href="../edit_user_admin_view"><button class="button is-link is-rounded is-outlined"> Edit</button></a></th>
+                    <th><a href="{{ url_for('main.edit_user_settings', user_id=data.username) }}"><button class="button is-link is-rounded is-outlined"> Edit</button></a></th>
                     <td>{{data.user_role}}</td>  
                     <td>{{data.department}}</td>               
                     <td>{{data.fname}}</td>
                     <td>{{data.lname}}</td>
-                    <td>{{data.username}}</td>
+                    <td><a href="{{ url_for('main.profile', username=data.username) }}">{{data.username}}</a></td>
                     <td>{{data.email}}</td>
                     <td>{{data.admin}}</td>
                     </tr>

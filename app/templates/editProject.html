@@ -19,7 +19,7 @@
                     <p class="control is-expanded">
                       <input  class="input" type="text" id="projectname" name="projectname" placeholder="Project name" {{form.projectname}}
                         {% for error in form.projectname.errors %}
-            `           <span style="color: red;">[{{ error }}]</span>
+                       <span style="color: red;">[{{ error }}]</span>
                         {% endfor %}
                     </p>
                   </div>
@@ -227,7 +227,7 @@
                             <input class="input" id="member" name="member" placeholder="Enter a Username" {{form.member}}
                             {% endif %}
                             {% for error in form.member.errors %}
-            `               <span style="color: red;">[{{ error }}]</span>
+                           <span style="color: red;">[{{ error }}]</span>
                             {% endfor %}
                         </div>
                       </div>
