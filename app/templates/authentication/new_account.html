@@ -15,6 +15,7 @@
             <form action="", method="post" role = "form">
             {{ form.hidden_tag() }}
             <main>
+                <!--
                 <div class="container">
                 <div class="field">
                     <div class="label">
@@ -36,9 +37,29 @@
                                 <input type="radio" name="user_role" value="Staff">
                                 Staff
                             </label>
+                            <label class="radio">
+                                <input type="radio" name="user_role" value="Admin">
+                                Administrator
+                            </label>
+                            {% for error in form.user_role.errors %}
+                            <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
                         </div> 
                         </div>
                     </div>
+                </div>
+                -->   
+                    
+                <div class="field">
+                <div class="field">
+                    <div class="label">
+                        <label class="label has-text-white" for="user_role">I'm a...</label>
+                    </div>
+                  <div class="control">
+                    <div class="select is-info">
+                      {{form.user_role}}  
+                    </div>
+                  </div>
                 </div>
                 
                 <div class="field">
@@ -68,13 +89,11 @@
                                 {% for error in form.email.errors %}
                                 <span style="color: red;">[{{ error }}]</span>
                                 {% endfor %} 
-                                <span class="icon is-small is-left">
-                                    <i class="fas fa-envelope"></i>
-                                </span>
                             </p>
                         </div>
                     </div>
-                </div> 
+                </div>
+                
 
                 <div class="field">
                     <div class="label is-normal">
@@ -87,9 +106,6 @@
                             {% for error in form.password.errors %}
                             <span style="color: red;">[{{ error }}]</span>
                             {% endfor %} 
-                            <span class="icon is-small is-left">
-                                <i class="fas fa-lock"></i>
-                            </span>
                         </p>
                         </div>
                     </div>
@@ -109,7 +125,26 @@
                         </p>
                         </div>
                     </div>
-                </div> 
+                </div>
+                    
+                <div class="field">
+                    <div class="label is-normal">
+                        <label class="label  has-text-white" for="adminpass">Admin Credentials</label>
+                    </div>
+                    <div class="field-body">
+                        <div class="field">
+                            <p class="control is-expanded">
+                                <input class="input" id="adminpass" name ="adminpass" type="password" placeholder="If creating admin account">
+                                {% for error in form.adminpass.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %} 
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                    
+                {{ message }}    
+                    
                 <br>
                 <div class="field">
                         <div class="control">

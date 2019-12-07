@@ -62,7 +62,8 @@
                     <p>Goals:{%for goal in data.goals %}
                         <a href="{{ url_for('main.goal', goal=goal) }}">{{goal}}</a><br>
                         {% endfor %}</p>
-                    <p>ProjectMembers:{% for user in data.projectmembers%}
+                    <p>ProjectMembers:
+                        {% for user in data.projectmembers%}
                         <a href="{{ url_for('main.profile', username=user) }}">{{user}}</a><br>
                         {% endfor %}</p>
                     <!--<progress class="progress is-small is-primary" value="15" max="100">15%</progress>-->

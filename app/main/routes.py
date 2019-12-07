@@ -34,7 +34,7 @@ def projects():
 
 	allprojects = Project.query.all()
 	for data in allprojects:
-		goals = Goals.query.filter_by(project_id=data.projectname).first()
+		goals = Goals.query.filter_by(project_id=data.id).first()
 		
 		goalslist=[]
 		if goals is not None:
@@ -120,7 +120,7 @@ def admin_view():
 
     allprojects = Project.query.all()
     for data in allprojects:
-        goals = Goals.query.filter_by(project_id=data.projectname).first()
+        goals = Goals.query.filter_by(project_id=data.id).first()
         
         goalslist=[]
         if goals is not None:
@@ -277,8 +277,8 @@ def goal(goal):
 	allprojects = []
 	for data in projectsbygoal:
 		
-		currentproject = Project.query.filter_by(projectname = data.project_id).first()
-		goals = Goals.query.filter_by(project_id=currentproject.projectname).first()
+		currentproject = Project.query.filter_by(id = data.project_id).first()
+		goals = Goals.query.filter_by(project_id=currentproject.id).first()
 
 		goalslist=[]
 		if goals is not None:
@@ -348,7 +348,7 @@ def profile(username):
     
 	for data in allprojects:
 		goalslist=[]
-		goals = Goals.query.filter_by(project_id=data.projectname).first()
+		goals = Goals.query.filter_by(project_id=data.id).first()
 		if goals is not None:
 			if goals.g1==True:
 				goalslist.append('No Poverty')
@@ -449,7 +449,9 @@ def submission_form():
 	if form.validate_on_submit():
 		project = Project(projectname = form.projectname.data, body = form.body.data, user_id = current_user.id, department=form.department.data)
 		db.session.add(project)
-		
+		db.session.commit()
+        
+		project = Project.query.filter_by(projectname=form.projectname.data).first()
 		if form.g1.data:
 			g1 = True
 		else:
@@ -518,12 +520,14 @@ def submission_form():
 			g17 = True
 		else:
 			g17 = False
-		goals = Goals(project_id=form.projectname.data,g1=g1,g2=g2,g3=g3,g4=g4,g5=g5,g6=g6,g7=g7,g8=g8,g9=g9,g10=g10,g11=g11,g12=g12,g13=g13,g14=g14,g15=g15,g16=g16,g17=g17)
+		goals = Goals(project_id=project.id,g1=g1,g2=g2,g3=g3,g4=g4,g5=g5,g6=g6,g7=g7,g8=g8,g9=g9,g10=g10,g11=g11,g12=g12,g13=g13,g14=g14,g15=g15,g16=g16,g17=g17)
 		db.session.add(goals)
         
+        
 		projectMembers = form.member.data
-		member = Members(member=projectMembers, project=form.projectname.data)
-		db.session.add(member)
+		if projectMembers:
+			member = Members(member=projectMembers, project=form.projectname.data)
+			db.session.add(member)
         
         
 		db.session.commit()
@@ -536,7 +540,7 @@ def editProject(name):
 	form = editProjectForm()
 	project = Project.query.filter_by(projectname=name).first()
 	member = Members.query.filter_by(project=name).first()
-	goals = Goals.query.filter_by(project_id=name).first()
+	goals = Goals.query.filter_by(project_id=project.id).first()
     
 	if not current_user.id == project.user_id and current_user.admin==False:
 		return redirect(url_for('main.landing'))
@@ -549,6 +553,7 @@ def editProject(name):
 				project.projectname = form.projectname.data
 		project.body = form.body.data
 		project.department = form.body.data
+        
         
 		if form.g1.data:
 			goals.g1 = form.g1.data
@@ -616,13 +621,19 @@ def editProject(name):
 			goals.g17 = form.g17.data
 		else:
 			goals.g17 = False
-		member.member = form.member.data
+            
+		if form.member.data:
+			member.member = form.member.data
         
 		if form.status.data:
 			project.progress = True
 		else:
 			project.progress = False
 
+		db.session.commit()
+        
+		if form.delete.data and form.delete2.data == project.projectname:
+			db.session.delete(project)
 		db.session.commit()
         
 		flash('Your changes have been saved.')

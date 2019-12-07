@@ -43,40 +43,46 @@ class ProjectSubmissionForm(FlaskForm):
             raise ValidationError('Please use a different title.')
     
     def validate_member(self, member):
-        user = User.query.filter_by(username=member.data).first()
-        if user is None:
-            raise ValidationError('User does not exist.')
+        newString = member.data.strip()
+        if newString:
+            user = User.query.filter_by(username=newString).first()
+            if user is None:
+                raise ValidationError('User does not exist.')
 
 class editProjectForm(FlaskForm):
-    projectname = StringField('',validators=[Length(max=64)])
-    body = TextAreaField('',validators=[Length(max=500)])
-    department = StringField('',validators=[Length(max=64)])
-    g1 = BooleanField('')
-    g2 = BooleanField('')
-    g3 = BooleanField('')
-    g4 = BooleanField('')
-    g5 = BooleanField('')
-    g6 = BooleanField('')
-    g7 = BooleanField('')
-    g8 = BooleanField('')
-    g9 = BooleanField('')
-    g10 = BooleanField('')
-    g11 = BooleanField('')
-    g12 = BooleanField('')
-    g13 = BooleanField('')
-    g14 = BooleanField('')
-    g15 = BooleanField('')
-    g16 = BooleanField('')
-    g17 = BooleanField('')
-    member = StringField('',validators=[Length(max=64)])
-    status = BooleanField('')
-    submit = SubmitField('Submit')
+	projectname = StringField('',validators=[Length(max=64)])
+	body = TextAreaField('',validators=[Length(max=500)])
+	department = StringField('',validators=[Length(max=64)])
+	g1 = BooleanField('')
+	g2 = BooleanField('')
+	g3 = BooleanField('')
+	g4 = BooleanField('')
+	g5 = BooleanField('')
+	g6 = BooleanField('')
+	g7 = BooleanField('')
+	g8 = BooleanField('')
+	g9 = BooleanField('')
+	g10 = BooleanField('')
+	g11 = BooleanField('')
+	g12 = BooleanField('')
+	g13 = BooleanField('')
+	g14 = BooleanField('')
+	g15 = BooleanField('')
+	g16 = BooleanField('')
+	g17 = BooleanField('')
+	member = StringField('',validators=[Length(max=64)])
+	status = BooleanField('')
+	delete = BooleanField('')
+	delete2 = StringField('', validators=[Length(max=64)])
+	submit = SubmitField('Submit')
     
     
-    def validate_member(self, member):
-        user = User.query.filter_by(username=member.data).first()
-        if user is None:
-            raise ValidationError('User does not exist.')
+	def validate_member(self, member):
+		newString = member.data.strip()
+		if newString:
+			user = User.query.filter_by(username=newString).first()
+			if user is None:
+				raise ValidationError('User does not exist.')
     
 class editProfileForm(FlaskForm):
 	fname = StringField('first name', validators=[Length(max=64)])
