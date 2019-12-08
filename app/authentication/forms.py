@@ -9,22 +9,33 @@ class LoginForm(FlaskForm):
     remember_me = BooleanField('Remember Me')
     submit = SubmitField('Sign In')
     
-class SignupForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired(),Length(max=64)])
-    email = StringField('Email', validators=[DataRequired(), Email(),Length(max=120)])
-    password = PasswordField('Password', validators=[DataRequired(),Length(max=128)])
-    password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')]) 
-    submit = SubmitField('Register')
-    
     def validate_username(self, username):
         user = User.query.filter_by(username=username.data).first()
-        if user is not None:
-            raise ValidationError('Please use a different username.')
+        if user is None:
+            raise ValidationError('Username does not exist.')
+    
+    
+class SignupForm(FlaskForm):
+	username = StringField('Username', validators=[DataRequired(),Length(max=64)])
+	email = StringField('Email', validators=[DataRequired(), Email(),Length(max=120)])
+	user_role = SelectField('User Role',choices=[('Sudent', 'Sudent'), 
+												 ('Faculty', 'Faculty'), 
+												 ('Staff', 'Staff'), 
+												 ('Admin','Admin')])
+	password = PasswordField('Password', validators=[DataRequired(),Length(max=128)])
+	password2 = PasswordField('Repeat Password', validators=[DataRequired(), EqualTo('password')])
+	adminpass = PasswordField('Admin Credentials',validators=[Length(max=64)])
+	submit = SubmitField('Register')
 
-    def validate_email(self, email):
-        user = User.query.filter_by(email=email.data).first()
-        if user is not None:
-            raise ValidationError('Please use a different email address.')
+	def validate_username(self, username):
+		user = User.query.filter_by(username=username.data).first()
+		if user is not None:
+			raise ValidationError('Please use a different username.')
+
+	def validate_email(self, email):
+		user = User.query.filter_by(email=email.data).first()
+		if user is not None:
+			raise ValidationError('Please use a different email address.')
     
 class ResetPasswordRequestForm(FlaskForm):
     email = StringField('Email', validators=[DataRequired(), Email()])
@@ -41,4 +52,4 @@ class ResetPasswordForm(FlaskForm):
     password2 = PasswordField(
         'Repeat Password', validators=[DataRequired(),
                                            EqualTo('password')])
-    submit = SubmitField('Request Password Reset')
+    submit = SubmitField('Submit')

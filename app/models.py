@@ -67,7 +67,7 @@ class Members(db.Model):
 
 class Goals(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    project_id = db.Column(db.String(64), db.ForeignKey('project.projectname'), index=True, unique=True)
+    project_id = db.Column(db.Integer, db.ForeignKey('project.id'), index=True, unique=True)
     g1 = db.Column(db.Boolean, default=False)
     g2 = db.Column(db.Boolean, default=False)
     g3 = db.Column(db.Boolean, default=False)

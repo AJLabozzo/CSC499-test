@@ -1,5 +1,5 @@
 #all page routes for application
-from flask import flash, render_template, request, redirect, url_for
+from flask import flash, render_template, request, redirect, url_for, flash
 from flask_login import current_user, login_user, logout_user, login_required
 from app import db
 from app.authentication import bp
@@ -25,17 +25,23 @@ def login():
 
 @bp.route('/new_account', methods=['GET', 'POST'])
 def new_account():
-    if current_user.is_authenticated:
-        return redirect(url_for('main.landing'))
-    form = SignupForm()
-    if form.validate_on_submit():
-        user = User(username=form.username.data, email=form.email.data, user_role=request.form.get('user_role'))
-        user.set_password(form.password.data)
-        db.session.add(user)
-        db.session.commit()
-        flash('Congratulations, you are now a registered user!')
-        return redirect(url_for('authentication.login'))
-    return render_template('authentication/new_account.html', title='Sign-Up', form=form)
+	if current_user.is_authenticated:
+		return redirect(url_for('main.landing'))
+	form = SignupForm()
+	if form.validate_on_submit():
+		user = User(username=form.username.data, email=form.email.data, user_role=form.user_role.data)
+		user.set_password(form.password.data)
+		if form.user_role.data == 'Admin':
+			if form.adminpass.data == 'adminsrock123':
+				user.admin = True
+			else:
+				flash('Incorrect Admin Credentials')
+				return redirect(url_for('authentication.new_account'))
+		db.session.add(user)
+		db.session.commit()
+		flash('Congratulations, you are now a registered user!')
+		return redirect(url_for('authentication.login'))
+	return render_template('authentication/new_account.html', title='Sign-Up', form=form)
 
 @bp.route('/reset_pass_request', methods=['GET', 'POST'])
 def reset_pass_request():
