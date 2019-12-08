@@ -2,8 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, SelectField, TextAreaField, RadioField
 from wtforms.validators import DataRequired, Length, Email, ValidationError, EqualTo
 from app.models import User, Project
-
-
+from flask import request
 
 class ProjectSearchForm(FlaskForm):
     choices = [('Goal', 'Goal'),
@@ -102,3 +101,5 @@ class editUserAdminViewForm(FlaskForm):
     delete = BooleanField('')
     delete2 = StringField('', validators=[Length(max=64)])
     submit	= SubmitField('Submit')
+
+    

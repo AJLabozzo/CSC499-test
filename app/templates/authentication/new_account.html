@@ -47,11 +47,14 @@
                         </div>
                         <div class="field-body">
                             <div class="field">
-                            <p class="control">
+                            <p class="control is-expanded has-icons-left">
                                 <input class="input" id="username" name="username" type="text" placeholder="">
                                 {% for error in form.username.errors %}
                                 <span style="color: red;">[{{ error }}]</span>
                                 {% endfor %} 
+                                <span class="icon is-small is-left">
+                                    <ion-icon name="contact"></ion-icon>
+                                </span>
                             </p>
                             </div>
                         </div>
@@ -69,7 +72,7 @@
                                 <span style="color: red;">[{{ error }}]</span>
                                 {% endfor %} 
                                 <span class="icon is-small is-left">
-                                    <i class="fas fa-envelope"></i>
+                                    <ion-icon name="mail"></ion-icon>
                                 </span>
                             </p>
                         </div>
@@ -88,7 +91,7 @@
                             <span style="color: red;">[{{ error }}]</span>
                             {% endfor %} 
                             <span class="icon is-small is-left">
-                                <i class="fas fa-lock"></i>
+                                <ion-icon name="key"></ion-icon>
                             </span>
                         </p>
                         </div>
@@ -101,11 +104,14 @@
                     </div>
                     <div class="field-body">
                         <div class="field">
-                        <p class="control">
+                        <p class="control is-expanded has-icons-left">
                             <input class="input" id="password2" name="password2" type="password" placeholder="">
                             {% for error in form.password2.errors %}
                             <span style="color: red;">[{{ error }}]</span>
                             {% endfor %} 
+                            <span class="icon is-small is-left">
+                                <ion-icon name="key"></ion-icon>
+                            </span>
                         </p>
                         </div>
                     </div>
