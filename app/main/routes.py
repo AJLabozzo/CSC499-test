@@ -664,3 +664,16 @@ def edit_profile():
 @bp.route('/opportunities_admin_view')
 def opportunities_admin_view():
 	return render_template('opportunities_admin_view.html')
+
+@bp.route('/search')
+def search():
+	projects = Project.query.whoosh_search(request.args.get('query')).all
+
+	return render_template('projects.html', projects=projects)
+
+
+@bp.route('/search_users')
+def search_users():
+	users = User.query.whoosh_search(request.args.get('query')).all
+
+	return render_template('users_admin_view.html', users=users)
