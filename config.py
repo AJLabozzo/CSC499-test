@@ -1,7 +1,6 @@
 import os
 from dotenv import load_dotenv
 import psycopg2
-import flask_whooshalchemy as wa
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 load_dotenv(os.path.join(basedir,'.env'))
@@ -11,9 +10,7 @@ class Config(object):
 	#SQLALCHEMY_DATABASE_URI = 'postgresql://postgres:dontguessmypostgrespassword@34.73.99.129/postgres'
 	SQLALCHEMY_DATABASE_URI = os.environ.get('DATABSE_URL') or 'sqlite:///' + os.path.join(basedir, 'app.db')
 	#disabled tack_modification to not signal the application every time a change is about to be made to the database.
-	SQLALCHEMY_TRACK_MODIFICATIONS = True
-
-	WHOOSH_BASE='whoosh' 
+	SQLALCHEMY_TRACK_MODIFICATIONS = False
 	
     # Enable Flask's debugging features. Should be False in production
 	DEBUG = True

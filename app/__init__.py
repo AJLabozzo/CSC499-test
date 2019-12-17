@@ -9,7 +9,6 @@ from flask_mail import Mail
 from flask_moment import Moment
 from logging.handlers import SMTPHandler, RotatingFileHandler
 import os
-#import flask_whooshalchemy as wa 
  
 
 moment = Moment()
